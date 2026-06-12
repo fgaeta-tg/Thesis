@@ -1,0 +1,473 @@
+\documentclass[12pt,a4paper,openright,twoside]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{disi-thesis}
+\usepackage{code-lstlistings}
+\usepackage{notes}
+\usepackage{shortcuts}
+\usepackage{acronym}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{cleveref}
+
+\school{\unibo}
+\programme{Scuola di Ingegneria e Architettura \\ Corso di Laurea Magistrale in Digital Transformation Management}
+\title{Observability in Technogym:}
+\author{Francesca Gaeta}
+\date{\today}
+\subject{CLOUD PLATFORMS}
+\supervisor{Prof. Matteo Francia}
+\cosupervisor{Dott. Davide Domini}
+\session{II}
+\academicyear{2025-2026}
+
+% Definition of acronyms
+\acrodef{CRM}{Customer Relationship Management}
+\acrodef{OTel}{OpenTelemetry}
+\acrodef{POC}{Proof of Concept}
+\acrodef{PWA}{Progressive Web Apps}
+\acrodef{KPI}{Key-Success Factors}
+\acrodef{TBS}{Technogym Business System}
+\acrodef{OTLP}{OpenTelemetry Protocol}
+\acrodef{RUM}{Real User Monitoring}
+\acrodef{UX}{User Experience}
+\acrodef{APM}{Application Performance Monitoring}
+\acrodef{OLTPDB}{Online Transaction Processing}
+\acrodef{BI}{Business Intelligence}
+\acrodef{OLAP}{Online Analytical Processing}
+\acrodef{ACID}{Atomicity, Consistency, Isolation, Durability}
+\acrodef{ETL}{Extract Transform, Load}
+\acrodef{PaaS}{Platform as a Service}
+\acrodef{IaaS}{Infrastructure as a Service}
+\acrodef{FaaS}{Function as a Service}
+\acrodef{SaaS}{Software as a Service}
+\acrodef{XaaS}{Anything as a Service}
+\acrodef{VM}{Virtual Machine}
+\acrodef{OS}{Operating System}
+\acrodef{GDPR}{General Data Protection Regulation}
+\acrodef{CWV}{Core Web vitals}
+\acrodef{SLI}{Service Level Indicator}
+\acrodef{SLO}{Service Level Objective}
+\acrodef{RBAC}{Role-Based Access Control}
+\acrodef{SRE}{Site Reliability Engineering}
+\acrodef{MTTR}{Mean Time to Repair}
+\acrodef{DOM}{Document Object Model}
+
+
+\mainlinespacing{1.241} % line spacing in mainmatter, comment to default (1)
+\setlength{\parskip}{1em}
+\setlength{\headheight}{27.05003pt}
+
+\begin{document}
+
+\frontmatter\frontispiece
+
+\begin{abstract}	
+This thesis aims to explain my internship experience at Technogym Spa, where I worked in the Mywellness CRM team, dedicated to the development and deployment of the Mywellness Technogym web app. My contribution was not directly linked to the aforementioned application for professionals, rather was I in charge of a parallel project about web observability, intended at enhancing coding and debugging phases through error monitoring as main deliverable for my thesis, other than focusing later on further requirements such as analytics for performance monitoring, heatmaps, scrollmaps, and usage statistics analysis. I initially had to do individual research to discover the right platforms and workflow while actively participating in weekly alignment group meetings, which most of the times involved also other members of the whole development chain, disclosing to me the high level of complexity and coordination needed to handle digital products, which is sometimes taken for granted by final users that graphically interact with those, hopefully without coming upon issues. As a matter of fact, observability concerns the practice of understanding how applications behave in production, which translates into a very critical challenge in today’s world of distributed systems and microservices. To reach this goal, Technogym trusted OpenTelemetry, an open-source, vendor-neutral framework emerged as the industry’s answer to collect and manage observability data (telemetry). The core is providing customers with high quality products and assistance and making sure they can perceive this added value.
+\end{abstract}
+
+\begin{dedication} % this is optional
+Cadendo, la goccia scava la pietra, \\ non per la sua forza, ma per la sua costanza.
+\end{dedication}
+
+%----------------------------------------------------------------------------------------
+\tableofcontents   
+\listoffigures     % (optional) comment if empty
+\lstlistoflistings % (optional) comment if empty
+%----------------------------------------------------------------------------------------
+
+\mainmatter
+
+%----------------------------------------------------------------------------------------
+\chapter{Introduction}
+\label{chap:introduction}
+%----------------------------------------------------------------------------------------
+
+In today's world of distributed systems and microservices, understanding how applications behave in production is more critical and vital than ever. This challenge is particularly pronounced for a global leader like Technogym, where the intersection of high-end industrial manufacturing and sophisticated digital ecosystems creates a unique operational environment. \\ Founded in 1983 by President Nerio Alessandri and headquartered in the Technogym Village in Cesena, the company has consistently redefined the boundaries of the "Wellness" experience. However, in an era where digital touch points are as critical as physical equipment, the company’s ambition has shifted to "proactive" excellence. The goal is no longer just to provide a high-quality interface, but to achieve a level of operational transparency where bugs or performance regressions are intercepted before the user even perceives them. Ideally, issues should be identified and resolved before a customer ever feels the need to contact support.  
+
+\par This thesis documents the implementation of an observability project aimed at enhancing error monitoring and system performance, initially focused on the Mywellness app and the corporate \ac{CRM} platforms. By leveraging the \ac{OTel} framework, alongside AI-driven correlation analysis, they aim to transform raw telemetry into actionable insights. This shift from reactive troubleshooting to predictive maintenance represents a significant value-add for the Technogym's ecosystem, ensuring that \textit{Wellness} remains a seamless experience across both physical and digital domains. 
+
+\par The research is organized as follows: 
+\begin{itemize}
+    \item \textbf{Chapter 2:} provides an overview of Technogym’s corporate philosophy and internal digital processes, highlighting the cultural drive for constant innovation. We will get acquainted with the project. 
+    \item \textbf{Chapter 3:} explores the theoretical foundations of \textit{observability}, focusing on the \ac{OTel} standard and a comparative analysis of modern monitoring platforms to identify the most suitable solution for the enterprise context. 
+    \item \textbf{Chapter 4:} details the practical implementation of the infrastructure from the initial \ac{POC}, an experiment conducted to validate the feasibility, functionality, and potential of a technology, to the integration of custom libraries. We will dive into the code architecture to understand how monitoring is enabled and integrated in the app. 
+    \item \textbf{Chapter 5:} analyzes the project's primary outcome, a robust error-monitoring system. It discusses the technical hurdles, \ac{KPI} definition, and the resulting improvements in incident response.  
+    \item \textbf{Chapter 6:} ((to decide)). discusses secondary project outputs, including performance benchmarking, user behavior analysis via heatmaps, and long-term usage statistics (IF I HAVE TIME AND ROOM and depends on when the project is complete). 
+    \item \textbf{Chapter 7:} concludes the thesis with a reflection on the potential future evolution of the project and the professional and personal growth achieved during the internship.
+\end{itemize}
+
+\chapter{Technogym: the Wellness Ecosystem}
+
+In Technogym, innovation is not a destination yet a constant state of motion. A recurring sentiment within the company is that "once a goal is reached, it is already part of the past". This is the motivation that makes it outperform competitors and positions it as one of the most influential wellness companies in the market, as recently stated by the \textit{TIME Magazine}. 
+
+The company’s DNA is built on the concept of the \textit{Wellness Valley}, which integrates physical health, mental well-being, and technological innovation. Internally, this translates into a high-precision work environment where automation and digital documentation are paramount. We can perceive the enterprise's pride about its identity and vision at our first entrance in the headquarter, where the reception welcomes everyone with professionalism and a big smile, and the new entries get immediately immersed into the ethical, organizational, and work culture. Indeed, as a rookie have I been guided through the history and evolution of the company, in order to be immediately aware of the founder's first ideas, visionary mind, fast and improved digitalization over time and future objectives. 
+
+There are four main words to identify Technogym's drivers: 
+\begin{enumerate}[nosep]
+    \item \textbf{Technology}, which seems quite trivial considering the world that Technogym has created and the reality we live in right now, but in 1989 it was totally visionary. Technogym always led technology-driven changes in the fitness industry, setting high standards for equipment built by other companies. Nowadays, enterprises are considering digital transformation and are always more prepared to face innovation, which might put Technogym in a bad spot, and this is the reason why it always thrives with newer solutions and endless enhancement to protect its relevance and leadership. 
+    \item \textbf{Personalization}, what motivates the users to start a training program with the aid of the app through which they can get in touch with professionals based on their requests (e.g., coaches, physiotherapists, personal trainers...), be subjected to questionnaires to understand their motivations, passions, availability, routines and, most importantly, unique needs, assigning customized programs according to specific parts of the body to work on, muscles or bones that hurt, pathologies, and so on, delivering a highly personal experience and isolating from comparison with other people or standards that sometimes bomb us today.  
+    \item \textbf{Health}, which is the most emphasized part of the life of people. Technogym pushes it at the vertex of the pyramid, without forgetting other important aspects such as amusement, passion, socialization, strength, and aesthetic purposes. We should always remember how innovative it was to spread the \textit{body building} type of training around normal people who did not have to compete, but just aspired at making their life and physics better. After this first milestone, the enterprise was able to follow new trends and expectations in this present environment where everyone wants to become \textit{fit}. This has become particularly important today, thanks to multiple medical studies that have highlighted the importance of sport and movement to prevent the most common diseases, and researches on \textit{epigenetics} which has finally overcome the too restrictive cause-effect correlation between genetics and fate, demonstrating that genes are our baseline and impact for the 20\% on our bodies, but the remaining 80\% is dictated by how our lifestyle choices and external environment impact on the expression of such genes, which means that by training we can become significantly healthier and long-lived.
+    \item \textbf{Ecosystem}, probably the real essence that encloses it all. Technogym was the first to introduce a \textit{digital key} - which today is mainly used as simple credit container for the coffee machine to underline how far progress has gone - to access its machines with a user account where all personal data and training progress are collected, to then switch to a bracelet, until the modern web applications released either for professional operators in clubs, hotels and hospitals who need to follow their clients, and for common people that want to gain access to a training program in an easy and efficient way to improve their lifestyle and habits while feeling assisted; it was the first to make clever usage of the cloud when it was first developed to really become seamless; it was the first and only gym-related enterprise to be accepted at the \textit{Salone del Mobile} in Milan, the primary international design exhibition where it battled to conquer a honorable place after years of investing in deeply thought design choices and yearning for credits, especially with its brand-new \textit{sandstone} luxury and elegant collection, attentively hypothesized as interior design solution for home gyms. 
+\end{enumerate}
+
+\section{Organizational complexity and digital integration}
+
+Technogym operates as a hybrid of a hardware manufacturer and a software house. The intranet aims at providing all workers with the internal workflows and rules to follow and courses to boost individual competences, showing the constant investment the company makes in the workforce as something that automatically benefits customer care.
+
+What fascinated me was experiencing first-hand the delicate balance required among all parts of the company, how distant departments interacted with one another, and how apparently finished products are a continuous \textit{work in progress}, and this is why there is always some work to do. Not only the digital products are in constant evolution, but the same applies to physical ones. The headquarter hosts the T-Lab (\cref{tlab}), which is the place where prototypes get tested and scientific research flourishes. Most of the times they call important sports persons to handle such trials. In the laboratory, experts observe how the human interacts with the machine, but also if the latter fits and suits the former ergonomically, if it responds to commands correctly, which muscle groups it targets, they execute cardiovascular tests and other types of tests to back up efficiency and quality with a solid scientific backbone. 
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[c]{0.3\textwidth} 
+        \centering
+        \includegraphics[width=\linewidth]{figures/tlab.png}
+        \caption{Technogym Lab. Source: Technogym}
+        \label{tlab}
+    \end{minipage}
+    \hspace{1.3cm}
+    \begin{minipage}[c]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/unica.png}
+        \caption{\textit{UNICA} multifunction machine. Source: Technogym}
+        \label{unica}
+    \end{minipage}
+\end{figure}
+
+The lab is directly connected to the T-center, the huge gym for employees and external clients. It is fascinating because we find the majority of the instrumentation ever produced here, comparing different models, sizes, colors, ergonomics, and signature pieces. A major example is \textit{UNICA} (\cref{unica}), a unique machine that serves as multifunctional gym assembled in a way that gives the possibility to practice more than fifty different exercises, occupying a room of just 1,5 meters. 
+
+The \textit{Technogym App} is another important tool to stay in touch and help people who train with Technogym machinery at home, hotels, hospitals, sport clubs that bought Technogym's equipment, or directly at Technogym's wellness centers around the world. Functionalities are very well developed, and they try to consider any possible situation or need the users might experience, like booking classes, creating their own training program selecting the equipment they want to use, following trainers asynchronously through videos, monitoring their progress. The app can be naturally connected to external devices such as watches or mobile apps dedicated to fitness activity to acquire indexes. Thanks to this data, they calculate the \textit{MOVEs}, a specific metric that defines how active a lifestyle objectively is, ignoring if a subject burns more calories due to their body constitution.
+
+\section{Mywellness App: the bridge between fitness and digital transformation}
+
+Talking specifically about the \ac{CRM} dimension, the \textit{Mywellness CRM Progressive Web App} is designed to be used by professionals who support their clients during their training journeys. It involves a combination of frontend, the field I was involved into, backend, quality control, design, marketing and direct interaction with customers, other than integrations with all the other products. 
+
+\ac{PWA} are web applications built and enhanced with modern APIs to provide enhanced capabilities while still reaching any web user on any device with a single codebase. Reliable apps also need to be usable regardless of network connection. Users expect apps to load quickly on slow or flaky network connections, or even when offline. Making the PWA installable moves it out of the browser and into a standalone window. Installed PWAs can be launched on the user's home screen, dock, taskbar, or shelf. The user can search for them on a device and jump between them with the app switcher, making them feel like part of the device they are installed on.
+
+With seamless integration of third-party software, smart equipment, and wearables, Mywellness (\cref{crm}) puts operators in full control of their digital strategy and members engagement. It is statistically measured to increase attraction of 40\% and retention of 30\% thanks to variety, customization and automation. More than 30 thousand facilities and 40 million users are registered on the platform, with more than 500 thousand workouts tracked. The application is extremely complex due to its level of detail in covering a huge number of cases and functionalities. The workflow it follows consists of an ensemble of subsequent steps, starting from collecting health and fitness information to build the user's health history - via another company's creation, the \textit{Technogym Checkup} -, then offering direct booking of courses/trainers and payment possibilities, defining the assessment to discover the user's goals and consequently building the best personalized training program, consistently tracking progress, offering communication channels through which coaches can stay in touch to motivate clients, creating challenges to encourage friendly competition and keep users engaged, and finally rewarding results and loyalty. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/crm app.png}
+    \caption{CRM Web App: Home Page}
+    \label{crm}
+\end{figure}
+
+To always keep up with modern times, one of the latest evolution has been building the \textit{Technogym AI Assistant}, a tool that can create training programmes in a few seconds with the powerful pros of taking inspiration from the training history, that is following the trainer's style, considering the most used machines in that club and the most assigned exercises for a specific goal or physical limitation, and of course the supervising human can at the end modify some parameters or replace exercises as wished. This is another relevant example of how Artificial Intelligence can be employed to simplify operations and embrace the new digital transformation wave while still providing personalization and allowing human control. 
+
+All the services, platforms and processes mentioned in broad terms in these sections underline the transition trend from traditional manufacturing to a digital-first approach that already began years ago. The frontend team continuously works to redesign the interface when it can be elevated, listens to and satisfies customers' requests and suggestions that would make their sessions in the gym better, and of course it must solve bugs and errors. It is fundamental to put the accent on these tasks to concretize the "The Present is Already the Past" mindset, possibly linked to the need for observability: to stay ahead of the market, the infrastructure must be self-aware and constantly evolving. One of the best ways to do so is to introduce tools and tune AI systems to automate and speed up workflows and problem resolution, while acquiring insights about what has changed with respect to previous versions, or years, or functionalities. The right data to nourish this whole workflow can be collected by exploiting observability principles, that we are going to officially disclose in the next chapter as focal point of the paper. 
+
+\section{Acquaintance with the project}
+
+In relation to what we illustrated until now, the request Technogym advanced was to create a complete and reusable library for \textbf{React} and \textbf{TypeScript} applications that enables application observability management through a single integrated platform. The library must collect and transmit telemetry data using the OpenTelemetry protocol to monitor errors, performance, user interactions, and usage statistics. 
+
+As main features, we find:
+\begin{itemize}[nosep]
+    \item \textbf{Error Monitoring:} automatic capture of JavaScript errors, React error boundaries, API calls, complete stack trace tracking, handling of asynchronous errors and promise rejections, error categorization and prioritization. This initial phase covers the internship period and the main deliverables the company committed to guide me through.
+    \item \textbf{Performance Monitoring:} Core Web Vitals measurement (LCP, FID, CLS), page and resource loading time tracking, React component rendering performance monitoring, API call response time analysis, threshold definition for sending alerts via email or Slack messages;
+    \item \textbf{Heatmaps and Scrollmaps:} recording of user click positions, heatmap generation to visualize most interacted areas, page scroll depth tracking, navigation and interaction pattern analysis;
+    \item \textbf{Usage Statistics:} collection of browser information, version, and user agent, user geolocation (country, region), device data (desktop, mobile, tablet) and screen resolution, engagement metrics (time on page, bounce rate), tracking of visited pages and navigation paths, event tracking to evaluate feature usage.
+\end{itemize}
+
+The technology stack is plausibly expected to include version 18+ of React and 5+ of TypeScript for the frontend, OTLP as telemetry protocol, Vite as build tool for library bundle creation, Vitest for testing and Vite Plus with OXLint for linting and formatting, which concerns the process of running a program that will analyze code for potential errors. Linting focuses on enforcing coding conventions and best practices, detecting syntax errors and improving code readability as a sort of static analysis to catch issues early to maintain code consistency and clarity. Testing, whose debugging is a synonym, involves manually fixing the code after a bug has been found, generally after the program has run, and this differentiates it from the linting practice. This latter, before was implemented through the \textit{ESLint} library for the validation part, and the \textit{prettier} library for the formatting part, and thanks to plug-ins they could function simultaneously. Now, they switched to \textit{Vite Plus} with \textit{OXLint} because claimed to be up to 40 times faster and more powerful than traditional systems. Integrating a single package instead of keeping both ESLint and Prettier will reduce configuration conflicts and dependency vulnerabilities. 
+
+The workflow specifically declined for the internship project is intended as it follows:
+\begin{itemize}
+    \item \textbf{Phase 1.} In depth analysis of OpenTelemetry and its APIs, study of existing libraries and backend platforms to define the architectures to implement.
+    \item \textbf{Phase 2.} Core implementation (with precedence to error tracking) to achieve the goals and observe the requirements mentioned above, adding the development of precise unit tests to simulate errors to check if they are collected in the platform. The idea is to start from a blank template that will be modified according to our needs to test if what we are building works before migrating everything to the real application. 
+    \item \textbf{Phase 3.} Configuration of dashboards to monitor errors in the platform, and of alerting systems to notify errors from the platform.
+    \item \textbf{Phase 4.} Structuring the README file, API documentation and minimal demo app. 
+    \item \textbf{Expected Deliverables.} A library source code published on Git repository, npm package ready for distribution, a complete technical documentation, a working demo application, a test suite with at least 80\% coverage and a presentation to show results. 
+\end{itemize}
+
+Each step will be further analyzed and understood as the reading proceeds in the designated parts. 
+
+\chapter{From monitoring to observability in distributed systems}
+
+Historically, system health was managed through \textit{monitoring}, a reactive process centered around "known unknowns." Monitoring tools are designed to answer specific questions, like discovering if the server is up, or the CPU usage percentage. These rely on predefined dashboards built upon failure modes that engineers have encountered before, which also means that we cannot monitor something we do not know the existence of, or something we have not set as threshold. Modern software architectures require more than just monitoring; they require \textit{observability}, the ability to understand a system's internal state solely from its external outputs (logs, metrics, and traces). Technogym needed this as it transitioned into a distributed system of microservices and cloud-integrated fitness equipment, and failure modes became unpredictable and cannot be anticipated by simple static alerts (\textit{unknown unknowns}). 
+
+In an observable system, we do not just wait for a threshold to be crossed; we collect enough granular data to understand why something is happening for issues we have never experienced before. For the Mywellness app, this means the difference between knowing the app is slow and knowing that a specific API call is lagging for users on a specific firmware version in a specific region. Capturing various severity level types for logs (e.g., error, info, warn, ...); associating types of data with personalized message bodies to understand in natural language what crashed; building dashboards and reports; these all embody strategies to speed up the correction of bugs and malfunctions. 
+
+To achieve this level of insight, the industry relies on three fundamental types of telemetry data that we wanted indeed to intercept for the project:
+\begin{itemize}
+    \item \textbf{Metrics.} Metrics are numerical representations of data measured over intervals of time. They are incredibly efficient for storage and ideal for spotting trends or triggering alerts. In the Technogym ecosystem, metrics might track the number of active workouts per second or the memory consumption of a \ac{CRM} background process. They cause low overhead and retention is set to the long-term, but they are not enough alone to understand the context, since they just warn when \textit{something} is wrong, but not \textit{where} or \textit{why}.
+    \item \textbf{Logs.} Logs are timestamped text records of discrete events. They provide the report of a failure. Whether it is a 404 error on a login page or a database connection timeout, logs offer the specific details needed for debugging. They are pricier to store and difficult to search at scale without proper indexing. It is not compulsorily associated to a predefined user, this is the reason why it should be correlated to other measurements.  
+    \item \textbf{Traces.} Distributed Tracing is arguably the most critical pillar for modern apps like Mywellness. A trace follows a single request as it travels through various services (e.g., from the user's smartphone to the authentication layer, then to the database, and back). It provides a map of the journey, highlighting exactly where delays or errors occur. Traces show the exact path and timing of service calls, reveal dependencies between services, highlight performance bottlenecks, and provide context about each step in a request's life cycle, this is why traces and logs become extremely powerful if coupled up. 
+\end{itemize}
+
+There are other kinds of information we can acquire thanks to \textbf{spans}, that are single units of work and track specific operations that a request makes (actually a trace can be composed of one or more spans), and there is a whole table of attributes available to cluster spans, or \textbf{events} as structured records of significant occurrences in the system, or \textbf{profiles} that provide deep analysis of resource consumption and code execution patterns, but the ones in the paragraph above are the most important ones which automatically link to these various subcategories.  
+
+\section{The role of OpenTelemetry}
+
+OpenTelemetry has emerged as the industry's answer by offering a unified framework for collecting and managing observability data. It focuses on the collection, processing, and export of telemetry data, leaving the monitoring and alerting aspects to other observability tools. Its strength is being an open-source and vendor-neutral framework that standardizes how we collect and handle telemetry data across distributed systems. 
+
+The vendor neutrality approach extinguishes a major problem in modern observability: the fragmentation of telemetry collection methods. Instead of maintaining a different instrumentation code for each monitoring tool, we can instrument with \ac{OTel} the first time and send data anywhere, instead of managing different pipelines for logs, metrics, and traces. It acts like a common language for observability data that works across all services, regardless of the programming language. We must be aware that this library is not a monitoring or alerting tool itself, yet it provides the means to collect telemetry data from applications without built-in monitoring capabilities that we should tune externally. 
+
+Other important aspects are the preservation of backward compatibility with existing implementations. Before, vendor dependency led to using fragmented tools with different languages and proprietary agents and high maintenance overhead, but with OpenTelemetry everything is unified and language-agnostic. \ac{OTel} uses the \ac{OTLP} to move data between components. The hint from the previous considerations is that the library does not immediately offer a storage, but we can agglomerate to our architecture any type of instrument, like the \textit{OTel Collector} in a natural way that acts as a central hub. It takes in telemetry from different sources (not just OpenTelemetry SDKs, but also Zipkin, Prometheus etc.), processes it, and sends it wherever, which means we do not need to hard-wire the application to any backend. The collector is in charge of routing, formatting and cleaning up, and it can run in different modes: in \textit{agent mode} it runs on the same machine as the app and filters or enriches data before sending it out; in \textit{gateway mode} it runs as a central service that collects telemetry from multiple apps or instances. Nothing prohibits to use both, therefore collect locally and then forward centrally. 
+
+The collector (\textit{\cref{collector}}) works as a modular pipeline with four key components: 
+\begin{itemize}[nosep]
+    \item Receivers that handle incoming data from various protocols
+    \item Processors that modify, filter, or batch data
+    \item Exporters that send processed data to different backends
+    \item Connectors that pass data between pipelines or generate new telemetry types 
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/collector.png}
+    \caption{OpenTelemetry Collector Architecture. Source: OpenTelemetry}
+    \label{collector}
+\end{figure}
+
+For getting started with OpenTelemetry, sending data directly to a backend is a great way to get value quickly. Also, in a development or small-scale environment - which is not our case -, we can get decent results without a collector. However, it is recommend using a collector, since it allows the service to offload data quickly and the collector can take care of additional handling like retries, batching, encryption or even sensitive data filtering. Since standardization of movements does not tie to any vendor, if we need to switch tool we just update the collector's configuration in one line.  
+
+\section{Possible limitations in OTel}
+
+While OpenTelemetry provides a robust framework for digital transformation, its implementation is not exempt from significant trade-offs. For a complex ecosystem like Technogym's, several inherent limitations must be addressed. 
+
+The act of observing a system inevitably consumes resources. Instrumenting applications with OTel SDKs introduces CPU and memory overhead, as the application must now generate, buffer, and export telemetry data. In high-throughput environments, such as processing thousands of simultaneous workout heart-rate samples, the "observability tax" can impact the very latency we aim to measure. This requires careful tuning of sampling rates to balance data depth with system performance. 
+
+Observability shifts the burden from "not having enough data" to "having too much". Traces and logs, especially when highly granular, generate massive volumes of data. Storing and indexing this information in backends can lead to skyrocketing infrastructure costs. Without a clear sampling strategy where only a percentage of successful traces are kept while 100\% of errors are captured, the project risks becoming financially unsustainable.
+
+Simply collecting the three pillars is insufficient; the true value lies in their \textbf{correlation}. If a log entry cannot be linked to a specific trace ID, or a metric spike cannot be drilled down into a trace, the data remains siloed. Ensuring that all microservices correctly propagate context across different programming languages and protocols is a significant engineering challenge that requires strict organizational standards.
+
+It is critical to reiterate that OpenTelemetry is a collection standard, not a storage or analysis solution. While OTel unifies how data is sent, it does not provide the \textit{single pane of glass} for viewing it. Technogym must still maintain and manage backend databases and visualization layers. Furthermore, as \ac{OTel} is a relatively young and rapidly evolving project, certain components (specifically the logging specification and profiling) are less mature than tracing and metrics, potentially leading to breaking changes during future updates.
+
+Finally, the transition to observability is as much a cultural shift as a technical one. Engineers must move away from "dashboard-watching" toward "exploratory debugging." This requires a deeper understanding of the system architecture and a new set of skills in querying high-cardinality data, which may initially slow the development speed during the adoption phase. 
+
+\section{Platform Architectures: evolution from On-Premise to Cloud}
+
+\ac{OTel} is excellent for standardized telemetry collection. However, the requirements in our project include \ac{RUM} and \ac{UX} analytics features that are not universally covered by OTel-compatible vendors, especially heatmaps and scrollmaps. In practice, most teams end up choosing:
+\begin{enumerate}
+    \item an observability backend that supports \ac{OTel} well, and
+    \item optionally a UX/session analytics tool for dashboards and heatmaps, due to the fact that many \ac{APM} vendors do not do it specifically. 
+\end{enumerate}
+
+Today, OTel can correctly cover errors, performance and cross-signal correlation, but it does not natively provide heatmaps and scrollmaps, visual \ac{DOM} snapshots, product analytics funnels, retention and cohorts. We can add it thanks to other vendors. Hence, it is essential to identify the critical aspects and distinctions among typologies of platforms to effectively assess the solutions currently available on the market.
+
+The point of interest is that, from the very beginning, data management was centered around the \textit{Relational Data Model}. These systems are designed for Schema-on-Write, meaning the data structure must be strictly defined before any information is ingested. Also, primordial databases were optimized for \ac{OLTPDB}, therefore daily operational tasks (e.g., updating a user's weight in a \ac{CRM}). 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/relational.png}
+    \caption{Initial Database Management System Architecture. Source: chaossearch}
+    \label{relational-db}
+\end{figure}
+They excel at maintaining data integrity through \ac{ACID} compliance but struggle with complex analytical queries across massive datasets. As \ac{BI} became critical, organizations transitioned to \textit{Data Warehouses}. These systems separate \ac{OLAP} tasks from operational ones to avoid performance degradation. While powerful, warehouses remain expensive and rigid, as they require data to be cleaned and transformed via \ac{ETL} before it can be stored. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/warehouse.png}
+    \caption{Data Warehouse Architecture. Source: chaossearch}
+    \label{warehouse}
+\end{figure}
+
+The explosion of \textit{Big Data} - characterized by high volume, velocity, and variety - led to the adoption of the \textit{Data Lake}. Unlike the warehouse, a lake serves as a central repository for raw data. This reflects a Schema-on-Read, because data is ingested without a predefined schema, avoiding the latency of upfront processing. Anyways, the risk is producing a \textit{Data Swamp}, because it can make data dirty due to the lack of structure even though it is highly flexible and cost-effective for storing massive telemetry logs. Consequently, the most recent architectural wave, formalized around 2021, is the \textit{Data Lakehouse}. This paradigm seeks to eliminate the inefficient "two-tier" architecture where data is duplicated between a lake (for Data Science) and a warehouse (for BI).
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/lake.png}
+    \caption{DataLake Architecture. Source: chaossearch}
+    \label{lake}
+\end{figure}
+
+The evolution from relational databases to Lakehouses was not merely a change in data structures; it was a fundamental shift in infrastructure philosophy. Traditional on-premise databases were vertically scaled, meaning that to handle more data, one had to buy a bigger, more expensive server. In the context of Technogym’s global expansion, this model became a bottleneck. The transition to cloud platforms (e.g., AWS, Azure, Google Cloud) provided the necessary substrate for modern observability to function. The secret of why cloud platforms work for observability is the decoupling of storage and compute. In traditional DBs, if we wanted to store 10 years of logs (storage), we also had to pay for the CPU (compute) to keep that server running 24/7. In the cloud we can store petabytes of \textit{cold} telemetry data in cheap object storage and only spin up powerful CPUs when we actually need to run a query or investigate a system failure.
+
+The move to the cloud was driven by three main factors that differentiate it from the old "Server in a room" model:
+\begin{itemize}
+    \item Horizontal scalability: unlike a physical database, cloud platforms can distribute a single query across hundreds of virtual machines. This is vital for searching through billions of Mywellness app traces in seconds.
+    \item Managed services (\ac{PaaS}): instead of Technogym engineers spending weeks configuring database backups and security patches, the cloud provider offers these as a service. This allows the team to focus on analyzing the telemetry rather than maintaining the pipe through which it flows.
+    \item Global distribution: since fitness equipment is used worldwide, cloud platforms allow us to ingest data at edge locations close to the user, reducing latency and ensuring that observability does not slow down the user experience.
+\end{itemize}
+
+Ultimately, the cloud transformed the database into an Ecosystem. We no longer talk about a single tool, but an interconnected platform where eventually OpenTelemetry can send data to a collector, which routes it to a cloud-based Lakehouse, where it is finally visualized by an APM tool. The cloud is the "glue" that allows these modular components to communicate in real-time. Following the wave, Technogym already relies on AWS for storing the enterprise's data, in addition to Datadog used by the backend teams mainly for its storage capabilities, but actually contains loads of other useful features that will also be analyzed for our case study. 
+
+Platforms like Datadog lead the attention to another characteristic that is worth mentioning before delving into platforms analysis: levels of outsourcing on the Cloud and, inherently, the principal vendors and possible architectures to adopt, that are the questions inspiring the research in the next chapter. 
+Since the cloud is not a silver bullet, the decision to adopt it is not binary. The \textit{\ac{XaaS}} framework was born to allow organizations to choose their level of responsibility, effectively deciding which layers of the technology stack to manage internally and which to outsource to a vendor like AWS or Datadog. It goes without saying that this specific part will be useful for the considerations that inspire the platform research. It is helpful to distinguish some famous acronyms: 
+\begin{itemize}
+    \item \textbf{On-premise:} the traditional model where we would own the physical servers, networking, and storage in a local data center. It's best for highly regulated industries with extreme data sovereignty requirements or legacy systems that cannot be moved. The company would be in total control over the entire stack and data security. 
+    \item \textbf{\ac{IaaS}:} the vendor provides the virtualized hardware (servers, storage, networking), but we manage the Operating System, middle-ware, and applications. It works for organizations that need high customization of the \ac{OS} or want to "lift and shift" existing apps to the cloud without redesigning them, eliminating hardware costs and scaling instantly. We are still responsible for security patches, \ac{OS} updates and runtime management.
+    \item \textbf{\ac{PaaS}:} the vendor manages the hardware and the software framework (OS, middle-ware, runtime). We only manage the code and the data. It aligns with developers who want to build and deploy apps quickly due to high development velocity and lower operational overhead. Thus, because of the more predominant vendor lock-in, it can be tougher to move the code to a different provider if we use specific PaaS features.
+    \item \textbf{\ac{FaaS}:} also known as serverless, a subset of PaaS where we deploy individual snippets of code (functions) that trigger on specific events (e.g., an OTel collector receiving a specific trace). It is the right choice for microservices or intermittent tasks that don't need a server running 24/7 and gifts extreme cost-efficiency since we pay only at code execution, but it also brings limited execution time and there is a bit of latency when the function wakes up. 
+    \item \textbf{\ac{SaaS}:} the vendor provides a complete, ready-to-use application. We manage nothing but the configuration and the data we feed into it. It is addressed to specialized business needs like observability, CRM, or email where building a custom tool adds no competitive advantage. The advantages are zero maintenance, immediate access to advanced features, but it is the most expensive model at scale, it leaves the least amount of control over how the software works and pushes vendor lock-in to the extreme. 
+\end{itemize}
+
+ Another important concept to underline is called \textit{self-hosting}, that can be intertwined with on-prem. The latter refers to the physical location of the hardware, while the former puts the accent on the act of managing software ourselves instead of using SaaS. The twist is that we can self-host in the cloud by renting a blank \ac{VM} on AWS (\ac{IaaS}) and manually installing a database or an OTel collector on it without being clearly on-premise, because the server is the Amazon datacenter. These subtle questions have been discussed as they represent the holy grail to become familiar with the next steps. 
+
+\section{The right platform: decision process} 
+
+We can put the observability backend and the UX tool together in different ways. The realistic architectural solutions are:
+\begin{itemize}
+    \item \textbf{One-fit-all}: includes RUM, session replay, alerts, backend observability, and also supports OTel/OTLP export reasonably well.
+    \item \textbf{Best-of-breed}: OTel-native backend for errors/performance/trace metrics and a dedicated UX/session analytics tool, stitched together via shared tags as \textit{session.id, user.id, page.url, etc}. 
+\end{itemize}
+
+\subsection{One-fit-all}
+
+It means entrust everything to a unique platform, which would ensure workflow simplicity and linearity and less burden for components implementation. As already hinted, the best framed platforms were Datadog, New Relic and Sentry, which are about to be analyzed to understand the reasoning behind the process. 
+
+The analogies among the three that make them interchangeable are:
+\begin{itemize}
+    \item The possibility of exploiting \textbf{session replay} functionalities with masking to respect privacy requests;
+    \item The access to an EU data center (in Germany, Frankfurt), which reinforces the observance of specific legislation (\ac{GDPR}, AI Act, public DPA and consent and cookies policies for each);
+    \item The usability of an integrated AI, even if some relevant differences will be fathomed in the following;
+    \item Recognition of JS errors, React Error Boundaries, \ac{CWB} for RUM analytics useful for marketing strategies; 
+    \item API call response time analysis for the frontend;
+    \item Threshold definition and notification to automatically monitor anomalies, \ac{SLI}, \ac{SLO}, but it is a built-in functionality only in Datadog and New Relic, while Sentry needs support from other platforms;
+    \item Geolocalization behind consent and GDPR best practices;
+    \item Chance to add SDKs dedicated to full RUM, and these vendors offer their backend storage, which causes a higher vendor lock-in risk and less data portability (the limit is softened in Sentry's case thanks to the telemetry wrapper which introduces abstraction levels);
+    \item They are not self-hosted, but \ac{SaaS}, further reason of vendor lock-in (Sentry could optionally be adopted as self-host, but this is not the conventional choice, and it is tougher to apply);
+    \item All are OTel-supportive, but Sentry to a lesser extent; 
+    \item Data retention period can vary on behalf of the plan and can be customized, but the default is a range of thirty days;
+    \item Access control implementation, mainly for replays, generally adopting \ac{RBAC} or allow-list in Sentry.
+\end{itemize}
+
+We can now list the main differences among the three with a focus on Datadog, since it is the most complete. As a matter of fact, it is full-stack, that means we can save and correlate all signals emitted via native libraries in Datadog or via OTel SDK with OTLP in a single place. The classic data ingestion path can directly exploit Datadog's Agents or use an integrated cloud. Concerning the RUM path, we should use other SDKs to get complete analyses that the exclusive usage of OTel would not be capable of delivering. New Relic is the most complete platform after Datadog, but it is weaker about UX analysis with heatmaps and Datadog is slightly better in providing OTel-compatibility. Here, we can exploit the New Relic AI in addition to an \ac{SRE} Agent, but mostly to assist the user in error analysis and suggest remedies; therefore, it does not seem as powerful as Datadog's combination of Watchdog, for built-in insights, passive and automatic type of research, and bits AI SRE, which is added to the plan with additional fees but can conduct autonomous investigations, which is the extra value we wish to have. In Sentry, instead, the greatest lack is that OTLP insertion supports only traces and logs, not metrics and infra, so we should add a backend platform, which makes everything less doable. Furthermore, it does not directly build heatmaps and is less powerful for marketing metrics, only approximated through spans and replays. In fact, it is an excellent platform on the code and debugging side, which is a central but not exclusive part of our work. Another limitation in these terms is Seer AI, which is development-focused as debugging agent, which means it is not the best solution for our case. 
+The cost model in Datadog is per host and follows ingestion and retention volumes, adding add-ons if any. The only critique against Datadog could be the risk of finding inflated costs at the end of the month. The model could be more transparent, so it requires more attention. New Relic and Sentry are safer, as they respectively follow an ingest-based and user model the former and an events-based and replay volume the latter. 
+
+Datadog could be used following a Datadog-first approach to reduce external work, accelerating time-to-value, getting all the possible features, and correlations between frontend and backend. However, it requires more implementation effort to choose the RUM product (it could be Datadog itself using the SDKs or other specialized platforms like LogRocket or PostHog, which would be safer to have heatmaps and scrollmaps, too), manual correlation among tools through identifiers, alerting logic for the AI to intervene, and the storage in case we do not want to strongly depend on Datadog. OTel is still recommended for vendor-neutrality. 
+
+\subsection{Best-of-breed}
+
+Other than what involves Datadog said above, a common stack is the Grafana stack: \textit{Grafana} is the UI layer with dashboards, exploration, alerts, but it does not record telemetry, so it needs a backend beneath. It must be coupled with specialized components in interception of signals, like \textit{Tempo} for traces/spans, \textit{Loki} for logs, \textit{Prometheus} or \textit{Mimir} for metrics. The \ac{OTLP} in this context is feasible if adopting the collector to receive telemetry from the app, but the backend storage is detached. Interoperability is excellent, and this structure brings cost and control advantages, but pipelines and tools multiply. The only significant advantage with Grafana is making portable elements like dashboards and maps. The best-of-breed has never been fully considered because we did not want to complicate the system this much. Technogym already relies on SaaS, so the team was not worried about keeping this methodology. A percentage of vendor lock-in is welcomed if it keeps organization simpler. It was convenient because Technogym was already a Datadog's client. 
+
+\subsection{ClickHouse and the product ClickStack}
+
+ClickHouse itself is a high-performance, column-oriented SQL database management system (DBMS) designed for online analytical processing (OLAP). It is available as both open-source and cloud-based offerings, optimized for running analytical queries over massive datasets in real-time. ClickStack, on the other hand, is the ClickHouse observability stack, an open-source platform built in collaboration with HyperDX. It is composed of three blocks: OTel collector (ClickStack distro), ClickHouse storage and its query system (with possibility to use something else), and ClickStack UI offered by HyperDX. ClickStack as a product can be used in two different configurations: as self-host so that we can manage it all, and a managed ClickStack embracing the SaaS approach, because we should manage the collector or any instrument we decide to use to send OTLP, ClickHouse and HyperDX are hosted and operated in ClickHouse cloud, and it is thought to scale and diminish the burden.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/osclick.png}
+        \caption{Open-source ClickStack Architecture}
+        \label{Open-source-Click}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{figures/Managedclick.png}
+        \caption{Managed ClickStack Architecture}
+        \label{managed-click}
+    \end{subfigure}
+    \caption{ClickStack Architecture Configurations}
+\end{figure}
+Technologically speaking, the two pipelines are significantly similar; operationally speaking, we skip the riskiest part in terms of \ac{MTTR}, because ClickHouse (or a general storage) is always on, we acquire the UI, authorization integrations and, most importantly, scaling. 
+
+Even though the cost-model is incredibly tempting with ClickStack and ClickHouse (infra-based with promise of storage for less than \$0.03/GB/month and without fee per host), it brings some downsides with respect to Datadog. First of all, the AI is agentic, but only in the managed version and with the grant of a \textit{private preview} kind of account, hence owners decide who to leave the functionality to, and it is still work in progress, meaning we could experience changes in usage. The UI is not as developed as in Datadog, it offers many fair possibilities, but does not have heatmaps and it is base on static thresholds mainly, so to access dynamic alerts we should go for two integrated tools into HyperDX, that are \textit{Event Deltas} to analyze traces, and \textit{Event Patterns} to cluster similar log/traces. Plus, there is no explicit reference to \ac{CWV} capture. 
+
+All these motives led us to confirming Datadog as the best solution, affirming again itself as probable leader on the market. 
+
+\chapter{Contribution}
+
+In this chapter, we are going to dive into the practical implementation of the project. 
+
+\section{Preliminary Test of ClickStack and Datadog}
+
+The operational plan was generating the general telemetry setup to determine the structure and information we wanted any telemetry service to have, configuring the specific configuration for passing and managing telemetry through ClickStack and Datadog, and for completion improvising a demo page as interactive playground to test and verify telemetry collection from the simulated React application. Thanks to few simple buttons it allowed to manually trigger various telemetry events and see them appear in real-time in the ClickStack UI. To make it more efficient, I implemented a \textit{burst traffic} button to randomly generate a series of data of various types to collect more rapidly much information to proceed with dashboards and comparisons. 
+The sections are:
+\begin{itemize}
+    \item User context to set user identity for tracking user-specific telemetry (user id, email), but for privacy policy it should be masked or hashed, especially when checking session replays; otherwise, the risk is going against the principles of the GDPR. In ClickStack's settings it is already possible to establish masking rules for sensitive data. It is important to link all telemetry events to a specific user for debugging user-specific issues; 
+    \item Global attributes to add app-wide attributes that appear in all telemetry events (region, app version, browser) to reduce code duplication because it appears everywhere once set, enables filtering and grouping in the UI and it is useful to correlate events across features;
+    \item Logging (of types info for general information message, warn for something unexpected but recoverable, debug for detailed debugging information usually disabled in production) and error tracking to record application events and messages at different security levels;
+    \item Metrics to record quantitative measurements (counters, gauges, histograms) and simulation scenarios for realistic user workflows with multiple telemetry events at once (e.g., a user journey which simulates a complete e-commerce flow from searching the product to successful purchase); 
+    \item User sign up at first account creation; 
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/demo app.png}
+    \caption{Demo App interface for reference}
+    \label{demo}
+\end{figure}
+
+As already hinted, we tested ClickStack to discover HyperDX's functions. We enabled the access to the local OSS version to avoid creating an account and requesting a limited free trial time. With a ClickStack Docker VM instance we could explore the interface freely, even though probably the experience in this way was not the same as the one we would have had via registration, and not all features were correctly accessible (such as the AI), but it was enough to grasp the general functioning idea. We formed our environment thanks to the ingestion API key to establish the direct connection with HyperDX, and configured the ClickStack local host endpoint. We used the standard ClickHouse ports to collect and pass telemetry. It already came with automatic browser instrumentation with fetch API calls tracked automatically, XML HTTP requests monitoring and user interactions. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/HyperDX interface.png}
+    \caption{HyperDX interface: home page}
+    \label{hyperdx}
+\end{figure}
+
+As we can see in this image (\cref{hyperdx}), thanks to the demo application, we have tested the collection of logs and traces in HyperDX, so that we could see the exact movements of the cursor of the user on the screen. By clicking on a specific row, we can visualize more detailed information in the form of tags that we used to write the SQL queries to build the dashboards. Some examples are:
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.55\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/dash HyperDX.png}
+        \caption{Dashboards in HyperDX to Track Errors}
+        \label{dashboard}
+    \end{subfigure}
+    \hfill 
+    \begin{subfigure}[b]{0.37\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/SQL HyperDX.png} 
+        \caption{SQL for Errors by Message}
+        \label{sql}
+    \end{subfigure}
+\end{figure}
+
+\section{Development standards for observability integration in the source code}
+
+The focal points concern the implementation of a new \textit{user story} dedicated to observability and the evolution of the modular architecture based on private packages. 
+
+User stories represent specific units of work that need to be completed, such as developing a new feature, implementing tracking infrastructure, or fixing a bug. They are used to plan and schedule what modifications will be included in upcoming product released and can be tracked thanks to a platform called Jira. The team has established strict conventions to link these user stories directly to their Git workflow: 
+\begin{itemize}
+    \item \textbf{Branch Naming Convention.} When a developer creates a new branch for a single user story, the branch name must begin with the Jira user story ID, followed by an underscore and a brief description of the task. In our case, the specific ID was "PROS-9099" (written as: \textit{PROS-9099\_Observability}). 
+    \item \textbf{Commit Message Convention.} The Jira issue ID must also be included inside the commit messages, typically placed in the footer section under "refs". By putting the ID in both the branch name and the commit message, the team can easily trace all code modifications back to the specific Jira issue they were intended to solve. This is particularly useful because when a task is too large, it is typically broken down into multiple user stories, instead of putting hundreds of IDs in the branch name, the team creates a single general branch, and by keeping the ID in the refs, we ensure the reference to the exact user story while underlining that all together aim to pursue the same objective. 
+\end{itemize}
+
+The development model is rigorously structured around a standardized branching model to guarantee the stability of production environments and flexibility for releases. The basic rule establishes that each new feature or correction should start from the branch \textit{main} (production source code). This strategy allows to isolate changes and bring them to production singularly. This is done to avoid the inclusion of non-tested functionalities in the release branch. 
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Branch Type} & \textbf{Description} & \textbf{Naming Convention} \\ \hline
+Main & Source code in production & main \\ \hline
+Dev / Test & development and inspection environments & dev, test, alfa, beta \\ \hline
+Feature & New functionalities (with Jira ID) & feature/JiraID\_BriefDescription \\ \hline
+Release & Preparation for a new release & release/\textless name\textgreater \\ \hline
+\end{tabular}
+\caption{Git Branch Naming Conventions}
+\label{branch_conventions}
+\end{table}
+
+Also, commits need to follow a semantic standard to facilitate traceability on Jira. The structure is \texttt{\textless type\textgreater(\textless scope\textgreater): \textless description\textgreater}, where types are drawn from the conventional commits list (feat, fix, docs, style, refactor...), the scope has been decided internally to indicate the part of the application that has been modified (home, planner, training...), in the footer we find the refs field for the Jira issues.  
+
+The application follows a modular philosophy, where components are interchangeable to reduce the dependency from specific libraries and to facilitate updates. The code is organized into reusable packages hosted in a private registry. The two main packages are "Infrastructure" with the basic logic, and "Web App UI" to manage UI components. The access to those requires authentication via private token locally configured in the NPM registry. 
+The architecture is based on generic interfaces. For instance, the "Tracking Service" (initially referred to Google Analytics) is extended to the new Telemetry Service. The aim is not making the interface dependent on third-party libraries such as OTel, but these should be confined exclusively in the specific provider implementation (in our cases, ClickStack or Datadog). To achieve this, we defined a generic \textit{TelemetryService} interface. Instead of directly importing from OpenTelemetry API, we created custom generic types, such as a dictionary for attributes, where the key is a string and the value can be a string, number, or boolean, so the interface itself has zero dependency. This strict separation guarantees that if the team decides to stop using OpenTelemetry in the future, the core application interfaces will not need to be rewritten. The actual OTel logic is isolated within two specific implementation files, one regarding ClickStack for initial tests while waiting for Datadog's platform activation and exploratory sessions, and the other for using the latter. The necessary OTel packages are installed in the package.json as standard dependencies rather than development dependencies, ensuring that they are included in the final compile application build.  
+
+\subsection{Architecture of the telemetry service and sanitization for page views tracking}
+
+Once the telemetry abstraction layer has been introduced, the next step consisted in instrumenting the application to collect navigation events. Sending metrics, logs and traces was quite trivial, since we just had to import the code we had prefabricated in the demo app and just apply some refinements to exactly integrate it with the existing components. Another observability feature implemented through the new architecture was page view tracking, again taking inspiration to the already done work. Page views are essential telemetry signals to jump into user navigation flows and allow the construction of usage analytics dashboards. To reach this goal, the activity focused on automatically tracking route changes throughout the application. 
+
+The tracking logic was centralized: instead of embedding telemetry calls inside individual pages which would cause \textit{scattering} (literally spreading things over a wide area, hence calls towards tracking systems would be lost in the whole business logic, making each modification onerous and error-prone), the implementation leveraged the telemetry service abstraction and centralized page view registration within the routing layer. This approach reduced code duplication and guaranteed consistent event generation across the entire application. The \textit{trackPageView} method uses the parameter "path" instead of the complete URL. This must be brought to attention because while the URL (composed of \textit{window.location.href}) might include protocols and hosts, the \textit{path} identifies the logical internal path (e.g. /people/contacts). This choice was made for privacy protection to avoid the unintentional capture of PII (Personal Identifiable Information) or sensible query parameters. Basically, what we did is called sanitization. 
+
+Sanitization links to the concept of data cleanliness, too. Sending row data to monitoring systems is not only risky in privacy terms, but could additionally cause a technical issue known as "cardinality explosion". If dashboards receive tons of univocal entries, their statistical aggregation becomes unfeasible, making data unavailable for operational monitoring. The usage of a GUID (Globally Unique Identifier) composed of 32 characters by default separated by dashes in URL paths prevents metrics' grouping. It means that every access to a specific resource would be seen as a different page because the user has changed. Sanitization is the only way which allows operators to visualize traffic as aggregated per sections. For instance, /contacts/UUID-123 turns into more generic /contacts/ID. In the code we can find a sanitization function in the telemetry utilities which exploits regex to identify not only GUIDs, but also numerical and more compact "object IDs" typically returned by databases. These identifiers get replaced with a generic "ID" which guarantees cleanliness across sent data. 
+
+
+
+\section{Fancy formulas here}
+
+%----------------------------------------------------------------------------------------
+% BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\backmatter
+
+\nocite{*} % Remove this as soon as you have the first citation
+
+\bibliographystyle{alpha}
+\bibliography{bibliography}
+
+\begin{acknowledgements} % this is optional
+This thesis represents the end of one of the most beautiful, despite hard at times, journeys of my life, thanks to the new, fascinating things I have studied and the wonderful people I have met. 
+
+First of all, I am grateful to my supervisor, Professor Matteo Francia, not because it is a formality, but because he has truly been a great mentor, capable of explaining complex concepts while also having fun with his students at the end of his lectures, because he is both a great professor and person, he has eased our study path with his humor, and specifically to me he has been a psycological support, too, helping me every time I had doubts about my next steps. A big thanks also to my cosupervisor, Davide Domini, who since the first year has been first of all a friend, he helped me to solve all the endless bugs in my terminal and always knew how to encourage me. 
+
+The most important thanks go again and always to my family. I know that for you I am the perfect daughter that can do whatever she can, but it is not true and I have never felt this way towards myself. But I also know that if I am brave, ambitious and stubborn enough today to think I can face two years studying informatics to realize my childhood dream and survive six months of programming for an internship, it is because you raised me making me feel the love and safety I needed to be able to take risks, knowing I could have never disappointed you because you would have been always proud of me even committing the worst failure of my life, and because after all your sacrifices you deserved me to try hard, and I hope to give you my success as a gift every day.
+
+The best feeling was finding colleagues that I have always called friends. From who came into my life during the Bachelor's and never left, Alessia, Tommaso, Cinzia and Greta, to all my DTM fellows and the new people I have met. You were able to make me discover new traits of my personality, new activities to enjoy, new objectives to pursue, you were always ready to support me even when I was unsure about everything and just overthinking my next ten years of life. As I already told you, I could endure other thousands of university courses with you, because you are the best medicine for my mind and my soul. It destoys me to think I won't see you every day anymore and that we are all going to be scattered around the world, but I know you are the kind of people that find a way to see each other and keep on with our adventures as we left the day before. Thank you for the steem you show me, it is completely reciprocated and I know you will be extremely successful. You will always feel like home and I deeply love you. 
+
+\end{acknowledgements}
+
+\end{document}

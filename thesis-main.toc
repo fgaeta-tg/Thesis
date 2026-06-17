@@ -9,9 +9,9 @@
 \contentsline {section}{\numberline {3.1}The role of OpenTelemetry}{15}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Possible limitations in OTel}{17}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Platform Architectures: evolution from On-Premise to Cloud}{18}{section.3.3}%
-\contentsline {section}{\numberline {3.4}The right platform: decision process}{23}{section.3.4}%
+\contentsline {section}{\numberline {3.4}The right platform: decision process}{24}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}One-fit-all}{24}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Best-of-breed}{26}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.2}Best-of-breed}{27}{subsection.3.4.2}%
 \contentsline {subsection}{\numberline {3.4.3}ClickHouse and the product ClickStack}{27}{subsection.3.4.3}%
 \contentsline {chapter}{\numberline {4}Contribution}{29}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Preliminary Test of ClickStack and Datadog}{29}{section.4.1}%

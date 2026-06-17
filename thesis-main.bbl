@@ -1,692 +1,696 @@
-\newcommand{\etalchar}[1]{$^{#1}$}
-\begin{thebibliography}{CCDMSO20}
+\begin{thebibliography}{100}
 
-\bibitem[AB93]{aggoun1993}
-Abderrahmane Aggoun and Nicolas Beldiceanu.
-\newblock Extending chip in order to solve complex scheduling and placement problems.
-\newblock {\em Mathematical and computer modelling}, 17(7):57--73, 1993.
+\bibitem{webdev-pwa}
+{Google Developers}.
+\newblock Progressive web apps, 2024.
+\newblock Accessed: 2026-06-17.
 
-\bibitem[ACO21]{shallow2deep-extraamas2021}
-Andrea Agiollo, Giovanni Ciatto, and Andrea Omicini.
-\newblock {\it Shallow2Deep}: Restraining neural networks opacity through neural architecture search.
-\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Fr{\"a}mling, editors, {\em Explainable and Transparent AI and Multi-Agent Systems. Third International Workshop, EXTRAAMAS 2021, Virtual Event, May 3--7, 2021, Revised Selected Papers}, volume 12688 of {\em Lecture Notes in Computer Science}, pages 63--82. Springer Nature, Basel, Switzerland, 2021.
-
-\bibitem[ADT95]{AndrewsDT95}
-Robert Andrews, Joachim Diederich, and Alan~B. Tickle.
-\newblock Survey and critique of techniques for extracting rules from trained artificial neural networks.
-\newblock {\em Knowl. Based Syst.}, 8(6):373--389, 1995.
-
-\bibitem[AFWZ02]{artale2002}
-Alessandro Artale, Enrico Franconi, Frank Wolter, and Michael Zakharyaschev.
-\newblock A temporal description logic for reasoning over conceptual schemas and queries.
-\newblock In {\em European Workshop on Logics in Artificial Intelligence (JELIA 2002)}, pages 98--110. Springer, 2002.
-
-\bibitem[AK12a]{Augasta2012}
-M.~Gethsiyal Augasta and T.~Kathirvalavakumar.
-\newblock Reverse engineering the neural networks for rule extraction in classification problems.
-\newblock {\em Neural Processing Letters}, 35(2):131--150, April 2012.
-
-\bibitem[AK12b]{AugastaK12}
-M.~Gethsiyal Augasta and T.~Kathirvalavakumar.
-\newblock Reverse engineering the neural networks for rule extraction in classification problems.
-\newblock {\em Neural Process. Lett.}, 35(2):131--150, 2012.
-
-\bibitem[Apt90]{apt1990logic}
-Krzysztof~R Apt.
-\newblock Logic programming.
-\newblock {\em Handbook of Theoretical Computer Science, Volume B: Formal Models and Sematics (B)}, 1990:493--574, 1990.
-
-\bibitem[Baa03]{baader2002}
-Franz Baader.
-\newblock Basic description logics.
-\newblock In {\em The Description Logic Handbook: Theory, Implementation, and Applications}, pages 43--95, USA, 2003. Cambridge University Press.
-
-\bibitem[BDKT97]{bondarenko1997}
-Andrei Bondarenko, Phan~Minh Dung, Robert~A. Kowalski, and Francesca Toni.
-\newblock An abstract, argumentation-theoretic approach to default reasoning.
-\newblock {\em Artificial intelligence}, 93(1--2):63--101, 1997.
-
-\bibitem[BFOS84]{breiman1984classification}
-Leo Breiman, Jerome~H. Friedman, Richard~A. Olshen, and Charles~J. Stone.
-\newblock {\em Classification and Regression Trees}.
-\newblock Chapman \& Hall/CRC, 1984.
-
-\bibitem[BH16]{BolognaH16}
-Guido Bologna and Yoichi Hayashi.
-\newblock A rule extraction study on a neural network trained by deep learning.
-\newblock In {\em 2016 International Joint Conference on Neural Networks, {IJCNN} 2016, Vancouver, BC, Canada, July 24-29, 2016}, pages 668--675. {IEEE}, 2016.
-
-\bibitem[BH18]{BolognaH18}
-Guido Bologna and Yoichi Hayashi.
-\newblock A comparison study on rule extraction from neural network ensembles, boosted shallow trees, and svms.
-\newblock {\em Appl. Comput. Intell. Soft Comput.}, 2018:4084850:1--4084850:20, 2018.
-
-\bibitem[BHS79]{Bryson1979}
-A.~E. {Bryson}, Y.~{Ho}, and G.~M. {Siouris}.
-\newblock Applied optimal control: Optimization, estimation, and control.
-\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics}, 9(6):366--367, June 1979.
-
-\bibitem[BKB17]{BastaniKB17}
-Osbert Bastani, Carolyn Kim, and Hamsa Bastani.
-\newblock Interpreting blackbox models via model extraction.
-\newblock {\em CoRR}, abs/1705.08504, 2017.
-
-\bibitem[BL04]{BrachmanL2004}
+\bibitem{BrachmanL2004}
 Ronald~J. Brachman and Hector~J. Levesque.
 \newblock The tradeoff between expressiveness and tractability.
 \newblock In Ronald~J. Brachman and Hector~J. Levesque, editors, {\em Knowledge Representation and Reasoning}, The Morgan Kaufmann Series in Artificial Intelligence, pages 327--348. Morgan Kaufmann, San Francisco, 2004.
 
-\bibitem[BU18]{BesoldU2018}
-Tarek~R. Besold and Sara~L. Uckelman.
-\newblock The what, the why, and the how of artificial explanations in automated decision-making.
-\newblock {\em CoRR}, abs/1808.07074:1--20, 2018.
-
-\bibitem[CBMO19]{bctcoord-bct4mas2019}
-Giovanni Ciatto, Michael Bosello, Stefano Mariani, and Andrea Omicini.
-\newblock Comparative analysis of blockchain technologies under a coordination perspective.
-\newblock In Fernando De~La~Prieta, Alfonso Gonz{\'a}lez-Briones, Pawel Pawleski, Davide Calvaresi, Elena Del~Val, Fernando Lopes, Vicente Julian, Eneko Osaba, and Ram{\'o}n S{\'a}nchez-Iborra, editors, {\em Highlights of Practical Applications of Survivable Agents and Multi-Agent Systems. The PAAMS Collection}, volume 1047 of {\em Communications in Computer and Information Science}, chapter~7, pages 80--91. Springer, June 2019.
-
-\bibitem[CCDMSO20]{semanticselfcomposition-isola2020}
-Ashley Caselli, Giovanni Ciatto, Giovanna Di~Marzo~Serugendo, and Andrea Omicini.
-\newblock Engineering semantic self-composition of services through tuple-based coordination.
-\newblock In Tiziana Margaria and Bernhard Steffen, editors, {\em Leveraging Applications of Formal Methods, Verification and Validation: Engineering Principles}, volume 12477 of {\em Lecture Notes in Computer Science}, pages 205--223. Springer International Publishing, Cham, 2020.
-
-\bibitem[CCDO19a]{xailp-woa2019}
-Roberta Calegari, Giovanni Ciatto, Jason Dellaluce, and Andrea Omicini.
-\newblock Interpretable narrative explanation for {ML} predictors with {LP}: A case study for {XAI}.
-\newblock In Federico Bergenti and Stefania Monica, editors, {\em WOA 2019 -- 20th Workshop ``From Objects to Agents''}, volume 2404 of {\em CEUR Workshop Proceedings}, pages 105--112. Sun SITE Central Europe, RWTH Aachen University, 26--28~June 2019.
-
-\bibitem[CCDO19b]{edgeintelligenceguidelines-idcs2019}
-Roberta Calegari, Giovanni Ciatto, Enrico Denti, and Andrea Omicini.
-\newblock Engineering micro-intelligence at the edge of {CPCS}: Design guidelines.
-\newblock In {\em Internet and Distributed Computing Systems (IDCS 2019)}, volume 11874 of {\em Lecture Notes in Computer Science}, pages 260--270. Springer, 10--12~October 2019.
-
-\bibitem[CCDO20]{logictech-information11}
-Roberta Calegari, Giovanni Ciatto, Enrico Denti, and Andrea Omicini.
-\newblock Logic-based technologies for intelligent systems: State of the art and perspectives.
-\newblock {\em Information}, 11(3):1--29, March 2020.
-\newblock Special Issue ``10th Anniversary of Information---Emerging Research Challenges''.
-
-\bibitem[CCM{\etalchar{+}}18a]{spacetimelp-woa2018}
-Roberta Calegari, Giovanni Ciatto, Stefano Mariani, Enrico Denti, and Andrea Omicini.
-\newblock Logic programming in space-time: The case of situatedness in {LPaaS}.
-\newblock In Massimo Cossentino, Luca Sabatucci, and Valeria Seidita, editors, {\em WOA 2018 -- 19th Workshop ``From Objects to Agents''}, volume 2215 of {\em CEUR Workshop Proceedings}, pages 63--68. Sun SITE Central Europe, RWTH Aachen University, 29--30~June 2018.
-
-\bibitem[CCM{\etalchar{+}}18b]{lpaas-bdcc2}
-Roberta Calegari, Giovanni Ciatto, Stefano Mariani, Enrico Denti, and Andrea Omicini.
-\newblock {LPaaS} as micro-intelligence: Enhancing {IoT} with symbolic reasoning.
-\newblock {\em Big Data and Cognitive Computing}, 2(3), 2018.
-
-\bibitem[CCM{\etalchar{+}}18c]{lpaas-ic2e2018}
-Roberta Calegari, Giovanni Ciatto, Stefano Mariani, Enrico Denti, and Andrea Omicini.
-\newblock Micro-intelligence for the {IoT}: {SE} challenges and practice in {LPaaS}.
-\newblock In {\em 2018 IEEE International Conference on Cloud Engineering (IC2E 2018)}, pages 292--297. IEEE Computer Society, 17--20~April 2018.
-
-\bibitem[CCM{\etalchar{+}}18d]{blockchainlp-woa2018}
-Giovanni Ciatto, Roberta Calegari, Stefano Mariani, Enrico Denti, and Andrea Omicini.
-\newblock From the blockchain to logic programming and back: Research perspectives.
-\newblock In Massimo Cossentino, Luca Sabatucci, and Valeria Seidita, editors, {\em WOA 2018 -- 19th Workshop ``From Objects to Agents''}, volume 2215 of {\em CEUR Workshop Proceedings}, pages 69--74. Sun SITE Central Europe, RWTH Aachen University, June 2018.
-
-\bibitem[CCMO21a]{lptech4mas-jaamas35}
-Roberta Calegari, Giovanni Ciatto, Viviana Mascardi, and Andrea Omicini.
-\newblock Logic-based technologies for multi-agent systems: A systematic literature review.
-\newblock {\em Autonomous Agents and Multi-Agent Systems}, 35(1):1:1--1:67, 2021.
-\newblock Collection ``Current Trends in Research on Software Agents and Agent-Based Software Development''.
-
-\bibitem[CCMO21b]{lptech4mas-aamas2021}
-Roberta Calegari, Giovanni Ciatto, Viviana Mascardi, and Andrea Omicini.
-\newblock Logic-based technologies for multi-agent systems: Summary of a systematic literature review.
-\newblock In {\em 20th International Conference on Autonomous Agents and Multiagent Systems (AAMAS-2021)}, pages 1721--1723, May 2021.
-
-\bibitem[CCN{\etalchar{+}}21]{expectation-extraamas2021}
-Davide Calvaresi, Giovanni Ciatto, Amro Najjar, Reyhan Aydo{\u g}an, Leon Van~der Torre, Andrea Omicini, and Michael Schumacher.
-\newblock {{\sc Expectation}}: Personalized explainable artificial intelligence for decentralized agents with heterogeneous knowledge.
-\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Fr{\"a}mling, editors, {\em Explainable and Transparent AI and Multi-Agent Systems. Third International Workshop, EXTRAAMAS 2021, Virtual Event, May 3--7, 2021, Revised Selected Papers}, volume 12688 of {\em Lecture Notes in Computer Science}, pages 331--343. Springer Nature, Basel, Switzerland, 2021.
-
-\bibitem[CCO20]{xaisurvey-ia14}
-Roberta Calegari, Giovanni Ciatto, and Andrea Omicini.
-\newblock On the integration of symbolic and sub-symbolic techniques for {XAI}: A survey.
-\newblock {\em Intelligenza Artificiale}, 14(1):7--32, 2020.
-
-\bibitem[CCO21a]{cco-softwarex-2021-2pkt}
-Giovanni Ciatto, Roberta Calegari, and Andrea Omicini.
-\newblock 2p-kt: A logic-based ecosystem for symbolic ai.
-\newblock {\em SoftwareX}, 2021.
-
-\bibitem[CCO21b]{2pkt-jelia2021}
-Giovanni Ciatto, Roberta Calegari, and Andrea Omicini.
-\newblock Lazy stream manipulation in {P}rolog via backtracking: The case of {\sc 2p-kt}.
-\newblock In Wolfgang Faber, Gerhard Friedrich, Martin Gebser, and Michael Morak, editors, {\em Logics in Artificial Intelligence}, volume 12678 of {\em Lecture Notes in Computer Science}, pages 407--420. Springer, 2021.
-\newblock 17th European Conference, JELIA 2021, Virtual Event, May 17–20, 2021, Proceedings.
-
-\bibitem[CCS{\etalchar{+}}20]{kotlindsi4prolog-woa2020}
-Giovanni Ciatto, Roberta Calegari, Enrico Siboni, Enrico Denti, and Andrea Omicini.
-\newblock {\sc {2P-Kt}}: logic programming with objects \& functions in kotlin.
-\newblock In Roberta Calegari, Giovanni Ciatto, Enrico Denti, Andrea Omicini, and Giovanni Sartor, editors, {\em WOA 2020 -- 21th Workshop ``From Objects to Agents''}, volume 2706 of {\em CEUR Workshop Proceedings}, pages 219--236, Aachen, Germany, October 2020. Sun SITE Central Europe, RWTH Aachen University.
-\newblock 21st Workshop ``From Objects to Agents'' (WOA 2020), Bologna, Italy, 14--16~September~2020. Proceedings.
-
-\bibitem[CCSO20]{agentbasedxai-aamas2020}
-Giovanni Ciatto, Davide Calvaresi, Michael~I. Schumacher, and Andrea Omicini.
-\newblock An abstract framework for agent-based explanations in {AI}.
-\newblock In {\em 19th International Conference on Autonomous Agents and MultiAgent Systems}, pages 1816--1818. International Foundation for Autonomous Agents and Multiagent Systems, May 2020.
-\newblock Extended Abstract.
-
-\bibitem[CDD17]{snnta-assb17}
-Giovanni Ciatto, Elisabetta {De Maria}, and Cinzia {Di Giusto}.
-\newblock Spiking neural networks as timed automata.
-\newblock In {\em Proc. of the Thematic Research School on Advances in Systems and Synthetic Biology (ASSB)}, pages 55--69. EDP Sciences, 2017.
-
-\bibitem[CDMSL{\etalchar{+}}20]{coordination-jlamp2020}
-Giovanni Ciatto, Giovanna Di~Marzo~Serugendo, Maxime Louvel, Stefano Mariani, Andrea Omicini, and Franco Zambonelli.
-\newblock Twenty years of coordination technologies: {COORDINATION} contribution to the state of art.
-\newblock {\em Journal of Logical and Algebraic Methods in Programming}, 113:1--25, June 2020.
-
-\bibitem[CH94]{cohen1994}
-William~W. Cohen and Haym Hirsh.
-\newblock Learning the classic description logic: Theoretical and experimental results.
-\newblock In {\em Principles of Knowledge Representation and Reasoning}, pages 121--133. Elsevier, 1994.
-
-\bibitem[Cim06]{cimiano2006-ontologies}
-Philipp Cimiano.
-\newblock {\em Ontology Learning and Population from Text}.
-\newblock Springer US, 2006.
-
-\bibitem[Cla77]{Clark77}
-Keith~L. Clark.
-\newblock Negation as failure.
-\newblock In Herv{\'{e}} Gallaire and Jack Minker, editors, {\em Logic and Data Bases, Symposium on Logic and Data Bases, Centre d'{\'{e}}tudes et de recherches de Toulouse, France, 1977}, Advances in Data Base Theory, pages 293--322, New York, 1977. Plemum Press.
-
-\bibitem[CMMO19]{autonomoussc-paams2019}
-Giovanni Ciatto, Alfredo Maffi, Stefano Mariani, and Andrea Omicini.
-\newblock Towards agent-oriented blockchains: Autonomous smart contracts.
-\newblock In Yves Demazeau, Eric Matson, Juan~Manuel Corchado, and Fernando De~la Prieta, editors, {\em Advances in Practical Applications of Survivable Agents and Multi-Agent Systems: The PAAMS Collection}, volume 11523 of {\em Lecture Notes in Computer Science}, pages 29--41. Springer International Publishing, June 2019.
-
-\bibitem[CMMO20a]{proactivesc-blockchain2019}
-Giovanni Ciatto, Alfredo Maffi, Stefano Mariani, and Andrea Omicini.
-\newblock Smart contracts are more than objects: Pro-activeness on the blockchain.
-\newblock In Javier Prieto, Ashok~Das Kumar, Stefano Ferretti, Ant{\'o}nio Pinto, and Juan~Manuel Corchado, editors, {\em Blockchain and Applications}, volume 1010 of {\em Advances in Intelligent Systems and Computing}, pages 45--53. Springer, 2020.
-
-\bibitem[CMMO20b]{bctcoordination-information11}
-Giovanni Ciatto, Stefano Mariani, Alfredo Maffi, and Andrea Omicini.
-\newblock Blockchain-based coordination: Assessing the expressive power of smart contracts.
-\newblock {\em Information}, 11(1):1--20, January 2020.
-\newblock Special Issue ``Blockchain Technologies for Multi-Agent Systems''.
-
-\bibitem[CMO17]{respect-idc2017}
-Giovanni Ciatto, Stefano Mariani, and Andrea Omicini.
-\newblock Programming the interaction space effectively with \textsf{{R}e{S}pec{TX}}.
-\newblock In Mirjana Ivanovi{\'c}, Costin B{\u a}dic{\u a}, J{\"u}rgen Dix, Zoran Jovanovi{\'c}, Michele Malgeri, and Milo{\v s} Savi{\'c}, editors, {\em Intelligent Distributed Computing XI}, volume 737 of {\em Studies in Computational Intelligence}, pages 89--101. Springer, 2017.
-
-\bibitem[CMO18a]{bctcoord-bct4mas2018wi}
-Giovanni Ciatto, Stefano Mariani, and Andrea Omicini.
-\newblock Blockchain for trustworthy coordination: A first study with {L}inda and {E}thereum.
-\newblock In {\em 2018 IEEE/WIC/ACM International Conference on Web Intelligence (WI)}, pages 696--703, December 2018.
-
-\bibitem[CMO18b]{respectx-comsis15}
-Giovanni Ciatto, Stefano Mariani, and Andrea Omicini.
-\newblock {ReSpecTX}: Programming interaction made easy.
-\newblock {\em Computer Science and Information Systems}, 15(3):655--682, October 2018.
-\newblock {S}pecial Section: Contemporary Topics in Intelligent Distributed Computing.
-
-\bibitem[CMO{\etalchar{+}}18c]{techsurvey-coord2018}
-Giovanni Ciatto, Stefano Mariani, Andrea Omicini, Franco Zambonelli, and Maxime Louvel.
-\newblock Twenty years of coordination technologies: State-of-the-art and perspectives.
-\newblock In Giovanna Di~Marzo~Serugendo and Michele Loreti, editors, {\em Coordination Models and Languages}, volume 10852 of {\em Lecture Notes in Computer Science}, pages 51--80. Springer, 2018.
-\newblock 20th IFIP WG 6.1 International Conference, COORDINATION 2018, Held as Part of the 13th International Federated Conference on Distributed Computing Techniques, DisCoTec 2018, Madrid, Spain, June 18-21, 2018. Proceedings.
-
-\bibitem[CMOZ20]{blockchainmas-applsci10}
-Giovanni Ciatto, Stefano Mariani, Andrea Omicini, and Franco Zambonelli.
-\newblock From agents to blockchain: Stairway to integration.
-\newblock {\em Applied Sciences}, 10(21):7460:1--7460:22, 2020.
-\newblock Special Issue ``Advances in Blockchain Technology and Applications 2020''.
-
-\bibitem[CNCC21]{imagination-extraamas2021}
-Giovanni Ciatto, Amro Najjar, Jean-Paul Calbimonte, and Davide Calvaresi.
-\newblock Towards explainable visionary agents: License to dare and imagine.
-\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Fr{\"a}mling, editors, {\em Explainable and Transparent AI and Multi-Agent Systems. Third International Workshop, EXTRAAMAS 2021, Virtual Event, May 3--7, 2021, Revised Selected Papers}, volume 12688 of {\em Lecture Notes in Computer Science}, pages 139--157. Springer Nature, Basel, Switzerland, 2021.
-
-\bibitem[Col86]{colmerauer1986-theoreticalProlog}
-Alain Colmerauer.
-\newblock Theoretical model of prolog ii.
-\newblock In M.~van Canegham and D.-H.D. Warren, editors, {\em Logic Programming and its applications}, pages 3--31. Ablex Publishing Corporation, 1986.
-
-\bibitem[CR93]{ColmerauerR93}
-Alain Colmerauer and Philippe Roussel.
-\newblock The birth of prolog.
-\newblock In John A.~N. Lee and Jean~E. Sammet, editors, {\em History of Programming Languages Conference (HOPL-II)}, pages 37--52. {ACM}, April 1993.
-
-\bibitem[Cra16]{crawford2016artificial}
-Kate Crawford.
-\newblock Artificial intelligence's white guy problem.
-\newblock {\em The New York Times}, 25, 2016.
-
-\bibitem[CROM19]{tusow-icccn2019}
-Giovanni Ciatto, Lorenzo Rizzato, Andrea Omicini, and Stefano Mariani.
-\newblock {TuSoW}: Tuple spaces for edge computing.
-\newblock In {\em The 28th International Conference on Computer Communications and Networks (ICCCN 2019)}, Valencia, Spain, 29~July--1~August 2019.
-
-\bibitem[CS95]{CravenS95}
-Mark~W. Craven and Jude~W. Shavlik.
-\newblock Extracting tree-structured representations of trained networks.
-\newblock In David~S. Touretzky, Michael Mozer, and Michael~E. Hasselmo, editors, {\em Advances in Neural Information Processing Systems 8, NIPS, Denver, CO, USA, November 27-30, 1995}, pages 24--30. {MIT} Press, 1995.
-
-\bibitem[CSOC20]{agentbasedxai-extraamas2020}
-Giovanni Ciatto, Michael~I. Schumacher, Andrea Omicini, and Davide Calvaresi.
-\newblock Agent-based explanations in ai: Towards an abstract framework.
-\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Främling, editors, {\em Explainable, Transparent Autonomous Agents and Multi-Agent Systems}, volume 12175 of {\em Lecture Notes in Computer Science}, pages 3--20. Springer, Cham, 2020.
-\newblock Second International Workshop, EXTRAAMAS 2020, Auckland, New Zealand, May 9–13, 2020, Revised Selected Papers.
-
-\bibitem[Cyb89]{Cybenko1989}
-G.~Cybenko.
-\newblock Approximation by superpositions of a sigmoidal function.
-\newblock {\em Mathematics of Control, Signals and Systems}, 2(4):303--314, Dec 1989.
-
-\bibitem[DCB19]{TrattnerPR2019}
-Federica Di~Castro and Enrico Bertini.
-\newblock Surrogate decision tree visualization.
-\newblock In {\em Joint Proceedings of the ACM IUI 2019 Workshops (ACMIUI-WS 2019)}, volume 2327 of {\em CEUR Workshop Proceedings}, March 2019.
-
-\bibitem[dGBG01]{GarcezBG01}
-Artur~S. d'Avila Garcez, Krysia Broda, and Dov~M. Gabbay.
-\newblock Symbolic knowledge extraction from trained neural networks: {A} sound approach.
-\newblock {\em Artif. Intell.}, 125(1-2):155--207, 2001.
-
-\bibitem[dGBR{\etalchar{+}}15]{GarcezBRFHIKLMS15}
-Artur~S. d'Avila Garcez, Tarek~R. Besold, Luc~De Raedt, Peter F{\"{o}}ldi{\'{a}}k, Pascal Hitzler, Thomas Icard, Kai{-}Uwe K{\"{u}}hnberger, Lu{\'{\i}}s~C. Lamb, Risto Miikkulainen, and Daniel~L. Silver.
-\newblock Neural-symbolic learning and reasoning: Contributions and challenges.
-\newblock In {\em 2015 {AAAI} Spring Symposia, Stanford University, Palo Alto, California, USA, March 22-25, 2015}. {AAAI} Press, 2015.
-
-\bibitem[dK15]{RaedtK15}
-Luc {de Raedt} and Angelika Kimmig.
-\newblock Probabilistic (logic) programming concepts.
-\newblock {\em Machine Learning}, 100(1):5--47, 2015.
-
-\bibitem[dKL98]{dmars}
-Mark {d'I}nverno, D.~Kinney, and Michael Luck.
-\newblock Interaction protocols in agentis.
-\newblock In {\em Proceedings International Conference on Multi Agent Systems (Cat. No. 98EX160)}, pages 112--119. IEEE, 1998.
-
-\bibitem[DLR77]{Dempster77maximumlikelihood}
-A.~P. Dempster, N.~M. Laird, and D.~B. Rubin.
-\newblock Maximum likelihood from incomplete data via the em algorithm.
-\newblock {\em JOURNAL OF THE ROYAL STATISTICAL SOCIETY, SERIES B}, 39(1):1--38, 1977.
-
-\bibitem[DMDGC17]{DeMaria:2017:FVN:3156346.3156350}
-Elisabetta De~Maria, Cinzia Di~Giusto, and Giovanni Ciatto.
-\newblock Formal validation of neural networks as timed automata.
-\newblock In {\em Proceedings of the 8th International Conference on Computational Systems-Biology and Bioinformatics}, CSBio '17, pages 15--22, New York, NY, USA, 2017. ACM.
-
-\bibitem[DRW96]{Dawson1996}
-Steven Dawson, C.~R. Ramakrishnan, and David~S. Warren.
-\newblock Practical program analysis using general purpose logic programming systems---a case study.
-\newblock In {\em Proceedings of the ACM SIGPLAN 1996 Conference on Programming Language Design and Implementation}, PLDI '96, pages 117---126, New York, NY, USA, 1996. Association for Computing Machinery.
-
-\bibitem[DVK17]{DoshiVelezK2017}
-Finale Doshi-Velez and Been Kim.
-\newblock Towards a rigorous science of interpretable machine learning.
-\newblock {\em CoRR}, abs/1702.08608, 2017.
-
-\bibitem[Ell19]{elliott2019}
-Anthony Elliott.
-\newblock {\em The Culture of AI: Everyday Life and the Digital Revolution}.
-\newblock Routledge, 2019.
-
-\bibitem[FH17a]{fourcade2017}
-Marion Fourcade and Kieran Healy.
-\newblock Categories all the way down.
-\newblock {\em Historical Social Research/Historische Sozialforschung}, pages 286--296, 2017.
-
-\bibitem[FH17b]{FrosstH17}
-Nicholas Frosst and Geoffrey~E. Hinton.
-\newblock Distilling a neural network into a soft decision tree.
-\newblock In Tarek~R. Besold and Oliver Kutz, editors, {\em Proceedings of the First International Workshop on Comprehensibility and Explanation in {AI} and {ML} 2017 co-located with 16th International Conference of the Italian Association for Artificial Intelligence (AI*IA 2017), Bari, Italy, November 16th and 17th, 2017}, volume 2071 of {\em {CEUR} Workshop Proceedings}. CEUR-WS.org, 2017.
-
-\bibitem[FK97]{FungIff97}
-Tze~Ho Fung and Robert Kowalski.
-\newblock The {IFF} proof procedure for abductive logic programming.
-\newblock {\em The Journal of Logic Programming}, 33(2):151--165, 1997.
-
-\bibitem[FV17]{FongV17}
-Ruth~C. Fong and Andrea Vedaldi.
-\newblock Interpretable explanations of black boxes by meaningful perturbation.
-\newblock pages 3449--3457, 2017.
-
-\bibitem[FW99]{ferber1999multi}
-Jacques Ferber and Gerhard Weiss.
-\newblock {\em Multi-agent systems: an introduction to distributed artificial intelligence}, volume~1.
-\newblock Addison-Wesley Reading, 1999.
-
-\bibitem[GBC16]{goodfellow2016deep}
-Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
-\newblock {\em Deep learning}.
-\newblock MIT press, 2016.
-
-\bibitem[GF17]{explanation-aimag38}
-Bryce Goodman and Seth Flaxman.
-\newblock {E}uropean {U}nion regulations on algorithmic decision-making and a ``right to explanation''.
-\newblock {\em AI Magazine}, 38(3):50--57, 2017.
-
-\bibitem[GG12]{goyal2012}
-Sanjeev Goyal and Sandeep Grover.
-\newblock Applying fuzzy grey relational analysis for ranking the advanced manufacturing systems.
-\newblock {\em Grey Systems: Theory and Application}, 2(2):284--298, 2012.
-
-\bibitem[GMR{\etalchar{+}}19]{GuidottiMRTGP19}
-Riccardo Guidotti, Anna Monreale, Salvatore Ruggieri, Franco Turini, Fosca Giannotti, and Dino Pedreschi.
-\newblock A survey of methods for explaining black box models.
-\newblock {\em {ACM} Comput. Surv.}, 51(5):93:1--93:42, 2019.
-
-\bibitem[GR68]{green1968}
-C.~Cordell Green and Bertram Raphael.
-\newblock The use of theorem-proving techniques in question-answering systems.
-\newblock In {\em 1968 23rd ACM National Conference}, pages 169--181, 1968.
-
-\bibitem[Gun16]{darpa2016-xai}
-David Gunning.
-\newblock Explainable artificial intelligence ({XAI}).
-\newblock Funding Program DARPA-BAA-16-53, {DARPA}, 2016.
-
-\bibitem[Han06]{hand2006data}
-David~J Hand.
-\newblock Data mining.
-\newblock {\em Encyclopedia of Environmetrics}, 2, 2006.
-
-\bibitem[HE06]{HruschkaE2006}
-Eduardo~R. Hruschka and Nelson~F.F. Ebecken.
-\newblock Extracting rules from multilayer perceptrons in classification problems: A clustering-based approach.
-\newblock {\em Neurocomputing}, 70(1-3):384--397, 2006.
-
-\bibitem[Hel19]{helbing2019}
-Dirk Helbing.
-\newblock Societal, economic, ethical and legal challenges of the digital revolution: From big data to deep learning, artificial intelligence, and manipulative technologies.
-\newblock In {\em Towards Digital Enlightenment}, pages 47--72. Springer, 2019.
-
-\bibitem[{Hen}08]{Hendler2008}
-J.~{Hendler}.
-\newblock Avoiding another ai winter.
-\newblock {\em IEEE Intelligent Systems}, 23(2):2--4, March 2008.
-
-\bibitem[Hor05]{horrocks2005}
+\bibitem{LevesqueB87}
+Hector~J. Levesque and Ronald~J. Brachman.
+\newblock Expressiveness and tractability in knowledge representation and reasoning.
+\newblock {\em Comput. Intell.}, 3:78--93, 1987.
+
+\bibitem{aggoun1993}
+Abderrahmane Aggoun and Nicolas Beldiceanu.
+\newblock Extending chip in order to solve complex scheduling and placement problems.
+\newblock {\em Mathematical and computer modelling}, 17(7):57--73, 1993.
+
+\bibitem{horrocks2005}
 Ian Horrocks.
 \newblock {OWL}: A description logic based ontology language.
 \newblock In Peter Van~Beek, editor, {\em Principles and Practice of Constraint Programming (CP 2005)}, pages 5--8. Springer, 2005.
 \newblock Extended Abstract.
 
-\bibitem[HQR17]{Hoehndorf2017}
-Robert Hoehndorf and Núria Queralt-Rosinach.
-\newblock Data science and symbolic ai: Synergies, challenges and opportunities.
-\newblock {\em Data Science}, 2017.
+\bibitem{artale2002}
+Alessandro Artale, Enrico Franconi, Frank Wolter, and Michael Zakharyaschev.
+\newblock A temporal description logic for reasoning over conceptual schemas and queries.
+\newblock In {\em European Workshop on Logics in Artificial Intelligence (JELIA 2002)}, pages 98--110. Springer, 2002.
 
-\bibitem[HRHL01]{howden2001}
-Nick Howden, Ralph R{\"o}nnquist, Andrew Hodgson, and Andrew Lucas.
-\newblock Intelligent agents-summary of an agent infrastructure.
-\newblock In {\em Proceedings of the 5th International conference on autonomous agents}, 2001.
+\bibitem{cimiano2006-ontologies}
+Philipp Cimiano.
+\newblock {\em Ontology Learning and Population from Text}.
+\newblock Springer US, 2006.
 
-\bibitem[Hub99]{huber1999-jam}
-Marcus~J. Huber.
-\newblock Jam: A bdi-theoretic mobile agent architecture.
-\newblock In {\em Proceedings of the third annual conference on Autonomous Agents}, pages 236--243, 1999.
+\bibitem{sowa2014}
+John~F Sowa, editor.
+\newblock {\em Principles of semantic networks: Explorations in the representation of knowledge}.
+\newblock Morgan Kaufmann Series in Representation and Reasoning. Morgan Kaufmann Pub, May 1991.
 
-\bibitem[JL87]{jaffar1987}
-Joxan Jaffar and J.-L. Lassez.
-\newblock Constraint logic programming.
-\newblock In {\em Proceedings of the 14th ACM SIGACT-SIGPLAN symposium on Principles of programming languages}, pages 111--119, October 1987.
+\bibitem{cohen1994}
+William~W. Cohen and Haym Hirsh.
+\newblock Learning the classic description logic: Theoretical and experimental results.
+\newblock In {\em Principles of Knowledge Representation and Reasoning}, pages 121--133. Elsevier, 1994.
 
-\bibitem[JN09]{JohanssonN09}
-Ulf Johansson and Lars Niklasson.
-\newblock Evolving decision trees using oracle guides.
-\newblock In {\em Proceedings of the {IEEE} Symposium on Computational Intelligence and Data Mining, {CIDM} 2009, part of the {IEEE} Symposium Series on Computational Intelligence 2009, Nashville, TN, USA, March 30, 2009 - April 2, 2009}, pages 238--244. {IEEE}, 2009.
+\bibitem{moller2003}
+Ralf Moller and Volker Haarslev.
+\newblock {\em Description logic systems}, pages 282--305.
+\newblock Cambridge University Press, 2003.
 
-\bibitem[KA09]{KahramanliA09a}
-Humar Kahramanli and Novruz Allahverdi.
-\newblock Rule extraction from trained adaptive neural networks using artificial immune systems.
-\newblock {\em Expert Syst. Appl.}, 36(2):1513--1522, 2009.
+\bibitem{baader2002}
+Franz Baader.
+\newblock Basic description logics.
+\newblock In {\em The Description Logic Handbook: Theory, Implementation, and Applications}, pages 43--95, USA, 2003. Cambridge University Press.
 
-\bibitem[KBB{\etalchar{+}}21]{Korner2020HistoryFuturePrologTPLP}
-Philipp Körner, Michael Beuschel, João Barbosa, Vítor~Santos Costa, Verónica Dahl, Manuel~V. Hermenegildo, Jose~F. Morales, Jan Wielemaker, Daniel Diaz, Salvador Abreu, and Giovanni Ciatto.
-\newblock A multi-walk through the past, present and future of prolog.
-\newblock {\em Theory and Practice of Logic Programming}, 2021.
+\bibitem{reiter1980}
+Raymond Reiter.
+\newblock A logic for default reasoning.
+\newblock {\em Artificial intelligence}, 13(1--2):81--132, 1980.
 
-\bibitem[Kot07]{smlreview-faia160}
-Sotiris Kotsiantis.
-\newblock Supervised machine learning: A review of classification techniques.
-\newblock In {\em Emerging Artificial Intelligence Applications in Computer Engineering}, volume 160 of {\em Frontiers in Artificial Intelligence and Applications}, pages 3--24. IOS Press, October 2007.
-
-\bibitem[Kow74]{Kowalski1974}
-Robert~A. Kowalski.
-\newblock Predicate logic as programming language.
-\newblock In Jack~L. Rosenfeld, editor, {\em Information Processing, Proceedings of the 6th {IFIP} Congress}, pages 569--574. North-Holland, August 1974.
-
-\bibitem[KSB99]{KrishnanSB1999}
-R.~Krishnan, G.~Sivakumar, and P.~Bhattacharya.
-\newblock Extracting decision trees from trained neural networks.
-\newblock {\em Pattern Recognition}, 32(12):1999--2009, 1999.
-
-\bibitem[LB87]{LevesqueB87}
-Hector~J. Levesque and Ronald~J. Brachman.
-\newblock Expressiveness and tractability in knowledge representation and reasoning.
-\newblock {\em Comput. Intell.}, 3:78--93, 1987.
-
-\bibitem[LD94]{lee1994}
+\bibitem{lee1994}
 Jaeho Lee and Edmund~H. Durfee.
 \newblock Structured circuit semantics for reactive plan execution systems.
 \newblock In Barbara Hayes{-}Roth and Richard~E. Korf, editors, {\em Proceedings of the 12th National Conference on Artificial Intelligence}, volume~2, pages 1232--1237, Seattle, WA, USA, {31~} July{---4~}August 1994. {AAAI} Press / The {MIT} Press.
 
-\bibitem[Lip18]{Lipton18}
-Zachary~C. Lipton.
-\newblock The mythos of model interpretability.
-\newblock {\em Commun. {ACM}}, 61(10):36--43, 2018.
+\bibitem{dmars}
+Mark {d'I}nverno, D.~Kinney, and Michael Luck.
+\newblock Interaction protocols in agentis.
+\newblock In {\em Proceedings International Conference on Multi Agent Systems (Cat. No. 98EX160)}, pages 112--119. IEEE, 1998.
 
-\bibitem[Llo90]{lloyd1990computational}
-John~W Lloyd.
-\newblock {\em Computational logic}.
-\newblock Springer, 1990.
+\bibitem{howden2001}
+Nick Howden, Ralph R{\"o}nnquist, Andrew Hodgson, and Andrew Lucas.
+\newblock Intelligent agents-summary of an agent infrastructure.
+\newblock In {\em Proceedings of the 5th International conference on autonomous agents}, 2001.
 
-\bibitem[Md94]{Muggleton94}
+\bibitem{huber1999-jam}
+Marcus~J. Huber.
+\newblock Jam: A bdi-theoretic mobile agent architecture.
+\newblock In {\em Proceedings of the third annual conference on Autonomous Agents}, pages 236--243, 1999.
+
+\bibitem{bondarenko1997}
+Andrei Bondarenko, Phan~Minh Dung, Robert~A. Kowalski, and Francesca Toni.
+\newblock An abstract, argumentation-theoretic approach to default reasoning.
+\newblock {\em Artificial intelligence}, 93(1--2):63--101, 1997.
+
+\bibitem{pollock1987}
+John~L. Pollock.
+\newblock Defeasible reasoning.
+\newblock {\em Cognitive science}, 11(4):481--518, 1987.
+
+\bibitem{rossi2008}
+Francesca Rossi, Peter Van~Beek, and Toby Walsh.
+\newblock Constraint programming.
+\newblock {\em Foundations of Artificial Intelligence}, 3:181--211, 2008.
+
+\bibitem{minsky1975}
+Marvin Minsky.
+\newblock A framework for representing knowledge representation.
+\newblock In {\em The Psychology of Computer Vision}. Mc Graw-Hill, New-York (NY, US), 1975.
+
+\bibitem{Rossi2000}
+Francesca Rossi.
+\newblock Constraint (logic) programming: A survey on research and applications.
+\newblock In Krzysztof~R. Apt, Eric Monfroy, Antonis~C. Kakas, and Francesca Rossi, editors, {\em New Trends in Constraints}, pages 40--74. Springer Berlin Heidelberg, Berlin, Heidelberg, 2000.
+
+\bibitem{Mccarthy1958}
+John Mccarthy and Claude Shannon.
+\newblock Automata studies.
+\newblock {\em Journal of Symbolic Logic}, 23(1):59--60, 1958.
+
+\bibitem{Rao96}
+Anand~S. Rao.
+\newblock Agentspeak(l): {BDI} agents speak out in a logical computable language.
+\newblock In Walter~Van de~Velde and John~W. Perram, editors, {\em Agents Breaking Away, 7th European Workshop on Modelling Autonomous Agents in a Multi-Agent World, Eindhoven, The Netherlands, January 22-25, 1996, Proceedings}, volume 1038 of {\em Lecture Notes in Computer Science}, pages 42--55. Springer, Berlin, Heidelberg, 1996.
+
+\bibitem{yen1999}
+John Yen and Reza Langari.
+\newblock {\em Fuzzy logic: intelligence, control, and information}, volume~1.
+\newblock Prentice Hall Press, Upper Saddle River, NJ, 1999.
+
+\bibitem{Dawson1996}
+Steven Dawson, C.~R. Ramakrishnan, and David~S. Warren.
+\newblock Practical program analysis using general purpose logic programming systems---a case study.
+\newblock In {\em Proceedings of the ACM SIGPLAN 1996 Conference on Programming Language Design and Implementation}, PLDI '96, pages 117---126, New York, NY, USA, 1996. Association for Computing Machinery.
+
+\bibitem{green1968}
+C.~Cordell Green and Bertram Raphael.
+\newblock The use of theorem-proving techniques in question-answering systems.
+\newblock In {\em 1968 23rd ACM National Conference}, pages 169--181, 1968.
+
+\bibitem{PremackW1978}
+David Premack and Guy Woodruff.
+\newblock Does the chimpanzee have a theory of mind?
+\newblock {\em Behavioral and brain sciences}, 1(4):515--526, December 1978.
+
+\bibitem{RosenfeldR2019}
+Avi Rosenfeld and Ariella Richardson.
+\newblock Explainability in human-agent systems.
+\newblock {\em Autonomous Agents and Multi-Agent Systems}, 33(6):673--705, November 2019.
+
+\bibitem{numberseven-psyrev63}
+George~Abram Miller.
+\newblock The magical number seven, plus or minus two: Some limits on our capacity for processing information.
+\newblock {\em Psychological Review}, 63(2):81--97, March 1956.
+
+\bibitem{colmerauer1986-theoreticalProlog}
+Alain Colmerauer.
+\newblock Theoretical model of prolog ii.
+\newblock In M.~van Canegham and D.-H.D. Warren, editors, {\em Logic Programming and its applications}, pages 3--31. Ablex Publishing Corporation, 1986.
+
+\bibitem{DoshiVelezK2017}
+Finale Doshi-Velez and Been Kim.
+\newblock Towards a rigorous science of interpretable machine learning.
+\newblock {\em CoRR}, abs/1702.08608, 2017.
+
+\bibitem{BesoldU2018}
+Tarek~R. Besold and Sara~L. Uckelman.
+\newblock The what, the why, and the how of artificial explanations in automated decision-making.
+\newblock {\em CoRR}, abs/1808.07074:1--20, 2018.
+
+\bibitem{explanation-aimag38}
+Bryce Goodman and Seth Flaxman.
+\newblock {E}uropean {U}nion regulations on algorithmic decision-making and a ``right to explanation''.
+\newblock {\em AI Magazine}, 38(3):50--57, 2017.
+
+\bibitem{gdpr-voigt2017}
+Paul Voigt and Axel von~dem Bussche.
+\newblock {\em The {EU} {G}eneral {D}ata {P}rotection {R}egulation ({GDPR}). A Practical Guide}.
+\newblock Springer, 2017.
+
+\bibitem{BastaniKB17}
+Osbert Bastani, Carolyn Kim, and Hamsa Bastani.
+\newblock Interpreting blackbox models via model extraction.
+\newblock {\em CoRR}, abs/1705.08504, 2017.
+
+\bibitem{TrattnerPR2019}
+Federica Di~Castro and Enrico Bertini.
+\newblock Surrogate decision tree visualization.
+\newblock In {\em Joint Proceedings of the ACM IUI 2019 Workshops (ACMIUI-WS 2019)}, volume 2327 of {\em CEUR Workshop Proceedings}, March 2019.
+
+\bibitem{SundararajanTY17}
+Mukund Sundararajan, Ankur Taly, and Qiqi Yan.
+\newblock Axiomatic attribution for deep networks.
+\newblock In Doina Precup and Yee~Whye Teh, editors, {\em Proceedings of the 34th International Conference on Machine Learning, {ICML} 2017, Sydney, NSW, Australia, 6-11 August 2017}, volume~70 of {\em Proceedings of Machine Learning Research}, pages 3319--3328. {PMLR}, 2017.
+
+\bibitem{FongV17}
+Ruth~C. Fong and Andrea Vedaldi.
+\newblock Interpretable explanations of black boxes by meaningful perturbation.
+\newblock pages 3449--3457, 2017.
+
+\bibitem{tolomei2017interpretable}
+Gabriele Tolomei, Fabrizio Silvestri, Andrew Haines, and Mounia Lalmas.
+\newblock Interpretable predictions of tree-based ensembles via actionable feature tweaking.
+\newblock In {\em 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, pages 465--474. ACM, 2017.
+
+\bibitem{Augasta2012}
+M.~Gethsiyal Augasta and T.~Kathirvalavakumar.
+\newblock Reverse engineering the neural networks for rule extraction in classification problems.
+\newblock {\em Neural Processing Letters}, 35(2):131--150, April 2012.
+
+\bibitem{jaffar1987}
+Joxan Jaffar and J.-L. Lassez.
+\newblock Constraint logic programming.
+\newblock In {\em Proceedings of the 14th ACM SIGACT-SIGPLAN symposium on Principles of programming languages}, pages 111--119, October 1987.
+
+\bibitem{goyal2012}
+Sanjeev Goyal and Sandeep Grover.
+\newblock Applying fuzzy grey relational analysis for ranking the advanced manufacturing systems.
+\newblock {\em Grey Systems: Theory and Application}, 2(2):284--298, 2012.
+
+\bibitem{montali2010}
+Marco Montali, Paolo Torroni, Federico Chesani, Paola Mello, Marco Alberti, and Evelina Lamma.
+\newblock Abductive logic programming as an effective technology for the static verification of declarative business processes.
+\newblock {\em Fundamenta Informaticae}, 102(3--4):325--361, 2010.
+
+\bibitem{robinson1965}
+John~Alan Robinson.
+\newblock A machine-oriented logic based on the resolution principle.
+\newblock {\em Journal of the ACM}, 12(1):23--41, 1965.
+
+\bibitem{breiman1984classification}
+Leo Breiman, Jerome~H. Friedman, Richard~A. Olshen, and Charles~J. Stone.
+\newblock {\em Classification and Regression Trees}.
+\newblock Chapman \& Hall/CRC, 1984.
+
+\bibitem{smlreview-faia160}
+Sotiris Kotsiantis.
+\newblock Supervised machine learning: A review of classification techniques.
+\newblock In {\em Emerging Artificial Intelligence Applications in Computer Engineering}, volume 160 of {\em Frontiers in Artificial Intelligence and Applications}, pages 3--24. IOS Press, October 2007.
+
+\bibitem{twala2010}
+Bhekisipho Twala.
+\newblock Multiple classifier application to credit risk assessment.
+\newblock {\em Expert Systems with Applications}, 37(4):3326--3336, 2010.
+
+\bibitem{MartelliMontanari1982}
+Alberto Martelli and Ugo Montanari.
+\newblock An efficient unification algorithm.
+\newblock {\em ACM Trans. Program. Lang. Syst.}, 4(2):258--282, April 1982.
+
+\bibitem{RaedtK15}
+Luc {de Raedt} and Angelika Kimmig.
+\newblock Probabilistic (logic) programming concepts.
+\newblock {\em Machine Learning}, 100(1):5--47, 2015.
+
+\bibitem{Muggleton94}
 Stephen Muggleton and Luc {de Raedt}.
 \newblock Inductive logic programming: Theory and methods.
 \newblock {\em The Journal of Logic Programming}, 19-20:629--679, 1994.
 \newblock Special Issue: Ten Years of Logic Programming.
 
-\bibitem[MH03]{moller2003}
-Ralf Moller and Volker Haarslev.
-\newblock {\em Description logic systems}, pages 282--305.
-\newblock Cambridge University Press, 2003.
+\bibitem{FungIff97}
+Tze~Ho Fung and Robert Kowalski.
+\newblock The {IFF} proof procedure for abductive logic programming.
+\newblock {\em The Journal of Logic Programming}, 33(2):151--165, 1997.
 
-\bibitem[Mil56]{numberseven-psyrev63}
-George~Abram Miller.
-\newblock The magical number seven, plus or minus two: Some limits on our capacity for processing information.
-\newblock {\em Psychological Review}, 63(2):81--97, March 1956.
+\bibitem{Clark77}
+Keith~L. Clark.
+\newblock Negation as failure.
+\newblock In Herv{\'{e}} Gallaire and Jack Minker, editors, {\em Logic and Data Bases, Symposium on Logic and Data Bases, Centre d'{\'{e}}tudes et de recherches de Toulouse, France, 1977}, Advances in Data Base Theory, pages 293--322, New York, 1977. Plemum Press.
 
-\bibitem[Min75]{minsky1975}
-Marvin Minsky.
-\newblock A framework for representing knowledge representation.
-\newblock In {\em The Psychology of Computer Vision}. Mc Graw-Hill, New-York (NY, US), 1975.
+\bibitem{Kowalski1974}
+Robert~A. Kowalski.
+\newblock Predicate logic as programming language.
+\newblock In Jack~L. Rosenfeld, editor, {\em Information Processing, Proceedings of the 6th {IFIP} Congress}, pages 569--574. North-Holland, August 1974.
 
-\bibitem[MM82]{MartelliMontanari1982}
-Alberto Martelli and Ugo Montanari.
-\newblock An efficient unification algorithm.
-\newblock {\em ACM Trans. Program. Lang. Syst.}, 4(2):258--282, April 1982.
-
-\bibitem[MOC17]{coordination-woa2017}
-Stefano Mariani, Andrea Omicini, and Giovanni Ciatto.
-\newblock Novel opportunities for tuple-based coordination: {XP}ath, the {B}lockchain, and stream processing.
-\newblock In Pasquale De~Meo, Maria~Nadia Postorino, Domenico Rosaci, and Giuseppe~M.L. Sarn{\'e}, editors, {\em WOA 2017 -- 18th Workshop ``From Objects to Agents''}, volume 1867 of {\em CEUR Workshop Proceedings}, pages 61--64. Sun SITE Central Europe, RWTH Aachen University, June 2017.
-
-\bibitem[MP88]{Minsky1988}
-Marvin~L. Minsky and Seymour~A. Papert.
-\newblock {\em Perceptrons: Expanded Edition}.
-\newblock MIT Press, Cambridge, MA, USA, 1988.
-
-\bibitem[MS58]{Mccarthy1958}
-John Mccarthy and Claude Shannon.
-\newblock Automata studies.
-\newblock {\em Journal of Symbolic Logic}, 23(1):59--60, 1958.
-
-\bibitem[MTC{\etalchar{+}}10]{montali2010}
-Marco Montali, Paolo Torroni, Federico Chesani, Paola Mello, Marco Alberti, and Evelina Lamma.
-\newblock Abductive logic programming as an effective technology for the static verification of declarative business processes.
-\newblock {\em Fundamenta Informaticae}, 102(3--4):325--361, 2010.
-
-\bibitem[NM96]{Nerode1996}
+\bibitem{Nerode1996}
 Anil Nerode and G.~Metakides.
 \newblock {\em Principles of Logic and Logic Programming}.
 \newblock Elsevier Science Inc., USA, 1996.
 
-\bibitem[Pau18]{Paulson2018}
+\bibitem{ColmerauerR93}
+Alain Colmerauer and Philippe Roussel.
+\newblock The birth of prolog.
+\newblock In John A.~N. Lee and Jean~E. Sammet, editors, {\em History of Programming Languages Conference (HOPL-II)}, pages 37--52. {ACM}, April 1993.
+
+\bibitem{Paulson2018}
 Lawrence~C. Paulson.
 \newblock Computational logic: its origins and applications.
 \newblock {\em Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences}, 474(2210):20170872, 2018.
 
-\bibitem[PCC{\etalchar{+}}18]{blockchain-goodtechs2018}
-Danilo Pianini, Giovanni Ciatto, Roberto Casadei, Stefano Mariani, Mirko Viroli, and Andrea Omicini.
-\newblock Transparent protection of aggregate computations from {B}yzantine behaviours via blockchain.
-\newblock In {\em GOODTECHS'18 -- Proceedings of the 4th EAI International Conference on Smart Objects and Technologies for Social Good}, pages 271--276, New Work, NY, USA, November 2018. ACM.
+\bibitem{goodfellow2016deep}
+Ian Goodfellow, Yoshua Bengio, and Aaron Courville.
+\newblock {\em Deep learning}.
+\newblock MIT press, 2016.
 
-\bibitem[PCCO20]{nsc4xai-woa2020}
+\bibitem{SUN2001783}
+R.~Sun.
+\newblock Artificial intelligence: Connectionist and symbolic approaches.
+\newblock In Neil~J. Smelser and Paul~B. Baltes, editors, {\em International Encyclopedia of the Social \& Behavioral Sciences}, page 783–789. Pergamon, Oxford, 2001.
+
+\bibitem{KahramanliA09a}
+Humar Kahramanli and Novruz Allahverdi.
+\newblock Rule extraction from trained adaptive neural networks using artificial immune systems.
+\newblock {\em Expert Syst. Appl.}, 36(2):1513--1522, 2009.
+
+\bibitem{SatoT2002}
+M.~Sato and H.~Tsukimoto.
+\newblock Rule extraction from neural networks via decision tree induction.
+\newblock In {\em IJCNN'01. International Joint Conference on Neural Networks. Proceedings (Cat. No.01CH37222)}, volume~3, pages 1870--1875 vol.3, 2001.
+
+\bibitem{AugastaK12}
+M.~Gethsiyal Augasta and T.~Kathirvalavakumar.
+\newblock Reverse engineering the neural networks for rule extraction in classification problems.
+\newblock {\em Neural Process. Lett.}, 35(2):131--150, 2012.
+
+\bibitem{CravenS95}
+Mark~W. Craven and Jude~W. Shavlik.
+\newblock Extracting tree-structured representations of trained networks.
+\newblock In David~S. Touretzky, Michael Mozer, and Michael~E. Hasselmo, editors, {\em Advances in Neural Information Processing Systems 8, NIPS, Denver, CO, USA, November 27-30, 1995}, pages 24--30. {MIT} Press, 1995.
+
+\bibitem{ZhouZYS1983}
+Zhi-Hua Zhou, Yuan Jiang, and Shi-Fu Chen.
+\newblock Extracting symbolic rules from trained neural network ensembles.
+\newblock {\em Mineral Processing and Extractive Metallurgy Review}, 1(1-2):207--248, 1983.
+
+\bibitem{HruschkaE2006}
+Eduardo~R. Hruschka and Nelson~F.F. Ebecken.
+\newblock Extracting rules from multilayer perceptrons in classification problems: A clustering-based approach.
+\newblock {\em Neurocomputing}, 70(1-3):384--397, 2006.
+
+\bibitem{KrishnanSB1999}
+R.~Krishnan, G.~Sivakumar, and P.~Bhattacharya.
+\newblock Extracting decision trees from trained neural networks.
+\newblock {\em Pattern Recognition}, 32(12):1999--2009, 1999.
+
+\bibitem{JohanssonN09}
+Ulf Johansson and Lars Niklasson.
+\newblock Evolving decision trees using oracle guides.
+\newblock In {\em Proceedings of the {IEEE} Symposium on Computational Intelligence and Data Mining, {CIDM} 2009, part of the {IEEE} Symposium Series on Computational Intelligence 2009, Nashville, TN, USA, March 30, 2009 - April 2, 2009}, pages 238--244. {IEEE}, 2009.
+
+\bibitem{FrosstH17}
+Nicholas Frosst and Geoffrey~E. Hinton.
+\newblock Distilling a neural network into a soft decision tree.
+\newblock In Tarek~R. Besold and Oliver Kutz, editors, {\em Proceedings of the First International Workshop on Comprehensibility and Explanation in {AI} and {ML} 2017 co-located with 16th International Conference of the Italian Association for Artificial Intelligence (AI*IA 2017), Bari, Italy, November 16th and 17th, 2017}, volume 2071 of {\em {CEUR} Workshop Proceedings}. CEUR-WS.org, 2017.
+
+\bibitem{BolognaH16}
+Guido Bologna and Yoichi Hayashi.
+\newblock A rule extraction study on a neural network trained by deep learning.
+\newblock In {\em 2016 International Joint Conference on Neural Networks, {IJCNN} 2016, Vancouver, BC, Canada, July 24-29, 2016}, pages 668--675. {IEEE}, 2016.
+
+\bibitem{BolognaH18}
+Guido Bologna and Yoichi Hayashi.
+\newblock A comparison study on rule extraction from neural network ensembles, boosted shallow trees, and svms.
+\newblock {\em Appl. Comput. Intell. Soft Comput.}, 2018:4084850:1--4084850:20, 2018.
+
+\bibitem{GarcezBG01}
+Artur~S. d'Avila Garcez, Krysia Broda, and Dov~M. Gabbay.
+\newblock Symbolic knowledge extraction from trained neural networks: {A} sound approach.
+\newblock {\em Artif. Intell.}, 125(1-2):155--207, 2001.
+
+\bibitem{AndrewsDT95}
+Robert Andrews, Joachim Diederich, and Alan~B. Tickle.
+\newblock Survey and critique of techniques for extracting rules from trained artificial neural networks.
+\newblock {\em Knowl. Based Syst.}, 8(6):373--389, 1995.
+
+\bibitem{GarcezBRFHIKLMS15}
+Artur~S. d'Avila Garcez, Tarek~R. Besold, Luc~De Raedt, Peter F{\"{o}}ldi{\'{a}}k, Pascal Hitzler, Thomas Icard, Kai{-}Uwe K{\"{u}}hnberger, Lu{\'{\i}}s~C. Lamb, Risto Miikkulainen, and Daniel~L. Silver.
+\newblock Neural-symbolic learning and reasoning: Contributions and challenges.
+\newblock In {\em 2015 {AAAI} Spring Symposia, Stanford University, Palo Alto, California, USA, March 22-25, 2015}. {AAAI} Press, 2015.
+
+\bibitem{Hoehndorf2017}
+Robert Hoehndorf and Núria Queralt-Rosinach.
+\newblock Data science and symbolic ai: Synergies, challenges and opportunities.
+\newblock {\em Data Science}, 2017.
+
+\bibitem{GuidottiMRTGP19}
+Riccardo Guidotti, Anna Monreale, Salvatore Ruggieri, Franco Turini, Fosca Giannotti, and Dino Pedreschi.
+\newblock A survey of methods for explaining black box models.
+\newblock {\em {ACM} Comput. Surv.}, 51(5):93:1--93:42, 2019.
+
+\bibitem{Rudin2019}
+Cynthia Rudin.
+\newblock Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead.
+\newblock {\em Nature Machine Intelligence}, 1(5):206--215, 2019.
+
+\bibitem{Lipton18}
+Zachary~C. Lipton.
+\newblock The mythos of model interpretability.
+\newblock {\em Commun. {ACM}}, 61(10):36--43, 2018.
+
+\bibitem{darpa2016-xai}
+David Gunning.
+\newblock Explainable artificial intelligence ({XAI}).
+\newblock Funding Program DARPA-BAA-16-53, {DARPA}, 2016.
+
+\bibitem{RibeiroSG16}
+Marco~T{\'{u}}lio Ribeiro, Sameer Singh, and Carlos Guestrin.
+\newblock "why should {I} trust you?": Explaining the predictions of any classifier.
+\newblock In Balaji Krishnapuram, Mohak Shah, Alexander~J. Smola, Charu~C. Aggarwal, Dou Shen, and Rajeev Rastogi, editors, {\em Proceedings of the 22nd {ACM} {SIGKDD} International Conference on Knowledge Discovery and Data Mining, San Francisco, CA, USA, August 13-17, 2016}, pages 1135--1144. {ACM}, 2016.
+
+\bibitem{crawford2016artificial}
+Kate Crawford.
+\newblock Artificial intelligence's white guy problem.
+\newblock {\em The New York Times}, 25, 2016.
+
+\bibitem{fourcade2017}
+Marion Fourcade and Kieran Healy.
+\newblock Categories all the way down.
+\newblock {\em Historical Social Research/Historische Sozialforschung}, pages 286--296, 2017.
+
+\bibitem{elliott2019}
+Anthony Elliott.
+\newblock {\em The Culture of AI: Everyday Life and the Digital Revolution}.
+\newblock Routledge, 2019.
+
+\bibitem{helbing2019}
+Dirk Helbing.
+\newblock Societal, economic, ethical and legal challenges of the digital revolution: From big data to deep learning, artificial intelligence, and manipulative technologies.
+\newblock In {\em Towards Digital Enlightenment}, pages 47--72. Springer, 2019.
+
+\bibitem{Yao2018}
+Quanming Yao, Mengshuo Wang, Yuqiang Chen, Wenyuan Dai, Hu~Yi-Qi, Li~Yu-Feng, Tu~Wei-Wei, Yang Qiang, and Yu~Yang.
+\newblock Taking human out of learning applications: A survey on automated machine learning.
+\newblock pages 1--26, 2018.
+
+\bibitem{Turing1950}
+Alan~M. Turing.
+\newblock Computing machinery and intelligence.
+\newblock {\em Mind}, 59(October):433--60, 1950.
+
+\bibitem{searle1980}
+John~R. Searle.
+\newblock Minds, brains, and programs.
+\newblock {\em Behavioral and Brain Sciences}, 3(3):417–424, 1980.
+
+\bibitem{Viterbi06}
+Andrew~J. Viterbi.
+\newblock A personal history of the viterbi algorithm.
+\newblock {\em {IEEE} Signal Process. Mag.}, 23(4):120--142, 2006.
+
+\bibitem{Dempster77maximumlikelihood}
+A.~P. Dempster, N.~M. Laird, and D.~B. Rubin.
+\newblock Maximum likelihood from incomplete data via the em algorithm.
+\newblock {\em JOURNAL OF THE ROYAL STATISTICAL SOCIETY, SERIES B}, 39(1):1--38, 1977.
+
+\bibitem{Smola2004}
+Alex~J. Smola and Bernhard Sch\"{o}lkopf.
+\newblock A tutorial on support vector regression.
+\newblock {\em Statistics and Computing}, 14(3):199--222, August 2004.
+
+\bibitem{hand2006data}
+David~J Hand.
+\newblock Data mining.
+\newblock {\em Encyclopedia of Environmetrics}, 2, 2006.
+
+\bibitem{ferber1999multi}
+Jacques Ferber and Gerhard Weiss.
+\newblock {\em Multi-agent systems: an introduction to distributed artificial intelligence}, volume~1.
+\newblock Addison-Wesley Reading, 1999.
+
+\bibitem{apt1990logic}
+Krzysztof~R Apt.
+\newblock Logic programming.
+\newblock {\em Handbook of Theoretical Computer Science, Volume B: Formal Models and Sematics (B)}, 1990:493--574, 1990.
+
+\bibitem{lloyd1990computational}
+John~W Lloyd.
+\newblock {\em Computational logic}.
+\newblock Springer, 1990.
+
+\bibitem{Bryson1979}
+A.~E. {Bryson}, Y.~{Ho}, and G.~M. {Siouris}.
+\newblock Applied optimal control: Optimization, estimation, and control.
+\newblock {\em IEEE Transactions on Systems, Man, and Cybernetics}, 9(6):366--367, June 1979.
+
+\bibitem{Cybenko1989}
+G.~Cybenko.
+\newblock Approximation by superpositions of a sigmoidal function.
+\newblock {\em Mathematics of Control, Signals and Systems}, 2(4):303--314, Dec 1989.
+
+\bibitem{Minsky1988}
+Marvin~L. Minsky and Seymour~A. Papert.
+\newblock {\em Perceptrons: Expanded Edition}.
+\newblock MIT Press, Cambridge, MA, USA, 1988.
+
+\bibitem{rosenblatt1957perceptron}
+Frank Rosenblatt.
+\newblock {\em The perceptron, a perceiving and recognizing automaton Project Para}.
+\newblock Cornell Aeronautical Laboratory, 1957.
+
+\bibitem{Hendler2008}
+J.~{Hendler}.
+\newblock Avoiding another ai winter.
+\newblock {\em IEEE Intelligent Systems}, 23(2):2--4, March 2008.
+
+\bibitem{Smolensky1987}
+P.~Smolensky.
+\newblock Connectionist ai, symbolic ai, and the brain.
+\newblock {\em Artificial Intelligence Review}, 1(2):95--109, Jun 1987.
+
+\bibitem{russell2016artificial}
+Stuart~J Russell and Peter Norvig.
+\newblock {\em Artificial intelligence: a modern approach}.
+\newblock Malaysia; Pearson Education Limited,, 2016.
+
+\bibitem{gridex-extraamas2021}
+Federico Sabbatini, Giovanni Ciatto, and Andrea Omicini.
+\newblock {GridEx}: An algorithm for knowledge extraction from black-box regressors.
+\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Fr{\"a}mling, editors, {\em Explainable and Transparent AI and Multi-Agent Systems. Third International Workshop, EXTRAAMAS 2021, Virtual Event, May 3--7, 2021, Revised Selected Papers}, volume 12688 of {\em Lecture Notes in Computer Science}, pages 18--38. Springer Nature, Basel, Switzerland, 2021.
+
+\bibitem{imagination-extraamas2021}
+Giovanni Ciatto, Amro Najjar, Jean-Paul Calbimonte, and Davide Calvaresi.
+\newblock Towards explainable visionary agents: License to dare and imagine.
+\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Fr{\"a}mling, editors, {\em Explainable and Transparent AI and Multi-Agent Systems. Third International Workshop, EXTRAAMAS 2021, Virtual Event, May 3--7, 2021, Revised Selected Papers}, volume 12688 of {\em Lecture Notes in Computer Science}, pages 139--157. Springer Nature, Basel, Switzerland, 2021.
+
+\bibitem{expectation-extraamas2021}
+Davide Calvaresi, Giovanni Ciatto, Amro Najjar, Reyhan Aydo{\u g}an, Leon Van~der Torre, Andrea Omicini, and Michael Schumacher.
+\newblock {{\sc Expectation}}: Personalized explainable artificial intelligence for decentralized agents with heterogeneous knowledge.
+\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Fr{\"a}mling, editors, {\em Explainable and Transparent AI and Multi-Agent Systems. Third International Workshop, EXTRAAMAS 2021, Virtual Event, May 3--7, 2021, Revised Selected Papers}, volume 12688 of {\em Lecture Notes in Computer Science}, pages 331--343. Springer Nature, Basel, Switzerland, 2021.
+
+\bibitem{shallow2deep-extraamas2021}
+Andrea Agiollo, Giovanni Ciatto, and Andrea Omicini.
+\newblock {\it Shallow2Deep}: Restraining neural networks opacity through neural architecture search.
+\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Fr{\"a}mling, editors, {\em Explainable and Transparent AI and Multi-Agent Systems. Third International Workshop, EXTRAAMAS 2021, Virtual Event, May 3--7, 2021, Revised Selected Papers}, volume 12688 of {\em Lecture Notes in Computer Science}, pages 63--82. Springer Nature, Basel, Switzerland, 2021.
+
+\bibitem{cco-softwarex-2021-2pkt}
+Giovanni Ciatto, Roberta Calegari, and Andrea Omicini.
+\newblock 2p-kt: A logic-based ecosystem for symbolic ai.
+\newblock {\em SoftwareX}, 2021.
+
+\bibitem{Korner2020HistoryFuturePrologTPLP}
+Philipp Körner, Michael Beuschel, João Barbosa, Vítor~Santos Costa, Verónica Dahl, Manuel~V. Hermenegildo, Jose~F. Morales, Jan Wielemaker, Daniel Diaz, Salvador Abreu, and Giovanni Ciatto.
+\newblock A multi-walk through the past, present and future of prolog.
+\newblock {\em Theory and Practice of Logic Programming}, 2021.
+
+\bibitem{lptech4mas-aamas2021}
+Roberta Calegari, Giovanni Ciatto, Viviana Mascardi, and Andrea Omicini.
+\newblock Logic-based technologies for multi-agent systems: Summary of a systematic literature review.
+\newblock In {\em 20th International Conference on Autonomous Agents and Multiagent Systems (AAMAS-2021)}, pages 1721--1723, May 2021.
+
+\bibitem{lptech4mas-jaamas35}
+Roberta Calegari, Giovanni Ciatto, Viviana Mascardi, and Andrea Omicini.
+\newblock Logic-based technologies for multi-agent systems: A systematic literature review.
+\newblock {\em Autonomous Agents and Multi-Agent Systems}, 35(1):1:1--1:67, 2021.
+\newblock Collection ``Current Trends in Research on Software Agents and Agent-Based Software Development''.
+
+\bibitem{2pkt-jelia2021}
+Giovanni Ciatto, Roberta Calegari, and Andrea Omicini.
+\newblock Lazy stream manipulation in {P}rolog via backtracking: The case of {\sc 2p-kt}.
+\newblock In Wolfgang Faber, Gerhard Friedrich, Martin Gebser, and Michael Morak, editors, {\em Logics in Artificial Intelligence}, volume 12678 of {\em Lecture Notes in Computer Science}, pages 407--420. Springer, 2021.
+\newblock 17th European Conference, JELIA 2021, Virtual Event, May 17–20, 2021, Proceedings.
+
+\bibitem{xaisurvey-ia14}
+Roberta Calegari, Giovanni Ciatto, and Andrea Omicini.
+\newblock On the integration of symbolic and sub-symbolic techniques for {XAI}: A survey.
+\newblock {\em Intelligenza Artificiale}, 14(1):7--32, 2020.
+
+\bibitem{blockchainmas-applsci10}
+Giovanni Ciatto, Stefano Mariani, Andrea Omicini, and Franco Zambonelli.
+\newblock From agents to blockchain: Stairway to integration.
+\newblock {\em Applied Sciences}, 10(21):7460:1--7460:22, 2020.
+\newblock Special Issue ``Advances in Blockchain Technology and Applications 2020''.
+
+\bibitem{kotlindsi4prolog-woa2020}
+Giovanni Ciatto, Roberta Calegari, Enrico Siboni, Enrico Denti, and Andrea Omicini.
+\newblock {\sc {2P-Kt}}: logic programming with objects \& functions in kotlin.
+\newblock In Roberta Calegari, Giovanni Ciatto, Enrico Denti, Andrea Omicini, and Giovanni Sartor, editors, {\em WOA 2020 -- 21th Workshop ``From Objects to Agents''}, volume 2706 of {\em CEUR Workshop Proceedings}, pages 219--236, Aachen, Germany, October 2020. Sun SITE Central Europe, RWTH Aachen University.
+\newblock 21st Workshop ``From Objects to Agents'' (WOA 2020), Bologna, Italy, 14--16~September~2020. Proceedings.
+
+\bibitem{bctcoordination-information11}
+Giovanni Ciatto, Stefano Mariani, Alfredo Maffi, and Andrea Omicini.
+\newblock Blockchain-based coordination: Assessing the expressive power of smart contracts.
+\newblock {\em Information}, 11(1):1--20, January 2020.
+\newblock Special Issue ``Blockchain Technologies for Multi-Agent Systems''.
+
+\bibitem{coordination-jlamp2020}
+Giovanni Ciatto, Giovanna Di~Marzo~Serugendo, Maxime Louvel, Stefano Mariani, Andrea Omicini, and Franco Zambonelli.
+\newblock Twenty years of coordination technologies: {COORDINATION} contribution to the state of art.
+\newblock {\em Journal of Logical and Algebraic Methods in Programming}, 113:1--25, June 2020.
+
+\bibitem{semanticselfcomposition-isola2020}
+Ashley Caselli, Giovanni Ciatto, Giovanna Di~Marzo~Serugendo, and Andrea Omicini.
+\newblock Engineering semantic self-composition of services through tuple-based coordination.
+\newblock In Tiziana Margaria and Bernhard Steffen, editors, {\em Leveraging Applications of Formal Methods, Verification and Validation: Engineering Principles}, volume 12477 of {\em Lecture Notes in Computer Science}, pages 205--223. Springer International Publishing, Cham, 2020.
+
+\bibitem{agentbasedxai-aamas2020}
+Giovanni Ciatto, Davide Calvaresi, Michael~I. Schumacher, and Andrea Omicini.
+\newblock An abstract framework for agent-based explanations in {AI}.
+\newblock In {\em 19th International Conference on Autonomous Agents and MultiAgent Systems}, pages 1816--1818. International Foundation for Autonomous Agents and Multiagent Systems, May 2020.
+\newblock Extended Abstract.
+
+\bibitem{agentbasedxai-extraamas2020}
+Giovanni Ciatto, Michael~I. Schumacher, Andrea Omicini, and Davide Calvaresi.
+\newblock Agent-based explanations in ai: Towards an abstract framework.
+\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Främling, editors, {\em Explainable, Transparent Autonomous Agents and Multi-Agent Systems}, volume 12175 of {\em Lecture Notes in Computer Science}, pages 3--20. Springer, Cham, 2020.
+\newblock Second International Workshop, EXTRAAMAS 2020, Auckland, New Zealand, May 9–13, 2020, Revised Selected Papers.
+
+\bibitem{logictech-information11}
+Roberta Calegari, Giovanni Ciatto, Enrico Denti, and Andrea Omicini.
+\newblock Logic-based technologies for intelligent systems: State of the art and perspectives.
+\newblock {\em Information}, 11(3):1--29, March 2020.
+\newblock Special Issue ``10th Anniversary of Information---Emerging Research Challenges''.
+
+\bibitem{nsc4xai-woa2020}
 Giuseppe Pisano, Giovanni Ciatto, Roberta Calegari, and Andrea Omicini.
 \newblock Neuro-symbolic computation for {XAI}: Towards a unified model.
 \newblock In Roberta Calegari, Giovanni Ciatto, Enrico Denti, Andrea Omicini, and Giovanni Sartor, editors, {\em WOA 2020 -- 21th Workshop ``From Objects to Agents''}, volume 2706 of {\em CEUR Workshop Proceedings}, pages 101--117, Aachen, Germany, October 2020. Sun SITE Central Europe, RWTH Aachen University.
 \newblock 21st Workshop ``From Objects to Agents'' (WOA 2020), Bologna, Italy, 14--16~September~2020. Proceedings.
 
-\bibitem[Pol87]{pollock1987}
-John~L. Pollock.
-\newblock Defeasible reasoning.
-\newblock {\em Cognitive science}, 11(4):481--518, 1987.
+\bibitem{autonomoussc-paams2019}
+Giovanni Ciatto, Alfredo Maffi, Stefano Mariani, and Andrea Omicini.
+\newblock Towards agent-oriented blockchains: Autonomous smart contracts.
+\newblock In Yves Demazeau, Eric Matson, Juan~Manuel Corchado, and Fernando De~la Prieta, editors, {\em Advances in Practical Applications of Survivable Agents and Multi-Agent Systems: The PAAMS Collection}, volume 11523 of {\em Lecture Notes in Computer Science}, pages 29--41. Springer International Publishing, June 2019.
 
-\bibitem[PW78]{PremackW1978}
-David Premack and Guy Woodruff.
-\newblock Does the chimpanzee have a theory of mind?
-\newblock {\em Behavioral and brain sciences}, 1(4):515--526, December 1978.
+\bibitem{bctcoord-bct4mas2019}
+Giovanni Ciatto, Michael Bosello, Stefano Mariani, and Andrea Omicini.
+\newblock Comparative analysis of blockchain technologies under a coordination perspective.
+\newblock In Fernando De~La~Prieta, Alfonso Gonz{\'a}lez-Briones, Pawel Pawleski, Davide Calvaresi, Elena Del~Val, Fernando Lopes, Vicente Julian, Eneko Osaba, and Ram{\'o}n S{\'a}nchez-Iborra, editors, {\em Highlights of Practical Applications of Survivable Agents and Multi-Agent Systems. The PAAMS Collection}, volume 1047 of {\em Communications in Computer and Information Science}, chapter~7, pages 80--91. Springer, June 2019.
 
-\bibitem[Rao96]{Rao96}
-Anand~S. Rao.
-\newblock Agentspeak(l): {BDI} agents speak out in a logical computable language.
-\newblock In Walter~Van de~Velde and John~W. Perram, editors, {\em Agents Breaking Away, 7th European Workshop on Modelling Autonomous Agents in a Multi-Agent World, Eindhoven, The Netherlands, January 22-25, 1996, Proceedings}, volume 1038 of {\em Lecture Notes in Computer Science}, pages 42--55. Springer, Berlin, Heidelberg, 1996.
+\bibitem{xailp-woa2019}
+Roberta Calegari, Giovanni Ciatto, Jason Dellaluce, and Andrea Omicini.
+\newblock Interpretable narrative explanation for {ML} predictors with {LP}: A case study for {XAI}.
+\newblock In Federico Bergenti and Stefania Monica, editors, {\em WOA 2019 -- 20th Workshop ``From Objects to Agents''}, volume 2404 of {\em CEUR Workshop Proceedings}, pages 105--112. Sun SITE Central Europe, RWTH Aachen University, 26--28~June 2019.
 
-\bibitem[Rei80]{reiter1980}
-Raymond Reiter.
-\newblock A logic for default reasoning.
-\newblock {\em Artificial intelligence}, 13(1--2):81--132, 1980.
+\bibitem{proactivesc-blockchain2019}
+Giovanni Ciatto, Alfredo Maffi, Stefano Mariani, and Andrea Omicini.
+\newblock Smart contracts are more than objects: Pro-activeness on the blockchain.
+\newblock In Javier Prieto, Ashok~Das Kumar, Stefano Ferretti, Ant{\'o}nio Pinto, and Juan~Manuel Corchado, editors, {\em Blockchain and Applications}, volume 1010 of {\em Advances in Intelligent Systems and Computing}, pages 45--53. Springer, 2020.
 
-\bibitem[RN16]{russell2016artificial}
-Stuart~J Russell and Peter Norvig.
-\newblock {\em Artificial intelligence: a modern approach}.
-\newblock Malaysia; Pearson Education Limited,, 2016.
+\bibitem{edgeintelligenceguidelines-idcs2019}
+Roberta Calegari, Giovanni Ciatto, Enrico Denti, and Andrea Omicini.
+\newblock Engineering micro-intelligence at the edge of {CPCS}: Design guidelines.
+\newblock In {\em Internet and Distributed Computing Systems (IDCS 2019)}, volume 11874 of {\em Lecture Notes in Computer Science}, pages 260--270. Springer, 10--12~October 2019.
 
-\bibitem[Rob65]{robinson1965}
-John~Alan Robinson.
-\newblock A machine-oriented logic based on the resolution principle.
-\newblock {\em Journal of the ACM}, 12(1):23--41, 1965.
+\bibitem{tusow-icccn2019}
+Giovanni Ciatto, Lorenzo Rizzato, Andrea Omicini, and Stefano Mariani.
+\newblock {TuSoW}: Tuple spaces for edge computing.
+\newblock In {\em The 28th International Conference on Computer Communications and Networks (ICCCN 2019)}, Valencia, Spain, 29~July--1~August 2019.
 
-\bibitem[Ros57]{rosenblatt1957perceptron}
-Frank Rosenblatt.
-\newblock {\em The perceptron, a perceiving and recognizing automaton Project Para}.
-\newblock Cornell Aeronautical Laboratory, 1957.
+\bibitem{blockchain-goodtechs2018}
+Danilo Pianini, Giovanni Ciatto, Roberto Casadei, Stefano Mariani, Mirko Viroli, and Andrea Omicini.
+\newblock Transparent protection of aggregate computations from {B}yzantine behaviours via blockchain.
+\newblock In {\em GOODTECHS'18 -- Proceedings of the 4th EAI International Conference on Smart Objects and Technologies for Social Good}, pages 271--276, New Work, NY, USA, November 2018. ACM.
 
-\bibitem[Ros00]{Rossi2000}
-Francesca Rossi.
-\newblock Constraint (logic) programming: A survey on research and applications.
-\newblock In Krzysztof~R. Apt, Eric Monfroy, Antonis~C. Kakas, and Francesca Rossi, editors, {\em New Trends in Constraints}, pages 40--74. Springer Berlin Heidelberg, Berlin, Heidelberg, 2000.
+\bibitem{bctcoord-bct4mas2018wi}
+Giovanni Ciatto, Stefano Mariani, and Andrea Omicini.
+\newblock Blockchain for trustworthy coordination: A first study with {L}inda and {E}thereum.
+\newblock In {\em 2018 IEEE/WIC/ACM International Conference on Web Intelligence (WI)}, pages 696--703, December 2018.
 
-\bibitem[RR19]{RosenfeldR2019}
-Avi Rosenfeld and Ariella Richardson.
-\newblock Explainability in human-agent systems.
-\newblock {\em Autonomous Agents and Multi-Agent Systems}, 33(6):673--705, November 2019.
+\bibitem{lpaas-bdcc2}
+Roberta Calegari, Giovanni Ciatto, Stefano Mariani, Enrico Denti, and Andrea Omicini.
+\newblock {LPaaS} as micro-intelligence: Enhancing {IoT} with symbolic reasoning.
+\newblock {\em Big Data and Cognitive Computing}, 2(3), 2018.
 
-\bibitem[RSG16]{RibeiroSG16}
-Marco~T{\'{u}}lio Ribeiro, Sameer Singh, and Carlos Guestrin.
-\newblock "why should {I} trust you?": Explaining the predictions of any classifier.
-\newblock In Balaji Krishnapuram, Mohak Shah, Alexander~J. Smola, Charu~C. Aggarwal, Dou Shen, and Rajeev Rastogi, editors, {\em Proceedings of the 22nd {ACM} {SIGKDD} International Conference on Knowledge Discovery and Data Mining, San Francisco, CA, USA, August 13-17, 2016}, pages 1135--1144. {ACM}, 2016.
+\bibitem{blockchainlp-woa2018}
+Giovanni Ciatto, Roberta Calegari, Stefano Mariani, Enrico Denti, and Andrea Omicini.
+\newblock From the blockchain to logic programming and back: Research perspectives.
+\newblock In Massimo Cossentino, Luca Sabatucci, and Valeria Seidita, editors, {\em WOA 2018 -- 19th Workshop ``From Objects to Agents''}, volume 2215 of {\em CEUR Workshop Proceedings}, pages 69--74. Sun SITE Central Europe, RWTH Aachen University, June 2018.
 
-\bibitem[Rud19]{Rudin2019}
-Cynthia Rudin.
-\newblock Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead.
-\newblock {\em Nature Machine Intelligence}, 1(5):206--215, 2019.
+\bibitem{spacetimelp-woa2018}
+Roberta Calegari, Giovanni Ciatto, Stefano Mariani, Enrico Denti, and Andrea Omicini.
+\newblock Logic programming in space-time: The case of situatedness in {LPaaS}.
+\newblock In Massimo Cossentino, Luca Sabatucci, and Valeria Seidita, editors, {\em WOA 2018 -- 19th Workshop ``From Objects to Agents''}, volume 2215 of {\em CEUR Workshop Proceedings}, pages 63--68. Sun SITE Central Europe, RWTH Aachen University, 29--30~June 2018.
 
-\bibitem[RVBW08]{rossi2008}
-Francesca Rossi, Peter Van~Beek, and Toby Walsh.
-\newblock Constraint programming.
-\newblock {\em Foundations of Artificial Intelligence}, 3:181--211, 2008.
+\bibitem{techsurvey-coord2018}
+Giovanni Ciatto, Stefano Mariani, Andrea Omicini, Franco Zambonelli, and Maxime Louvel.
+\newblock Twenty years of coordination technologies: State-of-the-art and perspectives.
+\newblock In Giovanna Di~Marzo~Serugendo and Michele Loreti, editors, {\em Coordination Models and Languages}, volume 10852 of {\em Lecture Notes in Computer Science}, pages 51--80. Springer, 2018.
+\newblock 20th IFIP WG 6.1 International Conference, COORDINATION 2018, Held as Part of the 13th International Federated Conference on Distributed Computing Techniques, DisCoTec 2018, Madrid, Spain, June 18-21, 2018. Proceedings.
 
-\bibitem[SCO21]{gridex-extraamas2021}
-Federico Sabbatini, Giovanni Ciatto, and Andrea Omicini.
-\newblock {GridEx}: An algorithm for knowledge extraction from black-box regressors.
-\newblock In Davide Calvaresi, Amro Najjar, Michael Winikoff, and Kary Fr{\"a}mling, editors, {\em Explainable and Transparent AI and Multi-Agent Systems. Third International Workshop, EXTRAAMAS 2021, Virtual Event, May 3--7, 2021, Revised Selected Papers}, volume 12688 of {\em Lecture Notes in Computer Science}, pages 18--38. Springer Nature, Basel, Switzerland, 2021.
+\bibitem{lpaas-ic2e2018}
+Roberta Calegari, Giovanni Ciatto, Stefano Mariani, Enrico Denti, and Andrea Omicini.
+\newblock Micro-intelligence for the {IoT}: {SE} challenges and practice in {LPaaS}.
+\newblock In {\em 2018 IEEE International Conference on Cloud Engineering (IC2E 2018)}, pages 292--297. IEEE Computer Society, 17--20~April 2018.
 
-\bibitem[Sea80]{searle1980}
-John~R. Searle.
-\newblock Minds, brains, and programs.
-\newblock {\em Behavioral and Brain Sciences}, 3(3):417–424, 1980.
+\bibitem{respect-idc2017}
+Giovanni Ciatto, Stefano Mariani, and Andrea Omicini.
+\newblock Programming the interaction space effectively with \textsf{{R}e{S}pec{TX}}.
+\newblock In Mirjana Ivanovi{\'c}, Costin B{\u a}dic{\u a}, J{\"u}rgen Dix, Zoran Jovanovi{\'c}, Michele Malgeri, and Milo{\v s} Savi{\'c}, editors, {\em Intelligent Distributed Computing XI}, volume 737 of {\em Studies in Computational Intelligence}, pages 89--101. Springer, 2017.
 
-\bibitem[Smo87]{Smolensky1987}
-P.~Smolensky.
-\newblock Connectionist ai, symbolic ai, and the brain.
-\newblock {\em Artificial Intelligence Review}, 1(2):95--109, Jun 1987.
+\bibitem{respectx-comsis15}
+Giovanni Ciatto, Stefano Mariani, and Andrea Omicini.
+\newblock {ReSpecTX}: Programming interaction made easy.
+\newblock {\em Computer Science and Information Systems}, 15(3):655--682, October 2018.
+\newblock {S}pecial Section: Contemporary Topics in Intelligent Distributed Computing.
 
-\bibitem[Sow91]{sowa2014}
-John~F Sowa, editor.
-\newblock {\em Principles of semantic networks: Explorations in the representation of knowledge}.
-\newblock Morgan Kaufmann Series in Representation and Reasoning. Morgan Kaufmann Pub, May 1991.
+\bibitem{snnta-assb17}
+Giovanni Ciatto, Elisabetta {De Maria}, and Cinzia {Di Giusto}.
+\newblock Spiking neural networks as timed automata.
+\newblock In {\em Proc. of the Thematic Research School on Advances in Systems and Synthetic Biology (ASSB)}, pages 55--69. EDP Sciences, 2017.
 
-\bibitem[SS04]{Smola2004}
-Alex~J. Smola and Bernhard Sch\"{o}lkopf.
-\newblock A tutorial on support vector regression.
-\newblock {\em Statistics and Computing}, 14(3):199--222, August 2004.
+\bibitem{coordination-woa2017}
+Stefano Mariani, Andrea Omicini, and Giovanni Ciatto.
+\newblock Novel opportunities for tuple-based coordination: {XP}ath, the {B}lockchain, and stream processing.
+\newblock In Pasquale De~Meo, Maria~Nadia Postorino, Domenico Rosaci, and Giuseppe~M.L. Sarn{\'e}, editors, {\em WOA 2017 -- 18th Workshop ``From Objects to Agents''}, volume 1867 of {\em CEUR Workshop Proceedings}, pages 61--64. Sun SITE Central Europe, RWTH Aachen University, June 2017.
 
-\bibitem[ST01]{SatoT2002}
-M.~Sato and H.~Tsukimoto.
-\newblock Rule extraction from neural networks via decision tree induction.
-\newblock In {\em IJCNN'01. International Joint Conference on Neural Networks. Proceedings (Cat. No.01CH37222)}, volume~3, pages 1870--1875 vol.3, 2001.
-
-\bibitem[STY17]{SundararajanTY17}
-Mukund Sundararajan, Ankur Taly, and Qiqi Yan.
-\newblock Axiomatic attribution for deep networks.
-\newblock In Doina Precup and Yee~Whye Teh, editors, {\em Proceedings of the 34th International Conference on Machine Learning, {ICML} 2017, Sydney, NSW, Australia, 6-11 August 2017}, volume~70 of {\em Proceedings of Machine Learning Research}, pages 3319--3328. {PMLR}, 2017.
-
-\bibitem[Sun01]{SUN2001783}
-R.~Sun.
-\newblock Artificial intelligence: Connectionist and symbolic approaches.
-\newblock In Neil~J. Smelser and Paul~B. Baltes, editors, {\em International Encyclopedia of the Social \& Behavioral Sciences}, page 783–789. Pergamon, Oxford, 2001.
-
-\bibitem[TSHL17]{tolomei2017interpretable}
-Gabriele Tolomei, Fabrizio Silvestri, Andrew Haines, and Mounia Lalmas.
-\newblock Interpretable predictions of tree-based ensembles via actionable feature tweaking.
-\newblock In {\em 23rd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining}, pages 465--474. ACM, 2017.
-
-\bibitem[Tur50]{Turing1950}
-Alan~M. Turing.
-\newblock Computing machinery and intelligence.
-\newblock {\em Mind}, 59(October):433--60, 1950.
-
-\bibitem[Twa10]{twala2010}
-Bhekisipho Twala.
-\newblock Multiple classifier application to credit risk assessment.
-\newblock {\em Expert Systems with Applications}, 37(4):3326--3336, 2010.
-
-\bibitem[Vit06]{Viterbi06}
-Andrew~J. Viterbi.
-\newblock A personal history of the viterbi algorithm.
-\newblock {\em {IEEE} Signal Process. Mag.}, 23(4):120--142, 2006.
-
-\bibitem[VvdB17]{gdpr-voigt2017}
-Paul Voigt and Axel von~dem Bussche.
-\newblock {\em The {EU} {G}eneral {D}ata {P}rotection {R}egulation ({GDPR}). A Practical Guide}.
-\newblock Springer, 2017.
-
-\bibitem[YL99]{yen1999}
-John Yen and Reza Langari.
-\newblock {\em Fuzzy logic: intelligence, control, and information}, volume~1.
-\newblock Prentice Hall Press, Upper Saddle River, NJ, 1999.
-
-\bibitem[YWC{\etalchar{+}}18]{Yao2018}
-Quanming Yao, Mengshuo Wang, Yuqiang Chen, Wenyuan Dai, Hu~Yi-Qi, Li~Yu-Feng, Tu~Wei-Wei, Yang Qiang, and Yu~Yang.
-\newblock Taking human out of learning applications: A survey on automated machine learning.
-\newblock pages 1--26, 2018.
-
-\bibitem[ZJC83]{ZhouZYS1983}
-Zhi-Hua Zhou, Yuan Jiang, and Shi-Fu Chen.
-\newblock Extracting symbolic rules from trained neural network ensembles.
-\newblock {\em Mineral Processing and Extractive Metallurgy Review}, 1(1-2):207--248, 1983.
+\bibitem{DeMaria:2017:FVN:3156346.3156350}
+Elisabetta De~Maria, Cinzia Di~Giusto, and Giovanni Ciatto.
+\newblock Formal validation of neural networks as timed automata.
+\newblock In {\em Proceedings of the 8th International Conference on Computational Systems-Biology and Bioinformatics}, CSBio '17, pages 15--22, New York, NY, USA, 2017. ACM.
 
 \end{thebibliography}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.8)  10 JUN 2026 14:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.6.8)  17 JUN 2026 10:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -619,25 +619,25 @@ File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 ) (./thesis-main.aux)
 \openout1 = `thesis-main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 62.
-LaTeX Font Info:    ... okay on input line 62.
-Package hyperref Info: Link coloring OFF on input line 62.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+Package hyperref Info: Link coloring OFF on input line 75.
  (./thesis-main.out) (./thesis-main.out)
 \@outlinefile=\write4
 \openout4 = `thesis-main.out'.
@@ -759,8 +759,8 @@ Package cleveref Info: loaded `english' language definitions on input line 16.
 \tf@toc=\write5
 \openout5 = `thesis-main.toc'.
 
-Package cleveref Info: loaded `english' language definitions on input line 76.
-Package cleveref Info: loaded `english' language definitions on input line 76.
+Package cleveref Info: loaded `english' language definitions on input line 89.
+Package cleveref Info: loaded `english' language definitions on input line 89.
  [8] (./thesis-main.lof
 Package cleveref Info: loaded `english' language definitions on input line 1.
 
@@ -772,127 +772,117 @@ Overfull \hbox (9.80815pt too wide) in paragraph at lines 9--9
 \tf@lof=\write6
 \openout6 = `thesis-main.lof'.
 
-Package cleveref Info: loaded `english' language definitions on input line 77.
+Package cleveref Info: loaded `english' language definitions on input line 90.
  [9
 
 ]
-Package cleveref Info: loaded `english' language definitions on input line 77.
-Package cleveref Info: loaded `english' language definitions on input line 77.
+Package cleveref Info: loaded `english' language definitions on input line 90.
+Package cleveref Info: loaded `english' language definitions on input line 90.
  [10
 
 ] (./thesis-main.lol)
 \tf@lol=\write7
 \openout7 = `thesis-main.lol'.
 
-Package cleveref Info: loaded `english' language definitions on input line 80.
+Package cleveref Info: loaded `english' language definitions on input line 93.
  [11]
-Package cleveref Info: loaded `english' language definitions on input line 80.
-Package cleveref Info: loaded `english' language definitions on input line 80.
+Package cleveref Info: loaded `english' language definitions on input line 93.
+Package cleveref Info: loaded `english' language definitions on input line 93.
  [12
 
 ]
 Chapter 1.
 Package acronym Info: Label `acro:CRM' newly defined as it shall be overridden
-although it is yet undefined on input line 89.
+although it is yet undefined on input line 102.
 Package acronym Info: Label `acro:OTel' newly defined as it shall be overridden
-although it is yet undefined on input line 89.
+although it is yet undefined on input line 102.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package cleveref Info: loaded `english' language definitions on input line 90.
+Package cleveref Info: loaded `english' language definitions on input line 103.
  [1
 
 ]
 Package acronym Info: Label `acro:POC' newly defined as it shall be overridden
-although it is yet undefined on input line 95.
+although it is yet undefined on input line 108.
 Package acronym Info: Label `acro:KPI' newly defined as it shall be overridden
-although it is yet undefined on input line 96.
+although it is yet undefined on input line 109.
 
-Overfull \hbox (9.81752pt too wide) in paragraph at lines 96--97
+Overfull \hbox (9.81752pt too wide) in paragraph at lines 109--110
 []\OT1/cmr/bx/n/12 Chapter 5: \OT1/cmr/m/n/12 an-a-lyzes the project's pri-mary out-come, a ro-bust error-monitoring
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 101.
+Package cleveref Info: loaded `english' language definitions on input line 114.
 [2{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Chapter 2.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package cleveref Info: loaded `english' language definitions on input line 110.
+Package cleveref Info: loaded `english' language definitions on input line 123.
  [3
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package cleveref Info: loaded `english' language definitions on input line 113.
+Package cleveref Info: loaded `english' language definitions on input line 126.
  [4]
-Package cleveref Info: loaded `english' language definitions on input line 120.
-Package cleveref Info: loaded `english' language definitions on input line 120.
+Package cleveref Info: loaded `english' language definitions on input line 133.
+Package cleveref Info: loaded `english' language definitions on input line 133.
  [5]
 <figures/tlab.png, id=224, 404.51125pt x 216.81pt>
 File: figures/tlab.png Graphic file (type png)
 <use figures/tlab.png>
-Package pdftex.def Info: figures/tlab.png  used on input line 125.
+Package pdftex.def Info: figures/tlab.png  used on input line 138.
 (pdftex.def)             Requested size: 125.47737pt x 67.2534pt.
 <figures/unica.png, id=226, 527.9725pt x 812.03375pt>
 File: figures/unica.png Graphic file (type png)
 <use figures/unica.png>
-Package pdftex.def Info: figures/unica.png  used on input line 132.
+Package pdftex.def Info: figures/unica.png  used on input line 146.
 (pdftex.def)             Requested size: 125.47737pt x 192.98392pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--133
-[]\OT1/cmr/m/n/12 Figure 2.2: |\OT1/cmr/m/it/12 UNICA
- []
-
-
-Underfull \hbox (badness 4556) in paragraph at lines 133--133
-\OT1/cmr/m/n/12 mul-ti-func-tion ma-chine.
- []
-
-Package cleveref Info: loaded `english' language definitions on input line 141.
-Package cleveref Info: loaded `english' language definitions on input line 141.
-[6 <./figures/tlab.png> <./figures/unica.png>]
+Package cleveref Info: loaded `english' language definitions on input line 156.
+Package cleveref Info: loaded `english' language definitions on input line 156.
+ [6 <./figures/tlab.png> <./figures/unica.png>]
 Package acronym Info: Label `acro:PWA' newly defined as it shall be overridden
-although it is yet undefined on input line 146.
+although it is yet undefined on input line 161.
 
 Underfull \vbox (badness 1742) has occurred while \output is active []
 
-Package cleveref Info: loaded `english' language definitions on input line 149.
-Package cleveref Info: loaded `english' language definitions on input line 149.
+Package cleveref Info: loaded `english' language definitions on input line 164.
+Package cleveref Info: loaded `english' language definitions on input line 164.
  [7]
-<figures/crm app.png, id=241, 1571.8725pt x 877.2775pt>
+<figures/crm app.png, id=245, 1571.8725pt x 877.2775pt>
 File: figures/crm app.png Graphic file (type png)
 <use figures/crm app.png>
-Package pdftex.def Info: figures/crm app.png  used on input line 152.
+Package pdftex.def Info: figures/crm app.png  used on input line 167.
 (pdftex.def)             Requested size: 209.12683pt x 116.71391pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Package cleveref Info: loaded `english' language definitions on input line 160.
-Package cleveref Info: loaded `english' language definitions on input line 160.
+Package cleveref Info: loaded `english' language definitions on input line 174.
+Package cleveref Info: loaded `english' language definitions on input line 174.
  [8 <./figures/crm app.png>]
-Overfull \hbox (6.00313pt too wide) in paragraph at lines 167--168
+Overfull \hbox (6.00313pt too wide) in paragraph at lines 183--184
 \OT1/cmr/m/n/12 bound-aries, API calls, com-plete stack trace track-ing, han-dling of asyn-chronous
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 169.
-Package cleveref Info: loaded `english' language definitions on input line 169.
-[9]
-Overfull \hbox (4.5461pt too wide) in paragraph at lines 170--171
+
+Underfull \vbox (badness 1062) has occurred while \output is active []
+
+Package cleveref Info: loaded `english' language definitions on input line 184.
+Package cleveref Info: loaded `english' language definitions on input line 184.
+ [9]
+Overfull \hbox (4.5461pt too wide) in paragraph at lines 186--187
 \OT1/cmr/m/n/12 agent, user ge-olo-ca-tion (coun-try, re-gion), de-vice data (desk-top, mo-bile, tablet)
  []
 
 
-Underfull \vbox (badness 3000) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package cleveref Info: loaded `english' language definitions on input line 179.
-Package cleveref Info: loaded `english' language definitions on input line 179.
+Package cleveref Info: loaded `english' language definitions on input line 193.
+Package cleveref Info: loaded `english' language definitions on input line 193.
  [10]
-Package cleveref Info: loaded `english' language definitions on input line 186.
-Package cleveref Info: loaded `english' language definitions on input line 186.
+Package cleveref Info: loaded `english' language definitions on input line 202.
+Package cleveref Info: loaded `english' language definitions on input line 202.
  [11]
-Package cleveref Info: loaded `english' language definitions on input line 186.
-Package cleveref Info: loaded `english' language definitions on input line 186.
+Package cleveref Info: loaded `english' language definitions on input line 202.
+Package cleveref Info: loaded `english' language definitions on input line 202.
  [12
 
 ]
@@ -900,326 +890,21 @@ Chapter 3.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package cleveref Info: loaded `english' language definitions on input line 191.
+Package cleveref Info: loaded `english' language definitions on input line 207.
  [13]
-Package cleveref Info: loaded `english' language definitions on input line 200.
+Package cleveref Info: loaded `english' language definitions on input line 216.
  [14]
 Package acronym Info: Label `acro:OTLP' newly defined as it shall be overridden
-although it is yet undefined on input line 207.
-Package cleveref Info: loaded `english' language definitions on input line 208.
-Package cleveref Info: loaded `english' language definitions on input line 208.
+although it is yet undefined on input line 223.
+Package cleveref Info: loaded `english' language definitions on input line 224.
+Package cleveref Info: loaded `english' language definitions on input line 224.
  [15]
-<figures/collector.png, id=278, 769.87625pt x 419.5675pt>
+<figures/collector.png, id=282, 769.87625pt x 419.5675pt>
 File: figures/collector.png Graphic file (type png)
 <use figures/collector.png>
-Package pdftex.def Info: figures/collector.png  used on input line 219.
+Package pdftex.def Info: figures/collector.png  used on input line 235.
 (pdftex.def)             Requested size: 209.12683pt x 113.96976pt.
-Package cleveref Info: loaded `english' language definitions on input line 229.
-Package cleveref Info: loaded `english' language definitions on input line 229.
+Package cleveref Info: loaded `english' language definitions on input line 245.
+Package cleveref Info: loaded `english' language definitions on input line 245.
  [16 <./figures/collector.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Package cleveref Info: loaded `english' language definitions on input line 238.
-Package cleveref Info: loaded `english' language definitions on input line 238.
- [17]
-Package acronym Info: Label `acro:RUM' newly defined as it shall be overridden
-although it is yet undefined on input line 242.
-Package acronym Info: Label `acro:UX' newly defined as it shall be overridden
-although it is yet undefined on input line 242.
-Package acronym Info: Label `acro:APM' newly defined as it shall be overridden
-although it is yet undefined on input line 245.
-Package acronym Info: Label `acro:DOM' newly defined as it shall be overridden
-although it is yet undefined on input line 248.
-Package acronym Info: Label `acro:OLTPDB' newly defined as it shall be overridden
-although it is yet undefined on input line 250.
-<figures/relational.png, id=288, 806.01125pt x 808.01875pt>
-File: figures/relational.png Graphic file (type png)
-<use figures/relational.png>
-Package pdftex.def Info: figures/relational.png  used on input line 253.
-(pdftex.def)             Requested size: 209.12683pt x 209.64839pt.
-
-Underfull \hbox (badness 1755) in paragraph at lines 254--254
-[]\OT1/cmr/m/n/12 Figure 3.2: |Ini-tial Database Man-age-ment Sys-tem Ar-chi-tec-ture. Source:
- []
-
-Package cleveref Info: loaded `english' language definitions on input line 256.
-Package cleveref Info: loaded `english' language definitions on input line 256.
-[18]
-Package acronym Info: Label `acro:ACID' newly defined as it shall be overridden
-although it is yet undefined on input line 257.
-Package acronym Info: Label `acro:BI' newly defined as it shall be overridden
-although it is yet undefined on input line 257.
-Package acronym Info: Label `acro:OLAP' newly defined as it shall be overridden
-although it is yet undefined on input line 257.
-Package acronym Info: Label `acro:ETL' newly defined as it shall be overridden
-although it is yet undefined on input line 257.
-<figures/warehouse.png, id=300, 781.92125pt x 488.82625pt>
-File: figures/warehouse.png Graphic file (type png)
-<use figures/warehouse.png>
-Package pdftex.def Info: figures/warehouse.png  used on input line 260.
-(pdftex.def)             Requested size: 209.12683pt x 130.73921pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Package cleveref Info: loaded `english' language definitions on input line 264.
-Package cleveref Info: loaded `english' language definitions on input line 264.
- [19 <./figures/relational.png>]
-<figures/lake.png, id=312, 771.88374pt x 367.3725pt>
-File: figures/lake.png Graphic file (type png)
-<use figures/lake.png>
-Package pdftex.def Info: figures/lake.png  used on input line 268.
-(pdftex.def)             Requested size: 209.12683pt x 99.52823pt.
-Package cleveref Info: loaded `english' language definitions on input line 274.
-Package cleveref Info: loaded `english' language definitions on input line 274.
- [20 <./figures/warehouse.png> <./figures/lake.png>]
-Package acronym Info: Label `acro:PaaS' newly defined as it shall be overridden
-although it is yet undefined on input line 278.
-Package cleveref Info: loaded `english' language definitions on input line 283.
-Package cleveref Info: loaded `english' language definitions on input line 283.
- [21]
-Package acronym Info: Label `acro:XaaS' newly defined as it shall be overridden
-although it is yet undefined on input line 285.
-
-Overfull \hbox (2.06908pt too wide) in paragraph at lines 287--288
-[]\OT1/cmr/bx/n/12 On-premise: \OT1/cmr/m/n/12 the tra-di-tional model where we would own the phys-i-cal servers,
- []
-
-Package acronym Info: Label `acro:IaaS' newly defined as it shall be overridden
-although it is yet undefined on input line 288.
-Package acronym Info: Label `acro:OS' newly defined as it shall be overridden
-although it is yet undefined on input line 288.
-Package cleveref Info: loaded `english' language definitions on input line 290.
-Package cleveref Info: loaded `english' language definitions on input line 290.
-[22]
-Package acronym Info: Label `acro:FaaS' newly defined as it shall be overridden
-although it is yet undefined on input line 290.
-Package acronym Info: Label `acro:SaaS' newly defined as it shall be overridden
-although it is yet undefined on input line 291.
-Package acronym Info: Label `acro:VM' newly defined as it shall be overridden
-although it is yet undefined on input line 294.
-Package cleveref Info: loaded `english' language definitions on input line 301.
-Package cleveref Info: loaded `english' language definitions on input line 301.
- [23]
-Package acronym Info: Label `acro:GDPR' newly defined as it shall be overridden
-although it is yet undefined on input line 311.
-Package acronym Info: Label `acro:CWB' newly defined as it shall be overridden
-although it is yet undefined on input line 313.
-
-
-Package acronym Warning: Acronym CWB is not defined on input line 313.
-
-
-Package acronym Warning: Acronym CWB is not defined on input line 313.
-
-Package acronym Info: Label `acro:SLI' newly defined as it shall be overridden
-although it is yet undefined on input line 315.
-Package acronym Info: Label `acro:SLO' newly defined as it shall be overridden
-although it is yet undefined on input line 315.
-Package cleveref Info: loaded `english' language definitions on input line 317.
-Package cleveref Info: loaded `english' language definitions on input line 317.
-[24]
-Package acronym Info: Label `acro:RBAC' newly defined as it shall be overridden
-although it is yet undefined on input line 321.
-Package acronym Info: Label `acro:SRE' newly defined as it shall be overridden
-although it is yet undefined on input line 324.
-Package cleveref Info: loaded `english' language definitions on input line 326.
-Package cleveref Info: loaded `english' language definitions on input line 326.
- [25]
-Package cleveref Info: loaded `english' language definitions on input line 332.
-Package cleveref Info: loaded `english' language definitions on input line 332.
- [26]
-<figures/osclick.png, id=357, 1584.92125pt x 732.7375pt>
-File: figures/osclick.png Graphic file (type png)
-<use figures/osclick.png>
-Package pdftex.def Info: figures/osclick.png  used on input line 340.
-(pdftex.def)             Requested size: 188.21288pt x 87.00789pt.
-<figures/Managedclick.png, id=358, 1578.89874pt x 647.41875pt>
-File: figures/Managedclick.png Graphic file (type png)
-<use figures/Managedclick.png>
-Package pdftex.def Info: figures/Managedclick.png  used on input line 347.
-(pdftex.def)             Requested size: 188.21288pt x 77.17319pt.
-Package acronym Info: Label `acro:MTTR' newly defined as it shall be overridden
-although it is yet undefined on input line 353.
-Package cleveref Info: loaded `english' language definitions on input line 354.
-Package cleveref Info: loaded `english' language definitions on input line 354.
- [27 <./figures/osclick.png> <./figures/Managedclick.png>]
-Package acronym Info: Label `acro:CWV' newly defined as it shall be overridden
-although it is yet undefined on input line 355.
-Package cleveref Info: loaded `english' language definitions on input line 359.
-Package cleveref Info: loaded `english' language definitions on input line 359.
- [28]
-Chapter 4.
-Package cleveref Info: loaded `english' language definitions on input line 369.
-[29
-
-]
-<figures/demo app.png, id=376, 528.97626pt x 995.72pt>
-File: figures/demo app.png Graphic file (type png)
-<use figures/demo app.png>
-Package pdftex.def Info: figures/demo app.png  used on input line 377.
-(pdftex.def)             Requested size: 209.12683pt x 393.64694pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Package cleveref Info: loaded `english' language definitions on input line 381.
-Package cleveref Info: loaded `english' language definitions on input line 381.
- [30]
-Package cleveref Info: loaded `english' language definitions on input line 383.
-Package cleveref Info: loaded `english' language definitions on input line 383.
- [31 <./figures/demo app.png>]
-<figures/HyperDX interface.png, id=387, 1706.375pt x 935.495pt>
-File: figures/HyperDX interface.png Graphic file (type png)
-<use figures/HyperDX interface.png>
-Package pdftex.def Info: figures/HyperDX interface.png  used on input line 386.
-(pdftex.def)             Requested size: 209.12683pt x 114.63838pt.
-<figures/dash HyperDX.png, id=389, 1713.40125pt x 981.6675pt>
-File: figures/dash HyperDX.png Graphic file (type png)
-<use figures/dash HyperDX.png>
-Package pdftex.def Info: figures/dash HyperDX.png  used on input line 396.
-(pdftex.def)             Requested size: 230.04079pt x 131.78542pt.
-<figures/SQL HyperDX.png, id=390, 373.395pt x 193.72375pt>
-File: figures/SQL HyperDX.png Graphic file (type png)
-<use figures/SQL HyperDX.png>
-Package pdftex.def Info: figures/SQL HyperDX.png  used on input line 403.
-(pdftex.def)             Requested size: 154.75182pt x 80.28743pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-Package cleveref Info: loaded `english' language definitions on input line 412.
-Package cleveref Info: loaded `english' language definitions on input line 412.
- [32 <./figures/HyperDX interface.png> <./figures/dash HyperDX.png> <./figures/SQL HyperDX.png>]
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 428.
- (/usr/local/texlive/2026/texmf-dist/tex/latex/base/omlcmr.fd
-File: omlcmr.fd 2024/11/19 v2.5n Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
-(Font)              Font shape `OML/cmm/m/it' tried instead on input line 428.
-
-Overfull \hbox (72.19052pt too wide) in paragraph at lines 422--430
- [][] 
- []
-
-Package cleveref Info: loaded `english' language definitions on input line 432.
-Package cleveref Info: loaded `english' language definitions on input line 432.
-[33]
-LaTeX Font Info:    Trying to load font information for OML+cmtt on input line 434.
-LaTeX Font Info:    No file OMLcmtt.fd. on input line 434.
-
-
-LaTeX Font Warning: Font shape `OML/cmtt/m/n' undefined
-(Font)              using `OML/cmm/m/it' instead
-(Font)              for symbol `textless' on input line 434.
-
-Package cleveref Info: loaded `english' language definitions on input line 438.
-Package cleveref Info: loaded `english' language definitions on input line 438.
-[34]
-Package cleveref Info: loaded `english' language definitions on input line 444.
-Package cleveref Info: loaded `english' language definitions on input line 444.
- [35]
-Package cleveref Info: loaded `english' language definitions on input line 455.
-Package cleveref Info: loaded `english' language definitions on input line 455.
- [36]
-
-Package hyperref Warning: The anchor of a bookmark and its parent's must not
-(hyperref)                be the same. Added a new anchor on input line 460.
-
-(./thesis-main.bbl
-Package cleveref Info: loaded `english' language definitions on input line 33.
- [37
-
-
-]
-Package cleveref Info: loaded `english' language definitions on input line 78.
-Package cleveref Info: loaded `english' language definitions on input line 78.
- [38]
-Package cleveref Info: loaded `english' language definitions on input line 103.
-Package cleveref Info: loaded `english' language definitions on input line 103.
- [39]
-Package cleveref Info: loaded `english' language definitions on input line 129.
-Package cleveref Info: loaded `english' language definitions on input line 129.
- [40]
-Package cleveref Info: loaded `english' language definitions on input line 161.
-Package cleveref Info: loaded `english' language definitions on input line 161.
- [41]
-Package cleveref Info: loaded `english' language definitions on input line 188.
-Package cleveref Info: loaded `english' language definitions on input line 188.
- [42]
-Package cleveref Info: loaded `english' language definitions on input line 219.
-Package cleveref Info: loaded `english' language definitions on input line 219.
- [43]
-Underfull \hbox (badness 1038) in paragraph at lines 221--224
-\OT1/cmr/m/n/12 for trust-wor-thy co-or-di-na-tion: A first study with Linda and
- []
-
-Package cleveref Info: loaded `english' language definitions on input line 247.
-Package cleveref Info: loaded `english' language definitions on input line 247.
-[44]
-Package cleveref Info: loaded `english' language definitions on input line 283.
-Package cleveref Info: loaded `english' language definitions on input line 283.
- [45]
-Package cleveref Info: loaded `english' language definitions on input line 323.
-Package cleveref Info: loaded `english' language definitions on input line 323.
- [46]
-Package cleveref Info: loaded `english' language definitions on input line 363.
-Package cleveref Info: loaded `english' language definitions on input line 363.
- [47]
-Package cleveref Info: loaded `english' language definitions on input line 414.
-Package cleveref Info: loaded `english' language definitions on input line 414.
- [48]
-Package cleveref Info: loaded `english' language definitions on input line 450.
-Package cleveref Info: loaded `english' language definitions on input line 450.
- [49]
-Package cleveref Info: loaded `english' language definitions on input line 496.
-Package cleveref Info: loaded `english' language definitions on input line 496.
- [50]
-Package cleveref Info: loaded `english' language definitions on input line 540.
-Package cleveref Info: loaded `english' language definitions on input line 540.
- [51]
-Package cleveref Info: loaded `english' language definitions on input line 571.
-Package cleveref Info: loaded `english' language definitions on input line 571.
- [52]
-Package cleveref Info: loaded `english' language definitions on input line 616.
-Package cleveref Info: loaded `english' language definitions on input line 616.
- [53]
-Package cleveref Info: loaded `english' language definitions on input line 652.
-Package cleveref Info: loaded `english' language definitions on input line 652.
- [54])
-Package cleveref Info: loaded `english' language definitions on input line 462.
-Package cleveref Info: loaded `english' language definitions on input line 462.
- [55]
-Package cleveref Info: loaded `english' language definitions on input line 462.
-Package cleveref Info: loaded `english' language definitions on input line 462.
- [56
-
-]
-Package cleveref Info: loaded `english' language definitions on input line 466.
- [57] (./thesis-main.aux
-Package cleveref Info: loaded `english' language definitions on input line 38.
-)
- ***********
-LaTeX2e <2025-11-01>
-L3 programming layer <2026-01-19>
- ***********
-
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-Package rerunfilecheck Info: File `thesis-main.out' has not changed.
-(rerunfilecheck)             Checksum: 3AC84A89AB9FBB8B9DC42B8CCE750090;4793.
- ) 
-Here is how much of TeX's memory you used:
- 29270 strings out of 467525
- 539902 string characters out of 5418983
- 965711 words of memory out of 5000000
- 57450 multiletter control sequences out of 15000+600000
- 636899 words of font info for 73 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 114i,12n,131p,1820b,1228s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on thesis-main.pdf (69 pages, 5557047 bytes).
-PDF statistics:
- 759 PDF objects out of 1000 (max. 8388607)
- 633 compressed objects within 7 object streams
- 278 named destinations out of 1000 (max. 500000)
- 246 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+Underfull \vbox (badness 10000) has occurred while \output is active 

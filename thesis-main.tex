@@ -11,6 +11,19 @@
 \usepackage{enumitem}
 \usepackage{cleveref}
 
+% Custom command for image source attribution
+\newcommand{\source}[1]{%
+    \vspace{-0.5em}
+    \begin{center}
+        \fcolorbox{gray}{lightgray}{%
+            \parbox{0.9\textwidth}{%
+                \small\textit{Source:} #1
+            }%
+        }
+    \end{center}
+    \vspace{0.5em}
+}
+
 \school{\unibo}
 \programme{Scuola di Ingegneria e Architettura \\ Corso di Laurea Magistrale in Digital Transformation Management}
 \title{Observability in Technogym:}
@@ -100,9 +113,9 @@ In today's world of distributed systems and microservices, understanding how app
 
 \chapter{Technogym: the Wellness Ecosystem}
 
-In Technogym, innovation is not a destination yet a constant state of motion. A recurring sentiment within the company is that "once a goal is reached, it is already part of the past". This is the motivation that makes it outperform competitors and positions it as one of the most influential wellness companies in the market, as recently stated by the \textit{TIME Magazine}. 
+In Technogym, innovation is not a destination, yet a constant state of motion. A recurring sentiment within the company is that "once a goal is reached, it is already part of the past". This is the motivation that makes it outperform competitors and positions it as one of the most influential wellness companies in the market, as recently stated by the \textit{TIME Magazine}. 
 
-The company’s DNA is built on the concept of the \textit{Wellness Valley}, which integrates physical health, mental well-being, and technological innovation. Internally, this translates into a high-precision work environment where automation and digital documentation are paramount. We can perceive the enterprise's pride about its identity and vision at our first entrance in the headquarter, where the reception welcomes everyone with professionalism and a big smile, and the new entries get immediately immersed into the ethical, organizational, and work culture. Indeed, as a rookie have I been guided through the history and evolution of the company, in order to be immediately aware of the founder's first ideas, visionary mind, fast and improved digitalization over time and future objectives. 
+The company’s DNA is built on the concept of the \textit{Wellness Valley}, which integrates physical health, mental well-being, and technological innovation. Internally, this translates into a high-precision work environment where automation and digital documentation are paramount. We can perceive the enterprise's pride about its identity and vision at our first entrance in the headquarter, where the reception welcomes everyone with professionalism and a big smile, and the new entries get immediately immersed into the ethical, organizational, and work culture. Indeed, as a new intern have I been guided through the history and evolution of the company, in order to be immediately aware of the founder's first ideas, visionary mind, fast and improved digitalization over time and future objectives. 
 
 There are four main words to identify Technogym's drivers: 
 \begin{enumerate}[nosep]
@@ -123,14 +136,16 @@ What fascinated me was experiencing first-hand the delicate balance required amo
     \begin{minipage}[c]{0.3\textwidth} 
         \centering
         \includegraphics[width=\linewidth]{figures/tlab.png}
-        \caption{Technogym Lab. Source: Technogym}
+        \caption{Technogym Lab.}
+        \source{Technogym Official Website}
         \label{tlab}
     \end{minipage}
     \hspace{1.3cm}
     \begin{minipage}[c]{0.3\textwidth}
         \centering
         \includegraphics[width=\linewidth]{figures/unica.png}
-        \caption{\textit{UNICA} multifunction machine. Source: Technogym}
+        \caption{\textit{UNICA} multifunction machine.}
+        \source{Technogym Official Website}
         \label{unica}
     \end{minipage}
 \end{figure}
@@ -143,7 +158,7 @@ The \textit{Technogym App} is another important tool to stay in touch and help p
 
 Talking specifically about the \ac{CRM} dimension, the \textit{Mywellness CRM Progressive Web App} is designed to be used by professionals who support their clients during their training journeys. It involves a combination of frontend, the field I was involved into, backend, quality control, design, marketing and direct interaction with customers, other than integrations with all the other products. 
 
-\ac{PWA} are web applications built and enhanced with modern APIs to provide enhanced capabilities while still reaching any web user on any device with a single codebase. Reliable apps also need to be usable regardless of network connection. Users expect apps to load quickly on slow or flaky network connections, or even when offline. Making the PWA installable moves it out of the browser and into a standalone window. Installed PWAs can be launched on the user's home screen, dock, taskbar, or shelf. The user can search for them on a device and jump between them with the app switcher, making them feel like part of the device they are installed on.
+\cite{webdev-pwa} \ac{PWA} are web applications built and enhanced with modern APIs to provide enhanced capabilities while still reaching any web user on any device with a single codebase. Reliable apps also need to be usable regardless of network connection. Users expect apps to load quickly on slow or flaky network connections, or even when offline. Making the PWA installable moves it out of the browser and into a standalone window. Installed PWAs can be launched on the user's home screen, dock, taskbar, or shelf. The user can search for them on a device and jump between them with the app switcher, making them feel like part of the device they are installed on.
 
 With seamless integration of third-party software, smart equipment, and wearables, Mywellness (\cref{crm}) puts operators in full control of their digital strategy and members engagement. It is statistically measured to increase attraction of 40\% and retention of 30\% thanks to variety, customization and automation. More than 30 thousand facilities and 40 million users are registered on the platform, with more than 500 thousand workouts tracked. The application is extremely complex due to its level of detail in covering a huge number of cases and functionalities. The workflow it follows consists of an ensemble of subsequent steps, starting from collecting health and fitness information to build the user's health history - via another company's creation, the \textit{Technogym Checkup} -, then offering direct booking of courses/trainers and payment possibilities, defining the assessment to discover the user's goals and consequently building the best personalized training program, consistently tracking progress, offering communication channels through which coaches can stay in touch to motivate clients, creating challenges to encourage friendly competition and keep users engaged, and finally rewarding results and loyalty. 
 
@@ -151,6 +166,7 @@ With seamless integration of third-party software, smart equipment, and wearable
     \centering
     \includegraphics[width=0.5\linewidth]{figures/crm app.png}
     \caption{CRM Web App: Home Page}
+    \source{Screenshot from CRM App UI}
     \label{crm}
 \end{figure}
 
@@ -456,7 +472,7 @@ Sanitization links to the concept of data cleanliness, too. Sending row data to 
 
 \nocite{*} % Remove this as soon as you have the first citation
 
-\bibliographystyle{alpha}
+\bibliographystyle{unsrt}
 \bibliography{bibliography}
 
 \begin{acknowledgements} % this is optional

@@ -4,8 +4,10 @@
 *.fdb_latexmk
 *.fls
 *.log
+*.out
 *.synctex.gz
 *.synctex(busy)
 *.lof
 *.lot
 *.toc
+*.pdf

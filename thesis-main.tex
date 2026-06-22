@@ -68,6 +68,7 @@
 \acrodef{MTTR}{Mean Time to Repair}
 \acrodef{DOM}{Document Object Model}
 \acrodef{CWV}{Core Web Vitals}
+\acrodef{API}{Application Programming Interfaces}
 
 
 \mainlinespacing{1.241} % line spacing in mainmatter, comment to default (1)
@@ -103,8 +104,8 @@ In today's world of distributed systems and microservices, understanding how app
 
 \par This thesis documents the implementation of an observability project aimed at enhancing error monitoring and system performance, initially focused on the Mywellness app and the corporate \ac{CRM} platforms. By leveraging the \ac{OTel} framework, alongside AI-driven correlation analysis, they aim to transform raw telemetry into actionable insights. This shift from reactive troubleshooting to predictive maintenance represents a significant value-add for the Technogym's ecosystem, ensuring that \textit{Wellness} remains a seamless experience across both physical and digital domains. 
 
-\par The research is organized as follows: 
-\begin{itemize}
+\par The research is organized as follows:
+\begin{itemize}[nosep]
     \item \textbf{Chapter 2:} provides an overview of Technogym’s corporate philosophy and internal digital processes, highlighting the cultural drive for constant innovation. We will get acquainted with the project. 
     \item \textbf{Chapter 3:} explores the theoretical foundations of \textit{observability}, focusing on the \ac{OTel} standard and a comparative analysis of modern monitoring platforms to identify the most suitable solution for the enterprise context. 
     \item \textbf{Chapter 4:} details the practical implementation of the infrastructure from the initial \ac{POC}, an experiment conducted to validate the feasibility, functionality, and potential of a technology, to the integration of custom libraries. We will dive into the code architecture to understand how monitoring is enabled and integrated in the app. 
@@ -190,7 +191,7 @@ As main features, we find:
 The technology stack is plausibly expected to include version 18+ of React and 5+ of TypeScript for the frontend, OTLP as telemetry protocol, Vite as build tool for library bundle creation, Vitest for testing and Vite Plus with OXLint for linting and formatting, which concerns the process of running a program that will analyze code for potential errors. Linting focuses on enforcing coding conventions and best practices, detecting syntax errors and improving code readability as a sort of static analysis to catch issues early to maintain code consistency and clarity. Testing, whose debugging is a synonym, involves manually fixing the code after a bug has been found, generally after the program has run, and this differentiates it from the linting practice. This latter, before was implemented through the \textit{ESLint} library for the validation part, and the \textit{prettier} library for the formatting part, and thanks to plug-ins they could function simultaneously. Now, they switched to \textit{Vite Plus} with \textit{OXLint} because claimed to be up to 40 times faster and more powerful than traditional systems. Integrating a single package instead of keeping both ESLint and Prettier will reduce configuration conflicts and dependency vulnerabilities. 
 
 The workflow specifically declined for the internship project is intended as it follows:
-\begin{itemize}
+\begin{itemize}[nosep]
     \item \textbf{Phase 1.} In depth analysis of OpenTelemetry and its APIs, study of existing libraries and backend platforms to define the architectures to implement.
     \item \textbf{Phase 2.} Core implementation (with precedence to error tracking) to achieve the goals and observe the requirements mentioned above, adding the development of precise unit tests to simulate errors to check if they are collected in the platform. The idea is to start from a blank template that will be modified according to our needs to test if what we are building works before migrating everything to the real application. 
     \item \textbf{Phase 3.} Configuration of dashboards to monitor errors in the platform, and of alerting systems to notify errors from the platform.
@@ -383,28 +384,28 @@ In this chapter, we are going to dive into the practical implementation of the p
 
 \section{Preliminary Test of ClickStack and Datadog}
 
-The operational plan was generating the general telemetry setup to determine the structure and information we wanted any telemetry service to have, configuring the specific configuration for passing and managing telemetry through ClickStack and Datadog, and for completion improvising a demo page as interactive playground to test and verify telemetry collection from the simulated React application. Thanks to few simple buttons it allowed to manually trigger various telemetry events and see them appear in real-time in the ClickStack UI. To make it more efficient, I implemented a \textit{burst traffic} button to randomly generate a series of data of various types to collect more rapidly much information to proceed with dashboards and comparisons. 
+The operational plan was generating the general telemetry setup to determine the structure and information we wanted any telemetry service to have, enabling the specific configuration for passing and managing telemetry through ClickStack and Datadog, and for completion improvising a demo page as interactive playground to test and verify telemetry collection from the simulated React application. Thanks to few simple buttons, it allowed to manually trigger various telemetry events and see them appear in real-time in the ClickStack UI.
 The sections are:
-\begin{itemize}
-    \item User context to set user identity for tracking user-specific telemetry (user id, email), but for privacy policy it should be masked or hashed, especially when checking session replays; otherwise, the risk is going against the principles of the GDPR. In ClickStack's settings it is already possible to establish masking rules for sensitive data. It is important to link all telemetry events to a specific user for debugging user-specific issues; 
-    \item Global attributes to add app-wide attributes that appear in all telemetry events (region, app version, browser) to reduce code duplication because it appears everywhere once set, enables filtering and grouping in the UI and it is useful to correlate events across features;
-    \item Logging (of types info for general information message, warn for something unexpected but recoverable, debug for detailed debugging information usually disabled in production) and error tracking to record application events and messages at different security levels;
+\begin{itemize}[nosep]
+    \item User context to set user identity for tracking user-specific telemetry (user id, email), but for privacy policy it should be masked or hashed, especially when checking session replays; otherwise, the risk is to go against the principles of the GDPR. In ClickStack's settings it is already possible to establish masking rules for sensitive data. It is important to link all telemetry events to a specific user for debugging user-specific issues; 
+    \item Global attributes to add app-wide attributes that appear in all telemetry events (region, app version, browser) to reduce code duplication because it appears everywhere once set, enables filtering and grouping in the UI, and it is useful to correlate events across features;
+    \item Logging (of types \textit{info} for general information message, \textit{warn} for something unexpected but recoverable, \textit{debug} for detailed debugging information usually disabled in production) and error tracking to record application events and messages at different security levels;
     \item Metrics to record quantitative measurements (counters, gauges, histograms) and simulation scenarios for realistic user workflows with multiple telemetry events at once (e.g., a user journey which simulates a complete e-commerce flow from searching the product to successful purchase); 
     \item User sign up at first account creation; 
 \end{itemize}
 
+As already hinted, we tested ClickStack to discover HyperDX's functions. We enabled the access to the local OSS version to avoid creating an account with a limited free trial time. With a ClickStack Docker VM instance, we could explore the interface freely, even though probably the experience in this way was not the same as the one we would have had via registration, and not all features were correctly accessible (such as the AI), but it was enough to grasp the general functioning idea. We formed our environment thanks to the ingestion API key to establish the direct connection with HyperDX, and configured the ClickStack local host endpoint. We used the standard ClickHouse ports to collect and pass telemetry. It already came with automatic browser instrumentation with fetch API calls tracked automatically, XML HTTP requests monitoring and user interactions. 
+
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{figures/demo app.png}
+    \includegraphics[width=0.3\linewidth]{figures/demo app.png}
     \caption{Demo App interface for reference}
     \label{demo}
 \end{figure}
 
-As already hinted, we tested ClickStack to discover HyperDX's functions. We enabled the access to the local OSS version to avoid creating an account and requesting a limited free trial time. With a ClickStack Docker VM instance we could explore the interface freely, even though probably the experience in this way was not the same as the one we would have had via registration, and not all features were correctly accessible (such as the AI), but it was enough to grasp the general functioning idea. We formed our environment thanks to the ingestion API key to establish the direct connection with HyperDX, and configured the ClickStack local host endpoint. We used the standard ClickHouse ports to collect and pass telemetry. It already came with automatic browser instrumentation with fetch API calls tracked automatically, XML HTTP requests monitoring and user interactions. 
-
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{figures/HyperDX interface.png}
+    \includegraphics[width=0.8\linewidth]{figures/HyperDX interface.png}
     \caption{HyperDX interface: home page}
     \label{hyperdx}
 \end{figure}
@@ -427,7 +428,7 @@ As we can see in this image (\cref{hyperdx}), thanks to the demo application, we
     \end{subfigure}
 \end{figure}
 
-\section{Development standards for observability integration in the source code}
+\section{Development standards for observability \\ integration in the source code}
 
 The focal points concern the implementation of a new \textit{user story} dedicated to observability and the evolution of the modular architecture based on private packages. 
 
@@ -437,33 +438,49 @@ User stories represent specific units of work that need to be completed, such as
     \item \textbf{Commit Message Convention.} The Jira issue ID must also be included inside the commit messages, typically placed in the footer section under ``refs''. By putting the ID in both the branch name and the commit message, the team can easily trace all code modifications back to the specific Jira issue they were intended to solve. This is particularly useful because when a task is too large, it is typically broken down into multiple user stories, instead of putting hundreds of IDs in the branch name, the team creates a single general branch, and by keeping the ID in the refs, we ensure the reference to the exact user story while underlining that all together aim to pursue the same objective. 
 \end{itemize}
 
-The development model is rigorously structured around a standardized branching model to guarantee the stability of production environments and flexibility for releases. The basic rule establishes that each new feature or correction should start from the branch \textit{main} (production source code). This strategy allows to isolate changes and bring them to production singularly. This is done to avoid the inclusion of non-tested functionalities in the release branch. 
+The development model is rigorously structured around a standardized branching model to guarantee the stability of production environments and flexibility for releases. The basic rule establishes that each new feature or correction should start from the branch \textit{main} (production source code). This strategy allows isolating changes and bringing them to production singularly. This is done to avoid the inclusion of non-tested functionalities in the release branch. 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|l|}
+\begin{tabular}{|p{0.2\textwidth}|p{0.4\textwidth}|p{0.3\textwidth}|}
 \hline
 \textbf{Branch Type} & \textbf{Description} & \textbf{Naming Convention} \\ \hline
 Main & Source code in production & main \\ \hline
 Dev / Test & development and inspection environments & dev, test, alfa, beta \\ \hline
-Feature & New functionalities (with Jira ID) & feature/JiraID\_BriefDescription \\ \hline
+Feature & New functionalities (with Jira ID) & feature/\newline JiraID\_BriefDescription \\ \hline
 Release & Preparation for a new release & release/\textless name\textgreater \\ \hline
 \end{tabular}
 \caption{Git Branch Naming Conventions}
 \label{branch_conventions}
 \end{table}
 
-Also, commits need to follow a semantic standard to facilitate traceability on Jira. The structure is \texttt{\textless type\textgreater(\textless scope\textgreater): \textless description\textgreater}, where types are drawn from the conventional commits list (feat, fix, docs, style, refactor...), the scope has been decided internally to indicate the part of the application that has been modified (home, planner, training...), in the footer we find the refs field for the Jira issues.  
+Also, commits need to follow a semantic standard to facilitate traceability on Jira. The structure is \texttt{<type>(<scope>): <description>}, where types are drawn from the conventional commits list (feat, fix, docs, style, refactor...), the scope has been decided internally to indicate the part of the application that has been modified (home, planner, training...), in the footer we find the references field for the Jira issues.  
 
 The application follows a modular philosophy, where components are interchangeable to reduce the dependency from specific libraries and to facilitate updates. The code is organized into reusable packages hosted in a private registry. The two main packages are ``Infrastructure'' with the basic logic, and ``Web App UI'' to manage UI components. The access to those requires authentication via private token locally configured in the NPM registry. 
 The architecture is based on generic interfaces. For instance, the ``Tracking Service'' (initially referred to Google Analytics) is extended to the new Telemetry Service. The aim is not making the interface dependent on third-party libraries such as OTel, but these should be confined exclusively in the specific provider implementation (in our cases, ClickStack or Datadog). To achieve this, we defined a generic \textit{TelemetryService} interface. Instead of directly importing from OpenTelemetry API, we created custom generic types, such as a dictionary for attributes, where the key is a string and the value can be a string, number, or boolean, so the interface itself has zero dependency. This strict separation guarantees that if the team decides to stop using OpenTelemetry in the future, the core application interfaces will not need to be rewritten. The actual OTel logic is isolated within two specific implementation files, one regarding ClickStack for initial tests while waiting for Datadog's platform activation and exploratory sessions, and the other for using the latter. The necessary OTel packages are installed in the package.json as standard dependencies rather than development dependencies, ensuring that they are included in the final compile application build.  
 
-\subsection{Architecture of the telemetry service and sanitization for page views tracking}
+\subsection{Architecture of the telemetry service and \\ sanitization for page views tracking}
 
-Once the telemetry abstraction layer has been introduced, the next step consisted in instrumenting the application to collect navigation events. Sending metrics, logs and traces was quite trivial, since we just had to import the code we had prefabricated in the demo app and just apply some refinements to exactly integrate it with the existing components. Another observability feature implemented through the new architecture was page view tracking, again taking inspiration to the already done work. Page views are essential telemetry signals to jump into user navigation flows and allow the construction of usage analytics dashboards. To reach this goal, the activity focused on automatically tracking route changes throughout the application. 
+Once the telemetry abstraction layer has been introduced, the next step consisted in instrumenting the application to collect navigation events. Sending metrics, logs and traces was quite trivial, since we just had to import the code we had prefabricated in the demo app and just apply some refinements to integrate it with the existing components. Another observability feature implemented through the new architecture was page view tracking, again taking inspiration to the already done work. Page views are essential telemetry signals to jump into user navigation flows and to allow the construction of usage analytics dashboards. To reach this goal, the activity focused on automatically tracking route changes throughout the application. 
 
 The tracking logic was centralized: instead of embedding telemetry calls inside individual pages which would cause \textit{scattering} (literally spreading things over a wide area, hence calls towards tracking systems would be lost in the whole business logic, making each modification onerous and error-prone), the implementation leveraged the telemetry service abstraction and centralized page view registration within the routing layer. This approach reduced code duplication and guaranteed consistent event generation across the entire application. The \textit{trackPageView} method uses the parameter ``path'' instead of the complete URL. This must be brought to attention because while the URL (composed of \textit{window.location.href}) might include protocols and hosts, the \textit{path} identifies the logical internal path (e.g. /people/contacts). This choice was made for privacy protection to avoid the unintentional capture of PII (Personal Identifiable Information) or sensible query parameters. Basically, what we did is called sanitization. 
 
 Sanitization links to the concept of data cleanliness, too. Sending row data to monitoring systems is not only risky in privacy terms, but could additionally cause a technical issue known as ``cardinality explosion''. If dashboards receive tons of univocal entries, their statistical aggregation becomes unfeasible, making data unavailable for operational monitoring. The usage of a GUID (Globally Unique Identifier) composed of 32 characters by default separated by dashes in URL paths prevents metrics' grouping. It means that every access to a specific resource would be seen as a different page because the user has changed. Sanitization is the only way which allows operators to visualize traffic as aggregated per sections. For instance, /contacts/UUID-123 turns into more generic /contacts/ID. In the code we can find a sanitization function in the telemetry utilities which exploits regex to identify not only GUIDs, but also numerical and more compact ``object IDs'' typically returned by databases. These identifiers get replaced with a generic ``ID'' which guarantees cleanliness across sent data. 
+
+\subsection{API observability: legacy status codes \\ and distributed request tracing}
+
+\ref{API} \acp{API} are the invisible backbone of modern software development. They enable applications and systems to communicate and share data efficiently with seamless interactions among platforms, services and applications. The API takes a request, sends it to the server, retrieves the data and then returns the response. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{figures/api.png}
+    \caption{API Request-Response Cycle.}
+    \source{https://www.geeksforgeeks.org/software-testing/what-is-an-api/}
+    \label{api-cycle}
+\end{figure}
+
+There are numerous types of APIs we could mention, but in our case study what is relevant is studying the \textit{RESTful APIs}, which are based on the principles of Representational State Transfer (REST). RESTful APIs use standard HTTP methods (GET to retrieve a record, POST to create a new one, PUT to update it, PATCH as a partial update, DELETE to remove the record) to perform operations on resources identified by URLs. They are stateless, meaning each request from a client to a server must contain all the information needed to understand and process the request. RESTful APIs are widely used due to their simplicity, scalability, and compatibility with web technologies. In our context, it is essential to understand the error categories that can be returned by the server in response to a request. These are represented by three-digit HTTP status codes that start from 4xx to 5xx. For instance, some of the most common mistakes that can be experienced by normal users are error 404 (Not Found), error 403 (Forbidden), error 401 (Unauthorized) and error 500 (Internal Server Error) or 503 (Service Unavailable). The 5xx category is the most dangerous because it indicates a server-side problem that prevents the request from being fulfilled, while the others concern client-side criticalities. Furthermore, we can encounter network errors (timeouts, connection refused), or custom business logic errors, which return a 200 status code (OK) even when the request is not successful, and the error payload attached should be investigated to verify if there is something wrong and where. 
+
+The latter is particularly crucial in our architecture. 
 
 
 

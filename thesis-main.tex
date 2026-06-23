@@ -67,7 +67,7 @@
 \acrodef{SRE}{Site Reliability Engineering}
 \acrodef{MTTR}{Mean Time to Repair}
 \acrodef{DOM}{Document Object Model}
-\acrodef{CWV}{Core Web Vitals}
+\acrodef{CWV}{Core Web Vital}
 \acrodef{API}{Application Programming Interfaces}
 
 
@@ -464,11 +464,40 @@ Once the telemetry abstraction layer has been introduced, the next step consiste
 
 The tracking logic was centralized: instead of embedding telemetry calls inside individual pages which would cause \textit{scattering} (literally spreading things over a wide area, hence calls towards tracking systems would be lost in the whole business logic, making each modification onerous and error-prone), the implementation leveraged the telemetry service abstraction and centralized page view registration within the routing layer. This approach reduced code duplication and guaranteed consistent event generation across the entire application. The \textit{trackPageView} method uses the parameter ``path'' instead of the complete URL. This must be brought to attention because while the URL (composed of \textit{window.location.href}) might include protocols and hosts, the \textit{path} identifies the logical internal path (e.g. /people/contacts). This choice was made for privacy protection to avoid the unintentional capture of PII (Personal Identifiable Information) or sensible query parameters. Basically, what we did is called sanitization. 
 
+\begin{lstlisting}[language=Kotlin, caption={sanitization function}, label=lst:sanitization]
+    export function sanitizePath(path: string): string {
+  return path
+    .split('/')
+    .map(segment => {
+      // Check if segment is a GUID (with or without dashes)
+      // Pattern: 8-4-4-4-12 hex digits or 32 hex digits without dashes
+      const isGuid = /^[0-9a-f]{8}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{4}-?[0-9a-f]{12}$/i.test(segment)
+
+      // Check if segment is a MongoDB ObjectId
+      // Pattern: 24 hexadecimal characters
+      const isObjectId = /^[0-9a-f]{24}$/i.test(segment)
+
+      // Check if segment is purely numeric (IDs like 123, 456)
+      const isNumericId = /^\d+$/.test(segment)
+
+      // Replace GUIDs, ObjectIds, and numeric IDs with :id
+      if (isGuid || isObjectId || isNumericId) {
+        return ':id'
+      }
+
+      return segment
+    })
+    .join('/')
+\end{lstlisting}
+
+
 Sanitization links to the concept of data cleanliness, too. Sending row data to monitoring systems is not only risky in privacy terms, but could additionally cause a technical issue known as ``cardinality explosion''. If dashboards receive tons of univocal entries, their statistical aggregation becomes unfeasible, making data unavailable for operational monitoring. The usage of a GUID (Globally Unique Identifier) composed of 32 characters by default separated by dashes in URL paths prevents metrics' grouping. It means that every access to a specific resource would be seen as a different page because the user has changed. Sanitization is the only way which allows operators to visualize traffic as aggregated per sections. For instance, /contacts/UUID-123 turns into more generic /contacts/ID. In the code we can find a sanitization function in the telemetry utilities which exploits regex to identify not only GUIDs, but also numerical and more compact ``object IDs'' typically returned by databases. These identifiers get replaced with a generic ``ID'' which guarantees cleanliness across sent data. 
 
-\subsection{API observability: legacy status codes \\ and distributed request tracing}
+\subsection{Performance monitoring: legacy and new APIs \\ and Core Web Vitals}
 
-\ref{API} \acp{API} are the invisible backbone of modern software development. They enable applications and systems to communicate and share data efficiently with seamless interactions among platforms, services and applications. The API takes a request, sends it to the server, retrieves the data and then returns the response. 
+\cite{perfmon} Performance monitoring concerns the systemic process of tracking, measuring, and analyzing key performance indicators to ensure goals are being met, and evaluate the progress and effectiveness of an application in this specific case. The guidelines for the project were to keep under control \acp{CWV}, page and resource loading time and React component rendering performance, besides analyzing API call response time. 
+
+\cite{API} \acp{API} are the invisible backbone of modern software development. They enable applications and systems to communicate and share data efficiently with seamless interactions among platforms, services and applications. The API takes a request, sends it to the server, retrieves the data and then returns the response. 
 
 \begin{figure}[H]
     \centering
@@ -481,6 +510,32 @@ Sanitization links to the concept of data cleanliness, too. Sending row data to 
 There are numerous types of APIs we could mention, but in our case study what is relevant is studying the \textit{RESTful APIs}, which are based on the principles of Representational State Transfer (REST). RESTful APIs use standard HTTP methods (GET to retrieve a record, POST to create a new one, PUT to update it, PATCH as a partial update, DELETE to remove the record) to perform operations on resources identified by URLs. They are stateless, meaning each request from a client to a server must contain all the information needed to understand and process the request. RESTful APIs are widely used due to their simplicity, scalability, and compatibility with web technologies. In our context, it is essential to understand the error categories that can be returned by the server in response to a request. These are represented by three-digit HTTP status codes that start from 4xx to 5xx. For instance, some of the most common mistakes that can be experienced by normal users are error 404 (Not Found), error 403 (Forbidden), error 401 (Unauthorized) and error 500 (Internal Server Error) or 503 (Service Unavailable). The 5xx category is the most dangerous because it indicates a server-side problem that prevents the request from being fulfilled, while the others concern client-side criticalities. Furthermore, we can encounter network errors (timeouts, connection refused), or custom business logic errors, which return a 200 status code (OK) even when the request is not successful, and the error payload attached should be investigated to verify if there is something wrong and where. 
 
 The latter is particularly crucial in our architecture. The old legacy APIs are managed with an explicit comment at code-level to check if there is an "error" array despite the 200 OK response. This was a common practice to separate HTTP errors from applicative errors, to distinguish when a request fails from when it arrives correctly, but the operation failed for business reasons. The new APIs, instead, are designed to return a 4xx or 5xx status code when an error occurs, following the standard HTTP conventions. This change improves the clarity of error handling and allows for more efficient debugging and monitoring of API interactions; as a matter of fact, the following steps involve a transition to the new ones, but this is a long-term process that requires time and effort, therefore in the meantime we need to handle what is already in production.
+
+\begin{lstlisting}[language=Kotlin, caption={API error handling}, label=lst:api-error-handling]
+import HttpResponseMessage from './../../http/models/HttpResponseMessage';
+import HttpStatusCodeType from './../../http/models/HttpStatusCodeType';
+import RepositoryResponseError from './RepositoryResponseError';
+
+declare class RepositoryResponse<TData> {
+    data?: TData;
+    errors?: RepositoryResponseError[];
+    token?: string;
+    tokenNotValid: boolean;
+    permissionDenied: boolean;
+    mfaRequired: boolean;
+    statusCode?: HttpStatusCodeType;
+    constructor(
+        httpResponse?: HttpResponseMessage,
+        responseIsInBody?: boolean,
+        responseMapper?: (data: any) => TData
+    );
+    get hasErrors(): boolean;
+    getErrorMessage(): string;
+    private getGenericError;
+}
+
+export default RepositoryResponse;
+\end{lstlisting}
 
 
 

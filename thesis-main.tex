@@ -378,7 +378,7 @@ Even though the cost-model is incredibly tempting with ClickStack and ClickHouse
 
 All these motives led us to confirming Datadog as the best solution, affirming again itself as probable leader on the market. 
 
-\chapter{Contribution}
+\chapter{Practical implementation: from proof of concept to production integration}
 
 In this chapter, we are going to dive into the practical implementation of the project. 
 
@@ -537,9 +537,16 @@ declare class RepositoryResponse<TData> {
 export default RepositoryResponse;
 \end{lstlisting}
 
+\cite{CWV} \acp{CWV} is a set of metrics that measure real-world user experience for loading performance, interactivity, and visual stability of the page. The categories we are interested in refer mainly to the user experience impact: 
+\begin{itemize}
+    \item \textbf{LCP (Largest Contentful Paint.)} It tracks how fast the main content loads, which can correlate to retention rate because, if the users abandon slow sites, retention is directly affected negatively. 
+    \item \textbf{FID/INP (First Input Delay/Interaction to Next Paint.)} It is about responsiveness of the elements. At the beginning there was only FID, which measures only the time of the first user input to start the interaction, this is why nowadays is often sided or replaces by INP, which is about the total response time that comprehends all interactions, which can be more useful in application contexts. 
+    \item \textbf{CLS (Cumulative Layout Shift).} It concerns visual stability. If there are unexpected layout shifts, it can lead to user errors or general poor \ac{UX}, which discourages people to use the app. 
+\end{itemize}
 
 
-\section{Fancy formulas here}
+
+\section{Sarà la sezione su dashboard datadog etc.}
 
 %----------------------------------------------------------------------------------------
 % BIBLIOGRAPHY

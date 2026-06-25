@@ -286,7 +286,7 @@ They excel at maintaining data integrity through \ac{ACID} compliance but strugg
     \label{warehouse}
 \end{figure}
 
-The explosion of \textit{Big Data} - characterized by high volume, velocity, and variety - led to the adoption of the \textit{Data Lake}. Unlike the warehouse, a lake serves as a central repository for raw data. This reflects a Schema-on-Read, because data is ingested without a predefined schema, avoiding the latency of upfront processing. Anyways, the risk is producing a \textit{Data Swamp}, because it can make data dirty due to the lack of structure even though it is highly flexible and cost-effective for storing massive telemetry logs. Consequently, the most recent architectural wave, formalized around 2021, is the \textit{Data Lakehouse}. This paradigm seeks to eliminate the inefficient ``two-tier'' architecture where data is duplicated between a lake (for Data Science) and a warehouse (for BI).
+The explosion of \textit{Big Data} - characterized by high volume, velocity, and variety - led to the adoption of the \textit{Data Lake}. Unlike the warehouse, a lake serves as a central repository for raw data. This reflects a Schema-on-Read, because data is ingested without a predefined schema, avoiding the latency of upfront processing. Anyway, the risk is producing a \textit{Data Swamp}, because it can make data dirty due to the lack of structure even though it is highly flexible and cost-effective for storing massive telemetry logs. Consequently, the most recent architectural wave, formalized around 2021, is the \textit{Data Lakehouse}. This paradigm seeks to eliminate the inefficient ``two-tier'' architecture where data is duplicated between a lake (for Data Science) and a warehouse (for BI).
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/lake.png}
@@ -570,8 +570,6 @@ This is needed because any kind of discomfort that the client might experience w
 \end{itemize}
 
 To qualify as "good" performance, Google establishes the following thresholds: LCP should occur within 2.5 seconds, INP should be below 200 milliseconds, and CLS should remain under 0.1. These targets must be met for at least 75\% of page visits. For Technogym, establishing these benchmarks as \ac{SLI} allows the team to define clear \ac{SLO} and trigger alerts when performance degrades, enabling proactive intervention before users experience significant impact. Integrating CWV monitoring into the observability infrastructure provides real-time visibility into user experience across different devices, network conditions, and geographic regions. Through OpenTelemetry's browser instrumentation, these metrics can be correlated with backend traces, allowing the team to identify whether a poor LCP stems from slow API responses, excessive JavaScript execution, or network latency. This end-to-end visibility transforms CWV from isolated frontend metrics into actionable insights that guide both frontend and backend optimization efforts.
-
-
 
 
 \section{Sarà la sezione su dashboard datadog etc.}

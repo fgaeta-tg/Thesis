@@ -69,6 +69,9 @@
 \acrodef{DOM}{Document Object Model}
 \acrodef{CWV}{Core Web Vital}
 \acrodef{API}{Application Programming Interfaces}
+\acrodef{BE}{backend}
+\acrodef{FE}{frontend}
+\acrodef{CORS}{Cross-Origin Resource Sharing}
 
 
 \mainlinespacing{1.241} % line spacing in mainmatter, comment to default (1)
@@ -537,12 +540,37 @@ declare class RepositoryResponse<TData> {
 export default RepositoryResponse;
 \end{lstlisting}
 
+The \ac{BE} teams - managing API calls, connections to databases, AI integration to work with data - were already exploiting Datadog in four main areas: \ac{APM} for all microservices, infrastructure and cloud monitoring to collect metrics from the underlying AWS infrastructure, alerting for critical reliability signals, logs and async processing with archive search for historical investigation. 
+When \ac{BE} and \ac{FE} are monitored in isolation, the views for each are disconnected even if they concern the same user journey. The FE lives through RUM and the BE through APM, and this creates a gap. By reaching the goal of linking RUM sessions to backend traces, we get an end-to-end view. The correlation works through a distributed tracing context injection so that the RUM SDK ingests trace headers into every HTTP request to the backend. 
+
+\begin{lstlisting}[language=Kotlin, caption={RUM SDK trace context}, label=lst:trace-cont]
+datadogRum.init({
+  applicationId: '<APPLICATION_ID>',
+  clientToken: '<CLIENT_TOKEN>',
+  site: 'datadoghq.com',
+  service: 'professional-next',
+  allowedTracingUrls: [
+    "https://services.mywellness.com",
+    /^https:\/\/[^\/]+\.mywellness\.com/
+  ],
+  trackResources: true,
+  trackLongTasks: true,
+  trackUserInteractions: true,
+});
+\end{lstlisting}
+
+To show the chain, we need RUM configured with \textit{allowedTracingUrls} to know which calls to correlate, and W3C trace context propagation \textit{traceparent} to link the BE trace to its child. \ac{CORS} should already be configured to allow such headers, because the backend has to accept them due to security rules. \cite{CORS}Indeed, \ac{CORS} is a mechanism for integrating applications by defining a way for client web applications that are loaded in one domain to interact with resources in a different domain. This is useful because complex applications often reference third-party APIs and resources in their client-side code. 
+This is needed because any kind of discomfort that the client might experience while using the CRM Mywellness application is perceived as an interface/application error, even when it is not a responsibility of frontend programmers, but the common user has no technical expertise to understand it, hence their feedbacks will sound generic, too. Without this proper traceability methdology, we would waste a lot of time looking for the source of the problem almost randomly checking code files. 
+
 \cite{CWV} \acp{CWV} is a set of metrics that measure real-world user experience for loading performance, interactivity, and visual stability of the page. The categories we are interested in refer mainly to the user experience impact: 
 \begin{itemize}
     \item \textbf{LCP (Largest Contentful Paint.)} It tracks how fast the main content loads, which can correlate to retention rate because, if the users abandon slow sites, retention is directly affected negatively. 
     \item \textbf{FID/INP (First Input Delay/Interaction to Next Paint.)} It is about responsiveness of the elements. At the beginning there was only FID, which measures only the time of the first user input to start the interaction, this is why nowadays is often sided or replaces by INP, which is about the total response time that comprehends all interactions, which can be more useful in application contexts. 
     \item \textbf{CLS (Cumulative Layout Shift).} It concerns visual stability. If there are unexpected layout shifts, it can lead to user errors or general poor \ac{UX}, which discourages people to use the app. 
 \end{itemize}
+
+To qualify as "good" performance, Google establishes the following thresholds: LCP should occur within 2.5 seconds, INP should be below 200 milliseconds, and CLS should remain under 0.1. These targets must be met for at least 75\% of page visits. For Technogym, establishing these benchmarks as \ac{SLI} allows the team to define clear \ac{SLO} and trigger alerts when performance degrades, enabling proactive intervention before users experience significant impact. Integrating CWV monitoring into the observability infrastructure provides real-time visibility into user experience across different devices, network conditions, and geographic regions. Through OpenTelemetry's browser instrumentation, these metrics can be correlated with backend traces, allowing the team to identify whether a poor LCP stems from slow API responses, excessive JavaScript execution, or network latency. This end-to-end visibility transforms CWV from isolated frontend metrics into actionable insights that guide both frontend and backend optimization efforts.
+
 
 
 

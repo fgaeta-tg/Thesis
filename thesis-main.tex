@@ -30,7 +30,7 @@
 \title{Observability in Technogym:}
 \author{Francesca Gaeta}
 \date{\today}
-\subject{CLOUD PLATFORMS}
+\subject{BIG DATA AND CLOUD PLATFORMS}
 \supervisor{Prof. Matteo Francia}
 \cosupervisor{Dott. Davide Domini}
 \session{II}
@@ -47,7 +47,7 @@
 \acrodef{RUM}{Real User Monitoring}
 \acrodef{UX}{User Experience}
 \acrodef{APM}{Application Performance Monitoring}
-\acrodef{OLTPDB}{Online Transaction Processing}
+\acrodef{OLTP}{Online Transaction Processing}
 \acrodef{BI}{Business Intelligence}
 \acrodef{OLAP}{Online Analytical Processing}
 \acrodef{ACID}{Atomicity, Consistency, Isolation, Durability}
@@ -271,7 +271,7 @@ Finally, the transition to observability is as much a cultural shift as a techni
 
 Today, OTel can correctly cover errors, performance and cross-signal correlation, but it does not natively provide heatmaps and scrollmaps, visual \ac{DOM} snapshots, product analytics funnels, retention and cohorts. We can add it thanks to other vendors. Hence, it is essential to identify the critical aspects and distinctions among typologies of platforms to effectively assess the solutions currently available on the market.
 
-The point of interest is that, from the very beginning, data management was centered around the \textit{Relational Data Model}. These systems are designed for Schema-on-Write, meaning the data structure must be strictly defined before any information is ingested. Also, primordial databases were optimized for \ac{OLTPDB}, therefore daily operational tasks (e.g., updating a user's weight in a \ac{CRM}). 
+The point of interest is that, from the very beginning, data management was centered around the \textit{Relational Data Model}. These systems are designed for Schema-on-Write, meaning the data structure must be strictly defined before any information is ingested. Also, primordial databases were optimized for \ac{OLTP}, therefore daily operational tasks (e.g., updating a user's weight in a \ac{CRM}). 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{figures/relational.png}

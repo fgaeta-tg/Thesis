@@ -362,55 +362,52 @@ In this chapter, we are going to dive into the practical implementation of the p
 The operational plan was generating the general telemetry setup to determine the structure and information we wanted any telemetry service to have, enabling the specific configuration for passing and managing telemetry through ClickStack and Datadog, and for completion improvising a demo page as interactive playground to test and verify telemetry collection from the simulated React application. Thanks to few simple buttons, it allowed to manually trigger various telemetry events and see them appear in real-time in the ClickStack UI.
 The sections are:
 \begin{itemize}[nosep]
-    \item User context to set user identity for tracking user-specific telemetry (user id, email), but for privacy policy it should be masked or hashed, especially when checking session replays; otherwise, the risk is to go against the principles of the GDPR. In ClickStack's settings it is already possible to establish masking rules for sensitive data. It is important to link all telemetry events to a specific user for debugging user-specific issues; 
+    \item User context to set user identity for tracking user-specific telemetry (user id, email), but for privacy policy it should be masked or hashed, especially when checking session replays; otherwise, the risk is to go against the principles of the GDPR. In ClickStack's settings it is already possible to establish masking rules for sensitive data; 
     \item Global attributes to add app-wide attributes that appear in all telemetry events (region, app version, browser) to reduce code duplication because it appears everywhere once set, enables filtering and grouping in the UI, and it is useful to correlate events across features;
     \item Logging (of types \textit{info} for general information message, \textit{warn} for something unexpected but recoverable, \textit{debug} for detailed debugging information usually disabled in production) and error tracking to record application events and messages at different security levels;
     \item Metrics to record quantitative measurements (counters, gauges, histograms) and simulation scenarios for realistic user workflows with multiple telemetry events at once (e.g., a user journey which simulates a complete e-commerce flow from searching the product to successful purchase); 
     \item User sign up at first account creation; 
 \end{itemize}
 
-As already hinted, we tested ClickStack to discover HyperDX's functions. We enabled the access to the local OSS version to avoid creating an account with a limited free trial time. With a ClickStack Docker VM instance, we could explore the interface freely, even though probably the experience in this way was not the same as the one we would have had via registration, and not all features were correctly accessible (such as the AI), but it was enough to grasp the general functioning idea. We formed our environment thanks to the ingestion API key to establish the direct connection with HyperDX, and configured the ClickStack local host endpoint. We used the standard ClickHouse ports to collect and pass telemetry. It already came with automatic browser instrumentation with fetch API calls tracked automatically, XML HTTP requests monitoring and user interactions. 
+As already hinted, we tested ClickStack to discover HyperDX's functionalities. We enabled the access to the local OSS version to avoid creating an account with a limited free trial time. With a ClickStack Docker VM instance, we could explore the interface freely, even though probably the experience in this way was not the same as the one we would have had via registration, and not all features were correctly accessible (such as the AI), but it was enough to grasp the general functioning idea. We formed our environment thanks to the ingestion API key to establish the direct connection with HyperDX, and configured the ClickStack local host endpoint. We used the standard ClickHouse ports to collect and pass telemetry. It already came with automatic browser instrumentation with fetch API calls tracked automatically, XML HTTP requests monitoring and user interactions. 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\linewidth]{figures/demo app.png}
+    \includegraphics[width=0.5\linewidth]{figures/demo app.png}
     \caption{Demo App interface for reference}
     \label{demo}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\linewidth]{figures/HyperDX interface.png}
+    \makebox[\linewidth]{\includegraphics[width=1.2\linewidth]{figures/HyperDX interface.png}}
     \caption{HyperDX interface: home page}
     \label{hyperdx}
 \end{figure}
 
 As we can see in this image (\Cref{hyperdx}), thanks to the demo application, we have tested the collection of logs and traces in HyperDX, so that we could see the exact movements of the cursor of the user on the screen. By clicking on a specific row, we can visualize more detailed information in the form of tags that we used to write the SQL queries to build the dashboards. Some examples are:
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.55\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/dash HyperDX.png}
-        \caption{Dashboards in HyperDX to Track Errors}
-        \label{dashboard}
-    \end{subfigure}
-    \hfill 
-    \begin{subfigure}[b]{0.37\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{figures/SQL HyperDX.png} 
-        \caption{SQL for Errors by Message}
-        \label{sql}
-    \end{subfigure}
+    \includegraphics[width=1\linewidth]{figures/dash HyperDX.png}
+    \caption{Dashboards in HyperDX to Track Errors}
+    \label{dashboard}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{figures/SQL HyperDX.png}
+    \caption{SQL for Errors by Message}
+    \label{sql}
 \end{figure}
 
 \section{Development standards for observability \\ integration in the source code}
 
 The focal points concern the implementation of a new \textit{user story} dedicated to observability and the evolution of the modular architecture based on private packages. 
 
-User stories represent specific units of work that need to be completed, such as developing a new feature, implementing tracking infrastructure, or fixing a bug. They are used to plan and schedule what modifications will be included in upcoming product released and can be tracked thanks to a platform called Jira. The team has established strict conventions to link these user stories directly to their Git workflow: 
+User stories represent specific units of work that need to be completed, such as developing a new feature, implementing tracking infrastructure, or fixing a bug. They are used to planning and scheduling what modifications will be included in upcoming product releases and can be tracked thanks to a platform called Jira. The team has established strict conventions to link these user stories directly to their Git workflow: 
 \begin{itemize}
     \item \textbf{Branch Naming Convention.} When a developer creates a new branch for a single user story, the branch name must begin with the Jira user story ID, followed by an underscore and a brief description of the task. In our case, the specific ID was ``PROS-9099'' (written as: \textit{PROS-9099\_Observability}). 
-    \item \textbf{Commit Message Convention.} The Jira issue ID must also be included inside the commit messages, typically placed in the footer section under ``refs''. By putting the ID in both the branch name and the commit message, the team can easily trace all code modifications back to the specific Jira issue they were intended to solve. This is particularly useful because when a task is too large, it is typically broken down into multiple user stories, instead of putting hundreds of IDs in the branch name, the team creates a single general branch, and by keeping the ID in the refs, we ensure the reference to the exact user story while underlining that all together aim to pursue the same objective. 
+    \item \textbf{Commit Message Convention.} The Jira issue ID must also be included inside the commit messages, typically placed in the footer section under ``refs''. By putting the ID in both the branch name and the commit message, the team can easily trace all code modifications back to the specific Jira issue they were intended to solve. This is particularly useful because when a task is too large, it is typically broken down into multiple user stories instead of putting hundreds of IDs in the branch name. The team creates a single general branch, and by keeping the ID in the refs, they ensure the reference to the exact user story while underlining that all together aim to pursue the same objective. 
 \end{itemize}
 
 The development model is rigorously structured around a standardized branching model to guarantee the stability of production environments and flexibility for releases. The basic rule establishes that each new feature or correction should start from the branch \textit{main} (production source code). This strategy allows isolating changes and bringing them to production singularly. This is done to avoid the inclusion of non-tested functionalities in the release branch. 
@@ -473,7 +470,7 @@ The GDPR governs the collection of personal data within the EU territory. Its ob
 In art.4, we encounter the definition of \textit{personal data} as any information relating to a natural person, also known as data subject, identified or identifiable, directly or indirectly, by reference to an identifier such as name, ID number, location data, or more factors specific to the physical, physiological, cultural (...) identity of that person \cite{GDPR}. 
 Enterprises must pay attention to the \textit{principle of data minimization}, which states that personal data must be adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed. In our case, it means we should not send any PII to the telemetry system, and we should avoid sending any sensitive data that could be used to identify a user. 
 
-Since we wanted to track user navigation flows and revise them in session replays, it was mandatory to implement a masking strategy to hide sensitive information, which leaded us to obscuring the input fields for usernames and passwords, address, telephone number, birthdate and so on. Consequently, we also needed to reach the same results for dropdown menus used to select sensitive information, such as the birthdate through the common date picker interface. In the original code before bringing my edits, Mouseflow was the tool used for user interactions granular monitoring. The system utilized the \texttt{SensitiveInfoClassName} constant (defined as \texttt{sensitive\_info}) and the boolean \texttt{sensitive} prop to mark components that need to be hidden. Among these elements, profile pictures are also included, considering that platforms are generally not able to autonomously understand which images need to be covered as sensitive content. Mouseflow also prevented data capture at the source, masking information directly on the client-side to avoid any risky transmission, considering that post-processing would be actually forbidden according to the company's Zero-Trust Data Egress policy. 
+Since we wanted to track user navigation flows and revise them in session replays, it was mandatory to implement a masking strategy to hide sensitive information, which leaded us to obscuring the input fields for usernames and passwords, address, telephone number, birthdate (...). Consequently, we also needed to reach the same results for dropdown menus used to select sensitive information, such as the birthdate through the common date picker interface. In the original code before bringing the new edits, Mouseflow was the tool used for user interactions granular monitoring. The system utilized the \texttt{SensitiveInfoClassName} constant (defined as \texttt{sensitive\_info}) and the boolean \texttt{sensitive} prop to mark components that need to be hidden. Among these elements, profile pictures are also included, considering that platforms are generally not able to autonomously understand which images need to be covered as sensitive content. Mouseflow also prevented data capture at the source, masking information directly on the client-side to avoid any risky transmission, considering that post-processing would be actually forbidden according to the company's Zero-Trust Data Egress policy. 
 Datadog RUM, instead, offers advanced instruments for privacy management, but the configuration must be calibrated in order to reflect the severity of our current system. Datadog provides two approaches for marking sensitive content: HTML attributes (data-dd-privacy=``value'') or CSS classes (dd-privacy-value). The available privacy levels are:
 \begin{itemize}
     \item \textbf{hidden:} the content of the element is not captured in the session replay, and it is replaced with a placeholder such as a gray rectangle, which is the safest solution since it does not even let third parties know the number of characters and words in the field;
@@ -493,13 +490,13 @@ Performance monitoring concerns the systemic process of tracking, measuring, and
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{figures/api.png}
+    \includegraphics[width=0.7\linewidth]{figures/api.png}
     \caption{API Request-Response Cycle.}
     \source{https://www.geeksforgeeks.org/software-testing/what-is-an-api}
     \label{api-cycle}
 \end{figure}
 
-There are numerous types of APIs we could mention, but in our case study what is relevant is studying the \textit{RESTful APIs}, which are based on the principles of Representational State Transfer (REST). RESTful APIs use standard HTTP methods (GET to retrieve a record, POST to create a new one, PUT to update it, PATCH as a partial update, DELETE to remove the record) to perform operations on resources identified by URLs. They are stateless, meaning each request from a client to a server must contain all the information needed to understand and process the request. RESTful APIs are widely used due to their simplicity, scalability, and compatibility with web technologies. In our context, it is essential to understand the error categories that can be returned by the server in response to a request. These are represented by three-digit HTTP status codes that start from 4xx to 5xx. For instance, some of the most common mistakes that can be experienced by normal users are error 404 (Not Found), error 403 (Forbidden), error 401 (Unauthorized) and error 500 (Internal Server Error) or 503 (Service Unavailable). The 5xx category is the most dangerous because it indicates a server-side problem that prevents the request from being fulfilled, while the others concern client-side criticalities. Furthermore, we can encounter network errors (timeouts, connection refused), or custom business logic errors, which return a 200 status code (OK) even when the request is not successful, and the error payload attached should be investigated to verify if there is something wrong and where. 
+There are numerous types of APIs we could mention, but in our case study what is relevant is understanding the \textit{RESTful APIs}, which are based on the principles of Representational State Transfer (REST). RESTful APIs use standard HTTP methods (GET to retrieve a record, POST to create a new one, PUT to update it, PATCH as a partial update, DELETE to remove the record) to perform operations on resources identified by URLs. They are stateless, meaning each request from a client to a server must contain all the information needed to understand and process the request. RESTful APIs are widely used due to their simplicity, scalability, and compatibility with web technologies. In our context, it is essential to understand the error categories that can be returned by the server in response to a request. These are represented by three-digit HTTP status codes that start from 4xx to 5xx. For instance, some of the most common mistakes that can be experienced by normal users are error 404 (Not Found), error 403 (Forbidden), error 401 (Unauthorized) and error 500 (Internal Server Error) or 503 (Service Unavailable). The 5xx category is the most dangerous because it indicates a server-side problem that prevents the request from being fulfilled, while the others concern client-side criticalities. Furthermore, we can encounter network errors (timeouts, connection refused), or custom business logic errors, which return a 200 status code (OK) even when the request is not successful, and the error payload attached should be investigated to verify if there is something wrong and where. 
 
 The latter is particularly crucial in our architecture. The old legacy APIs are managed with an explicit comment at code-level to check if there is an "error" array despite the 200 OK response. This was a common practice to separate HTTP errors from applicative errors, to distinguish when a request fails from when it arrives correctly, but the operation failed for business reasons. The new APIs, instead, are designed to return a 4xx or 5xx status code when an error occurs, following the standard HTTP conventions. This change improves the clarity of error handling and allows for more efficient debugging and monitoring of API interactions; as a matter of fact, the following steps involve a transition to the new ones. The migration of API legacy is a tactic necessity dictated by the \ac{EoS} of current servers, estimated for the beginning of next year (2027). There are two possible ``versioning APIs'' strategies teams can choose between, but right now they are adopting V1 which is a more trivial redirect, because with respect to the V2 strategy it is faster thanks to the fact that there is no need to re-create the API from scratch, but the input and output will stay the same so that the test phase is faced quickly, the impact on the client is null since touchpoints are not affected and the transition is transparent. The result is a new infrastructure maintaining the legacy code, while in V2 a new paradigm with a new code would be introduced. The V2 strategy is still in the to-do list, but it is a long-term strategy that requires time, effort and risk for mistakes, therefore it is essential for now to minimize the impact on the client and accelerate parity tests.
 

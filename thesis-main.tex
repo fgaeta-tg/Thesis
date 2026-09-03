@@ -566,6 +566,47 @@ A dutiful clarification to make is that the majority of the code exposed in the 
 
 \section{Error monitoring dashboards and alerting configuration}
 
+Throughout the process, it has been decided that the priority for the enterprise was to intercept errors with severity labeled as ``critical'' and ``high'', because it is the biggest pain point for the company in terms of customer care and application quality. 
+
+As already mentioned in some old sections, the aim was to take care of handled errors (API errors and business logic, browser-side infrastructural errors, device and hardware errors) and unhandled errors that the code does not predict and does not capture through try-catch (React Rendering, uncaught promise rejections, JavaScript errors). These unhandled are automatically recognized by the browser and the Datadog SDK intercepts them without human intervention, so that developers do not lose error information. Handled errors are called this way because they foresee the faults and they are handled somehow (e.g., by showing an error message to the user, or with a retry). The distinction between handled and unhandled is fundamental to understand the implications of each, because the former represents a UI degradation but keeping the app functioning, they might go unnoticed, they require manual tracking and are managed in the code through the ``recordException()'' method adding a try-catch block to avoid crashes and explicitly defining the severity level chosen among low, medium, high and critical and eventually adding attributes to better understand the context during debugging; while the latter often make the app crash, are visible (there is a white screen or the functionality does not respond), are auto-captured and to recover the page must be reloaded.
+
+\begin{lstlisting}[language=Kotlin, caption={recordException() method for handled errors}, label=lst:recordException]
+    recordException(error: Error, severity?: ErrorSeverity, attributes?: Attributes): void {
+    // Always add severity to attributes (default to 'high' if not specified)
+    const enrichedAttributes = {
+      ...attributes,
+      severity: severity || 'high'
+    }
+
+    this.recordError({
+      error,
+      level: 'ERROR', // Technical log level is always ERROR
+      attributes: enrichedAttributes
+    })
+  }
+\end{lstlisting}
+
+Moreover, React introduces a third, peculiar category which are React Rendering errors: when a component fails to render, it can cause the entire React tree to unmount, which means that the interface disappears and the user sees a blank page, making the application unusable. This is problematic in a web-app where the crash of a separate section should not be able to affect and impede the access to core functionalities. To control these situations, the solution is introducing an Error Boundary, comprehending special components that catch errors in their ``subtree'' and display a fallback UI instead of crashing the whole app. The specific implementation of our ErrorBoundary does not only show a fallback, but enriches the context of the error:
+
+\begin{lstlisting}[language=Kotlin, caption={componentDidCatch() implementation for ErrorBoundary}, label=lst:Errboundary]
+omponentDidCatch(error: Error, errorInfo: ErrorInfo): void {
+    // Create a new error with component stack as recommended by Datadog
+    // This makes the component tree visible as the main stack trace in Datadog RUM
+    const renderingError = new Error(error.message)
+    renderingError.name = 'ReactRenderingError'
+    renderingError.stack = errorInfo.componentStack
+    ;(renderingError as any).cause = error
+
+    // Track the error with React-specific context and any additional attributes
+    App.telemetry?.recordException(renderingError, 'high', {
+      'error.type': 'react_error_boundary',
+      'error.source': 'ErrorBoundary.componentDidCatch',
+      ...this.props.attributes
+    })
+\end{lstlisting}
+
+
+
 \section{Dashboard migration from Google Analytics to Datadog}
 
 The final objective for concluding the observability project, after all this research and tests over platforms and data collection, is migrating all the data managed in Google Analytics to Datadog, which means rebuilding the whole dashboard suite in order to integrate everything in a single platform. Lots of example images will be provided in this section, but they will be taken primarily from the test environment and mocked local interactions in order to avoid the disclosure of any sensitive information. 
@@ -582,7 +623,7 @@ By transitioning to Datadog, the perspective gets shifted from marketing analyti
 
 
 
-Throughout the process, it has been decided that the priority for the enterprise was to intercept errors with severity labeled as ``critical'' and ``high'', because it is the biggest pain point for the company in terms of customer care and application quality.  
+
 
 
 

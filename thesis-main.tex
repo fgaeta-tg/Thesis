@@ -605,6 +605,41 @@ omponentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     })
 \end{lstlisting}
 
+Instead of just tracking the error, we rebuild it. This is done because the JavaScript stack trace of ``error'' explains where in the code the error has been generated (in which file, at which line), but in a complex React application it is often not enough to quickly find it, therefore is it better to have the component tree to recreate the path of the functions and parameters involved in a file. Furthermore, chaining the original error into ``cause'' avoids information loss, since both the component stack and the original JS stack are kept in Datadog logs. 
+
+Another important category of errors to manage were related to APIs. Since these are called innumerous times inside the code, it was not clever to put up a ``distributed tracking'' pattern, that is repeating the try-catch block structure adding severity and context-specific attributes to every part of the code where we needed to monitor API and business logic errors, which would have resulted in tens of files containing the same code structure with just some slight variations. It could lead to duplication (the same error is tracked twice or more), inconsistency if more developers were working on different parts of the code tracking the same typology of errors with different attributes structure, and false positives due to blindly tracking business logic mistakes as if they were technical errors (for instance, if a login fails, it is not necessarily due to a malfunctioning in the connection between app and database, but maybe the user has just inserted the wrong credentials, and it does not make sense to recollect this huge part of expected data). Plus, maintenance would have been a nightmare. 
+
+Consequently, the strategic solution was centralizing the API error tracking into the HTTP client or repository layer in the application’s infrastructure. If we track in a single point where all API calls go through, we end up with a single source of truth where we define what is and is not an error, a consistent system because all API errors will contain the same basic attributes, and light maintenance and easy evolution. The try-catch block stays only for application management for recovery and UI feedback, but actual tracking is delegated to an inferior layer. 
+
+In this context, another important role is played by the \textit{beforeSend} hook, a function invoked by Datadog before sending any event to the cloud. It works as a firewall that inspects, modifies, enriches or blocks the event depending on the conditions. It is crucial because Datadog RUM captures everything, and this is a powerful approach because it allows us to filter later in the dashboards so that we are sure not to lose any information, but the cost is higher noise. Sometimes, we already know that some events do not constitute a real error, so we filter them in advance with the beforeSend to keep only relevant signals. In our case study, a typical example is a false positive error such as the MFA: when the users utilize a multifactor authentication, after inserting the password to perform the login they are not directly redirected to the home page, because they must complete the intermediate step of writing down the security code, and this resembles an error with status code 401, but it would be useless noise to collect all these situations, so the beforeSend already excludes the MFA request by the error cases:
+\begin{lstlisting}[language=Kotlin, caption={snippet of the beforeSend hook}, label=lst:befSend]
+    beforeSend: event => {
+        // MFA code required (401/403 with MFA context). NOT AN ERROR, skip tracking
+          // This is expected behavior when user needs to enter MFA code
+          if (
+            (statusCode === 401 || statusCode === 403) &&
+            (msg.includes('MFA') ||
+              msg.includes('mfa') ||
+              msg.includes('two-factor') ||
+              msg.includes('2FA') ||
+              event.view?.url?.includes('/auth/login'))
+          ) {
+            return false // Drop event, not a real error
+          }
+\end{lstlisting}
+
+The same goes for network abort type of errors and other 4xx errors that we already recognized as false positives. The reason why we put them in the beforeSend rather than avoiding their capture is that, foremost, the platform catches them automatically because they do not pass through the recordException() method, so we cannot exert any control without the hook, plus it would still be fundamental to collect whatever signal especially for building performance-related dashboards. It does not matter if some API calls are not actual errors, we still need to use that information to check the page loading time, the endpoint speed and other analytical parameters. Thanks to the beforeSend(), we could also assign a default severity to all those auto-captured errors that do not naturally come with it. For example, we could establish that some errors related to WebSocket/SignalR were harmless almost always, so we opted for a low severity level with the intention of just checking every time if they are unnoticeable. The severity pattern we applied for anything else unspecified and unknown defaults to ``medium'' as a compromise. 
+
+The criteria to assign a specific severity deserve attention, too. Generally, three dimensions must be considered:
+\begin{itemize}
+    \item how severely it impacts the user experience. If the user cannot work anymore, it is critical/high, if the degradation is visible for the user but does not really block any workflow it is medium, if the user might not even realize the error it is low. 
+    \item the scope. The severity escalates depending on how many users get penalized, how many functionalities are impacted and which ones, if the error is isolated or starts propagating. 
+    \item the level of business criticality. If it affects revenues for payments and billing, or risks concern compliance it is critical/high. Severity escalates then depending on the reputational damage (e.g., if it appears in a demo, if for all public clients…)
+\end{itemize} 
+The difference between high and critical usually concerns the importance and usage rate of the core functionality involved. In a critical situation, the core functionality is utterly compromised, while high severity is still significant, but a workaround may exist and the functionality is not totally blocked.
+
+
+
 
 
 \section{Dashboard migration from Google Analytics to Datadog}

@@ -33,3 +33,5 @@ Vitest
 OpenTelemetry
 Zipkin
 Contenful
+beforeSend
+SignalR

@@ -3,3 +3,4 @@
 \contentsline {lstlisting}{\numberline {4.3}{\ignorespaces RUM SDK trace context}}{45}{lstlisting.4.3}%
 \contentsline {lstlisting}{\numberline {5.1}{\ignorespaces recordException() method for handled errors}}{51}{lstlisting.5.1}%
 \contentsline {lstlisting}{\numberline {5.2}{\ignorespaces componentDidCatch() implementation for ErrorBoundary}}{51}{lstlisting.5.2}%
+\contentsline {lstlisting}{\numberline {5.3}{\ignorespaces snippet of the beforeSend hook}}{53}{lstlisting.5.3}%

@@ -628,7 +628,14 @@ In this context, another important role is played by the \textit{beforeSend} hoo
           }
 \end{lstlisting}
 
-The same goes for network abort type of errors and other 4xx errors that we already recognized as false positives. The reason why we put them in the beforeSend rather than avoiding their capture is that, foremost, the platform catches them automatically because they do not pass through the recordException() method, so we cannot exert any control without the hook, plus it would still be fundamental to collect whatever signal especially for building performance-related dashboards. It does not matter if some API calls are not actual errors, we still need to use that information to check the page loading time, the endpoint speed and other analytical parameters. Thanks to the beforeSend(), we could also assign a default severity to all those auto-captured errors that do not naturally come with it. For example, we could establish that some errors related to WebSocket/SignalR were harmless almost always, so we opted for a low severity level with the intention of just checking every time if they are unnoticeable. The severity pattern we applied for anything else unspecified and unknown defaults to ``medium'' as a compromise. 
+The same goes for network abort type of errors and other 4xx errors that we already recognized as false positives. The reason why we put them in the beforeSend rather than avoiding their capture is that, foremost, the platform catches them automatically because they do not pass through the recordException() method, so we cannot exert any control without the hook, plus it would still be fundamental to collect whatever signal especially for building performance-related dashboards. It does not matter if some API calls are not actual errors, we still need to use that information to check the page loading time, the endpoint speed and other analytical parameters. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/APIerr.png}
+    \caption{API error monitoring specific overview}
+\end{figure}
+
+Thanks to the beforeSend(), we could also assign a default severity to all those auto-captured errors that do not naturally come with it. For example, we could establish that some errors related to WebSocket/SignalR were harmless almost always, so we opted for a low severity level with the intention of just checking every time if they are unnoticeable. The severity pattern we applied for anything else unspecified and unknown defaults to ``medium'' as a compromise. 
 
 The criteria to assign a specific severity deserve attention, too. Generally, three dimensions must be considered:
 \begin{itemize}

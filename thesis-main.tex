@@ -565,7 +565,7 @@ Another important means to analyze performance and resource speed, quality and g
 
 To qualify as "good" performance, Google establishes the following thresholds: LCP should occur within 2.5 seconds, INP should be below 200 milliseconds, and CLS should remain under 0.1. These targets must be met for at least 75\% of page visits. For Technogym, establishing these benchmarks as \ac{SLI} allows the team to define clear \ac{SLO} and trigger alerts when performance degrades, enabling proactive intervention before users experience significant impact. Integrating CWV monitoring into the observability infrastructure provides real-time visibility into user experience across different devices, network conditions, and geographic regions. Through OpenTelemetry's browser instrumentation, these metrics can be correlated with backend traces, allowing the team to identify whether a poor LCP stems from slow API responses, excessive JavaScript execution, or network latency. This end-to-end visibility transforms CWV from isolated frontend metrics into actionable insights that guide both frontend and backend optimization efforts.
 
-\chapter{Establishing a single pane of glass: error, performance, and analytics monitoring through dashboards in Datadog}
+\chapter{Establishing a single pane of glass: monitoring through dashboards in Datadog}
 
 In the previous chapter, we introduced the main expedients to depict the baseline to grasp a detailed understanding of the application's performance independently of the platform adopted. In this final chapter, instead, we are about to dissect the technical procedures for building dashboards in Datadog to facilitate a comprehensive and fast analysis for developers.  
 

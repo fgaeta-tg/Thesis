@@ -35,3 +35,4 @@ Zipkin
 Contenful
 beforeSend
 SignalR
+Tanita

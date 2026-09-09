@@ -674,12 +674,47 @@ By transitioning to Datadog, the perspective gets shifted from marketing analyti
 
 With that being said, the discussion can now spill over the dashboards that have been built to replace the old approach. The migration was not a straightforward copy-paste process, even though the two platforms share a similar paradigms and concepts. Both rely on tracking discrete events with associated parameters under the name of dimensions in GA and attributes in Datadog, but data ingestion differs. 
 The first step was to consult the documentation to understand how Datadog works with metrics and events. GA operates on an auto-aggregating model, which means that its backend can automatically increment the counters of the events created and pre-aggregate data into reports. Datadog RUM, in contrast, follows an event-streaming model capturing individual events (or actions) that get stored as discrete records, and aggregation is performed at query time. For this reason, in order to maintain the code structure as intact as possible, the smartest expedient was maintaining the event taxonomy originally designed for Google Analytics (action types and their parameter types), avoiding touching other hundreds of files in the application and risking inconsistencies. The addition to push for this consistency was adding an abstraction layer with the TelemetryService we had already implemented for error monitoring and extending it with the ``incrementCounter'' method that adapts GA's style to RUM's action model:
-METTI CODICE
 
+\begin{lstlisting}[language=Kotlin, caption={incrementCounter adapter method for RUM custom actions}, label=lst:incrCountAdapt]
+    incrementCounter(data: CounterMetricData): void {
+    if (!this.initialized) return
 
-the incrementCounter method(?) to let Datadog understand that every time that events verifies the counter should increase by one, so that the new value can be displayed in the dashboards, because Datadog works with this incrementCounter to activate a sort of connection with the metrics. Creating a metric directly on Datadog was a more complex process and not always possible (?), this was the fastest and most convenient way. 
+    // Datadog RUM uses custom actions for metrics
+    datadogRum.addAction(data.name, {
+      ...this.config?.globalAttributes,
+      ...data.attributes,
+      value: data.value,
+      type: 'counter'
+    })
+  }
+\end{lstlisting}
 
+Despite the name ``incrementCounter'', this does not create a Datadog custom metric, nor does it ``increment a counter'' in Datadog's backend. The name is just a semantic convenience borrowed from GA's model. The method ``addAction()'' sends a custom action event to RUM, Datadog stores it with the respective attributes to then aggregate these events in dashboards through queries. 
 
+\begin{lstlisting}[language=Kotlin, caption={Event tracking with conventional value "1" for aggregation}, label=lst:incrCountValue]
+    public trackExportItemList(itemListType: TrackingItemListType) {
+    this.telemetry.incrementCounter({
+      name: TrackingActionType.ExportItemList,
+      value: 1,
+      attributes: {
+        [TrackingActionParameterType.ItemListId]: itemListType.toLowerCase()
+      }
+    })
+  }
+\end{lstlisting}
+
+This last snippet (\Cref{lst:incrCountValue}) completes the flow calling the adapter, showing not only where the translation happens, but also how. 
+
+An important clarification is that Datadog distinguishes between RUM actions tied to the user sessions and custom metrics data submitted via API. An alternative would have been directly creating metrics in Datadog, but we chose the former solution because the second option required separate API calls to Datadog's metrics endpoint, manual metric definition and higher billing, plus metrics would not have been bound to any session context. Besides, metrics support tags, but querying is less flexible than RUM where we could eventually unify various conditions (e.g., display users who used Tanita device AND had an error in the same session) that would be impossible to obtain with decoupled metrics. 
+
+In Google Analytics, data was divided into some main pages by topic. Beyond a generic overview, the main points of interest were:
+\begin{itemize}
+    \item \textbf{Acquisition.} Comprehends how the users discover and access the platform, identifying the most efficient marketing channels and traffic sources. It allows optimizing marketing investments allocations resources on channels recognized as rewarding. 
+    \item \textbf{Engagement.} Measures user interaction quality with the app, identifying the most accessed contents and potential frictions. We can understand which sides of the UX need enhancement.
+    \item \textbf{Prescribe 2.0.} It concerns a specific CRM functionality devoted to prescription/creation of custom training programs for clients of the facility. They can be generated via different modalities - from scratch, assisted by AI, from library -, it analyzes how trainers use filters and automatic research for exercises and how much they have to scroll before selecting the right exercise and so on. It supplies insights over the effectiveness of product innovations and suggests feature development precedence based on real users' behavior. 
+    \item \textbf{Users.} Builds a demographic and geographic profile of the user base. It informs about strategic decisions over localization, multilanguage support and content personalization on specific markets. 
+    \item \textbf{Technology.} Grants technical compatibility improving the tech ecosystem and prioritizing support for the most widespread configurations. It checks for browsers, resolutions, devices used as examples. It guides decisions over when to deprecate some obsolete versions, and it optimizes the responsive experience for the most common solutions. 
+\end{itemize}
 
 
 
@@ -704,11 +739,15 @@ the incrementCounter method(?) to let Datadog understand that every time that ev
 \begin{acknowledgements} % this is optional
 This thesis represents the end of one of the most beautiful, despite hard at times, journeys of my life, thanks to the new, fascinating things I have studied and the wonderful people I have met. 
 
-First of all, I am grateful to my supervisor, Professor Matteo Francia, not because it is a formality, but because he has truly been a great mentor, capable of explaining complex concepts while also having fun with his students at the end of his lectures, because he is both a great professor and person, he has eased our study path with his humor and, specifically to me, he has been a psychological support, too, helping me every time I had doubts about my next steps. A big thanks also to my co-supervisor, Davide Domini, who since the first year has been mainly a friend, he helped me to solve all the endless bugs in my terminal and always knew how to encourage me. 
+Foremost, I am grateful to my supervisor, Professor Matteo Francia, not because it is a formality, but because he has truly been a great mentor, capable of explaining complex concepts while also having fun with his students, because he is both a great professor and person, he has eased our study path with his humor and, specifically to me, he has been a psychological support, too, helping me every time I had doubts about my next steps. A big thanks also to my co-supervisor, Davide Domini, who has been mainly a friend since the first year, he helped me to solve all the endless bugs in my terminal and always knew how to cheer for me.
 
-The most important thanks go again and always to my family. I know that, for you, I am the perfect daughter that can do whatever she can, but it is not true, and I have never felt this way towards myself. But I also know that if I am brave, ambitious and stubborn enough today to think I can face two years studying informatics to realize my childhood dream and survive six months of programming for an internship, it is because you raised me making me feel the love and safety I needed to be able to take risks, knowing I could have never disappointed you because you would have been always proud of me even committing the worst failure of my life, and because after all your sacrifices you deserved me to try hard, and I hope to give you my success as a gift every day.
+An immense thank you to my Internship tutor Andrea and my PD Pietro, who have taken me under their wing trusting my enthusiasm and my will to learn something new that piqued my interest. I feel lucky for finding such valid mentors who had the patience to make me grow professionally and saw a spark in me, which is not a given nowadays. As well should I thank another great colleague, Eric, who was initially scared every time I walked through his door, but then probably started having fun, he explained interesting topics in the clearest way and made a great duo with me. 
 
-The best feeling was finding colleagues that I have always called friends. From those who came into my life during the Bachelor's and never left, Alessia, Tommaso, Cinzia and Greta, to all my DTM fellows and the new people I met. You were able to make me discover new traits of my personality, new activities to enjoy, new objectives to pursue, you were always ready to support me even when I was unsure about everything and just overthinking my next ten years of life. As I already told you, I could endure other thousands of university courses with you, because you are the best medicine for my mind and my soul. It destroys me to think I won't see you every day anymore and that we are all going to be scattered around the world, but I know you are the kind of people that find a way to see each other and keep on with our adventures as we left the day before. Thank you for the esteem you show me, it is completely reciprocated, and I know you will be extremely successful. You will always feel like home and I deeply love you. 
+The greatest thanks go again and always to my family. I know that, to you, I am the perfect daughter who can do whatever she wants, but it is not true, and I have never felt this way. But I also know that if I am brave, ambitious and stubborn enough today to think I can face two years of studying informatics to realize my childhood dream and survive six months of programming for an internship, it is because you raised me making me feel the love and safety I needed to be able to take risks, knowing I could have never disappointed you because you would have always been proud of me even committing the worst failure of my life, and because after all your sacrifices you deserved me to try hard, and I hope to give you my success as a gift every day.
+
+The best feeling was finding colleagues that I have always called friends. To all my DTM fellows, you were able to make me discover new traits of my personality, new activities to enjoy, new objectives to pursue, you were always ready to support me even when I was unsure about everything and just overthinking my next ten years of life. As I already told you, I could endure other thousands of university courses with you. Thank you for the esteem you show me, it is completely reciprocated, and I know you will be extremely successful.
+
+The last lines are dedicated to the most important people in my life. I will be brief because pages would still not be enough to explain how I feel about you, but you are already aware of everything. Thanks to my high school friends for keeping up so good with the distance that separates us, the close friends I met during my Bachelor's and are still here to make my life better. I love keeping on sharing important turning points of our lives with you, and you are still my safe place. 
 
 \end{acknowledgements}
 

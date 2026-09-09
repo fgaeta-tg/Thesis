@@ -709,17 +709,70 @@ An important clarification is that Datadog distinguishes between RUM actions tie
 
 In Google Analytics, data was divided into some main pages by topic. Beyond a generic overview, the main points of interest were:
 \begin{itemize}
-    \item \textbf{Acquisition.} Comprehends how the users discover and access the platform, identifying the most efficient marketing channels and traffic sources. It allows optimizing marketing investments allocations resources on channels recognized as rewarding. 
+    \item \textbf{Acquisition.} Comprehends how the users discover and access the platform, identifying the most efficient marketing channels and traffic sources. It allows optimizing marketing investments allocations resources on channels recognized as rewarding.
     \item \textbf{Engagement.} Measures user interaction quality with the app, identifying the most accessed contents and potential frictions. We can understand which sides of the UX need enhancement.
-    \item \textbf{Prescribe 2.0.} It concerns a specific CRM functionality devoted to prescription/creation of custom training programs for clients of the facility. They can be generated via different modalities - from scratch, assisted by AI, from library -, it analyzes how trainers use filters and automatic research for exercises and how much they have to scroll before selecting the right exercise and so on. It supplies insights over the effectiveness of product innovations and suggests feature development precedence based on real users' behavior. 
-    \item \textbf{Users.} Builds a demographic and geographic profile of the user base. It informs about strategic decisions over localization, multilanguage support and content personalization on specific markets. 
-    \item \textbf{Technology.} Grants technical compatibility improving the tech ecosystem and prioritizing support for the most widespread configurations. It checks for browsers, resolutions, devices used as examples. It guides decisions over when to deprecate some obsolete versions, and it optimizes the responsive experience for the most common solutions. 
+    \item \textbf{Prescribe 2.0.} It concerns a specific CRM functionality devoted to prescription/creation of custom training programs for clients of the facility. They can be generated via different modalities - from scratch, assisted by AI, from library -, it analyzes how trainers use filters and automatic research for exercises and how much they have to scroll before selecting the right exercise and so on. It supplies insights over the effectiveness of product innovations and suggests feature development precedence based on real users' behavior.
+    \item \textbf{Users.} Builds a demographic and geographic profile of the user base. It informs about strategic decisions over localization, multilanguage support and content personalization on specific markets.
+    \item \textbf{Technology.} Grants technical compatibility improving the tech ecosystem and prioritizing support for the most widespread configurations. It checks for browsers, resolutions, devices used as examples. It guides decisions over when to deprecate some obsolete versions, and it optimizes the responsive experience for the most common solutions.
 \end{itemize}
 
+Given that Google Analytics organized the majority of things automatically, in Datadog we followed a similar pattern, while personalizing it a bit to group together some widgets that were coherent to keep together and avoid repetitions of dashboards that had been already used, which instead happened in GA. In the following pages there will be provided some comparison images to notice how the visualization and arrangements of the elements changes between the two platforms. It is not possible to provide the complete groups of dashboards, but there will be shown some of the most relevant widgets for illustrative purposes. 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/GApanutenti.png}
+    \caption{Overview of User Acquisition in GA}
+    \label{useracqGA}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/panoramica-utenti.png}
+    \caption{Overview of User Acquisition in DD}
+    \label{useracqDD}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/GAcoinv.png}
+    \caption{Overview of User Engagement in GA}
+    \label{engagGA}
+\end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/Panoramica-coinvolgimento.png}
+    \caption{Overview User Engagement in DD}
+    \label{engagDD}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/Altro-coinvolgimento.png}
+    \caption{Overview User Engagement in DD 2}
+    \label{engagDD2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/GAtech.png}
+    \caption{Overview Technology in GA}
+    \label{techGA}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/panoramica-tec1.png}
+    \caption{Overview Technology in DD}
+    \label{techDD}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{figures/Analisi-versione-ex.png}
+    \caption{Overview Technology in DD 2}
+    \label{techDD2}
+\end{figure}
 
 
 

@@ -74,7 +74,7 @@
 \acrodef{CORS}{Cross-Origin Resource Sharing}
 \acrodef{EoS}{End of Support}
 \acrodef{GDPR}{General Data Protection Regulation}
-
+\acrodef{UTM}{Urchin Tracking Module}
 
 \mainlinespacing{1.241} % line spacing in mainmatter, comment to default (1)
 \setlength{\parskip}{1em}
@@ -665,7 +665,7 @@ Surely, thresholds will vary depending on the severity of the error. For instanc
 Another type of monitor adopts Datadog's anomaly detection algorithm, which automatically learns the normal behavior of a metric and triggers an alert when it detects a significant deviation from that baseline. If the error rate is typically 0.5\% it sends a notification reaching a higher value like 1\%, and this mechanism is useful to catch errors that do not fit into a specific threshold, and to identify problems before they dramatically escalate, and that users start complaining. 
 
 
-\section{Dashboard migration from Google Analytics to Datadog}
+\section{Analytical Dashboard migration from Google Analytics to Datadog}
 
 The final objective for concluding the observability project, after all this research and tests over platforms and data collection, is migrating all the data managed in Google Analytics to Datadog, which means rebuilding the whole dashboard suite in order to integrate everything in a single platform. Lots of example images will be provided in this section, but they will be taken primarily from the test environment and mocked local interactions in order to avoid the disclosure of any private information. 
 
@@ -707,74 +707,182 @@ This last snippet (\Cref{lst:incrCountValue}) completes the flow calling the ada
 
 An important clarification is that Datadog distinguishes between RUM actions tied to the user sessions and custom metrics data submitted via API. An alternative would have been directly creating metrics in Datadog, but we chose the former solution because the second option required separate API calls to Datadog's metrics endpoint, manual metric definition and higher billing, plus metrics would not have been bound to any session context. Besides, metrics support tags, but querying is less flexible than RUM where we could eventually unify various conditions (e.g., display users who used Tanita device AND had an error in the same session) that would be impossible to obtain with decoupled metrics. 
 
-In Google Analytics, data was divided into some main pages by topic. Beyond a generic overview, the main points of interest were:
+In Google Analytics, data was divided into some main pages by topic. We have revived the same concepts in Datadog with a similar pattern, but given that Google Analytics organized the majority of things automatically, in Datadog we personalized it a bit to group together some widgets that were coherent to keep together and avoid repetitions of dashboards that had been already used, which instead happened in GA. In the following pages there will be provided some comparison images to notice how the visualization and arrangements of the elements changes between the two platforms. It is not possible to provide the complete groups of dashboards, but there will be shown some of the most relevant widgets for illustrative purposes.
+
+Beyond a generic overview, the main points of interest are:
 \begin{itemize}
-    \item \textbf{Acquisition.} Comprehends how the users discover and access the platform, identifying the most efficient marketing channels and traffic sources. It allows optimizing marketing investments allocations resources on channels recognized as rewarding.
-    \item \textbf{Engagement.} Measures user interaction quality with the app, identifying the most accessed contents and potential frictions. We can understand which sides of the UX need enhancement.
-    \item \textbf{Prescribe 2.0.} It concerns a specific CRM functionality devoted to prescription/creation of custom training programs for clients of the facility. They can be generated via different modalities - from scratch, assisted by AI, from library -, it analyzes how trainers use filters and automatic research for exercises and how much they have to scroll before selecting the right exercise and so on. It supplies insights over the effectiveness of product innovations and suggests feature development precedence based on real users' behavior.
     \item \textbf{Users.} Builds a demographic and geographic profile of the user base. It informs about strategic decisions over localization, multilanguage support and content personalization on specific markets.
-    \item \textbf{Technology.} Grants technical compatibility improving the tech ecosystem and prioritizing support for the most widespread configurations. It checks for browsers, resolutions, devices used as examples. It guides decisions over when to deprecate some obsolete versions, and it optimizes the responsive experience for the most common solutions.
-\end{itemize}
 
-Given that Google Analytics organized the majority of things automatically, in Datadog we followed a similar pattern, while personalizing it a bit to group together some widgets that were coherent to keep together and avoid repetitions of dashboards that had been already used, which instead happened in GA. In the following pages there will be provided some comparison images to notice how the visualization and arrangements of the elements changes between the two platforms. It is not possible to provide the complete groups of dashboards, but there will be shown some of the most relevant widgets for illustrative purposes. 
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=1\linewidth]{figures/GAusers.png}
+        \caption{Overview of Users Information in GA}
+        \label{usersGA}
+    \end{figure}
 
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{figures/panoramica-utenti.png}
+        \caption{Overview of Users Information in DD}
+        \label{usersDD}
+    \end{figure}
+
+    What differs the most in this set of dashboards between GA and DD is the arrangement decided for acquisition and user analysis. In GA, the acquisition and user attributes reports are quite intertwined with one another, as a matter of fact they present information duplication. This is the reason why we came up with the idea of remodelling the order of the information, creating more specifically a whole group dedicated to users' characteristics and another addressing proper acquisition. 
+
+    \item \textbf{Acquisition.} Comprehends how the users discover and access the platform, identifying the most efficient marketing channels and traffic sources. It allows optimizing marketing investments allocations resources on channels recognized as rewarding.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{figures/GApanutenti.png}
+        \caption{Overview of User Acquisition in GA}
+        \label{useracqGA}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{figures/panAcquDD.png}
+        \caption{Overview of User Acquisition in DD}
+        \label{useracqDD}
+    \end{figure}
+
+    The widgets about acquisition in Datadog do not show any data because they were built in a second moment that overcame the 30-day retention period for sessions. Moreover, we would not probably have acquired the needed data because first we would have needed a further step code-wise, which is the manual insertion of \textit{\ac{UTM} parameters}, snippets of text added to URLs after a question mark to track the source, medium and campaign of website traffic in analytics tools. When clicked, Google Analytics or other tools automatically parse these parameters, attributing the session and subsequent interactions to the correct campaign. 
+    
+    Actually, An additional advantage of Google Analytics was that it could automatically read UTM parameters from URLs when existent, plus it boasts an embedded classification logic without the aid of UTM exploiting the \textit{HTTP referrer} stuck in the browser, which return with no effort the following values: 
+    \begin{itemize}
+        \item Direct: no referrer
+        \item organic: it recognizes search engines 
+        \item referral: other external sites
+        \item social: it recognizes some common social media networks 
+    \end{itemize}
+    It means that UTM is needed for more specific campaigns like email, ads, tracked links that would not be distinguished from one another in the plain way. 
+
+    Datadog, on the other hand, does not have a built-in logic to classify referrals, but cannot even read UTM automatically from URLs, so the code must involve both logics. 
+
+    \item \textbf{Engagement.} Measures user interaction quality with the app, identifying the most accessed contents and potential frictions. We can understand which sides of the UX need enhancement.
+    
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/GApanutenti.png}
-    \caption{Overview of User Acquisition in GA}
-    \label{useracqGA}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{figures/panoramica-utenti.png}
-    \caption{Overview of User Acquisition in DD}
-    \label{useracqDD}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{figures/GAcoinv.png}
+    \includegraphics[width=1\linewidth]{figures/GAcoinv.png}
     \caption{Overview of User Engagement in GA}
     \label{engagGA}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/Panoramica-coinvolgimento.png}
+    \includegraphics[width=1\linewidth]{figures/Panoramica-coinvolgimento.png}
     \caption{Overview User Engagement in DD}
     \label{engagDD}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/Altro-coinvolgimento.png}
-    \caption{Overview User Engagement in DD 2}
+    \includegraphics[width=1\linewidth]{figures/Altro-coinvolgimento.png}
+    \caption{Overview User Engagement in DD (2)}
     \label{engagDD2}
 \end{figure}
+    \item \textbf{Prescribe 2.0.} It concerns a specific CRM functionality devoted to prescription/creation of custom training programs for clients of the facility. They can be generated via different modalities - from scratch, assisted by AI, from library -, it analyzes how trainers use filters and automatic research for exercises and how much they have to scroll before selecting the right exercise and so on. It supplies insights over the effectiveness of product innovations and suggests feature development precedence based on real users' behavior.
+    
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{figures/GAprescribe.png}
+        \caption{Overview Prescribe 2.0 in GA}
+        \label{prescrGA}
+    \end{figure}
 
-\begin{figure}[H]
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{figures/DDprescr.png}
+        \caption{Overview Prescribe 2.0 in DD}
+        \label{prescrDD}      
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{figures/DDprescr2.png}
+        \caption{Overview Prescribe 2.0 in DD (2)}
+        \label{prescrDD2}
+    \end{figure}
+
+    \item \textbf{Technology.} Grants technical compatibility improving the tech ecosystem and prioritizing support for the most widespread configurations. It checks for browsers, resolutions, devices used as examples. It guides decisions over when to deprecate some obsolete versions, and it optimizes the responsive experience for the most common solutions.
+    
+    \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/GAtech.png}
+    \includegraphics[width=1\linewidth]{figures/GAtech.png}
     \caption{Overview Technology in GA}
     \label{techGA}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/panoramica-tec1.png}
+    \includegraphics[width=1\linewidth]{figures/panoramica-tec1.png}
     \caption{Overview Technology in DD}
     \label{techDD}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/Analisi-versione-ex.png}
-    \caption{Overview Technology in DD 2}
+    \includegraphics[width=1\linewidth]{figures/Analisi-versione-ex.png}
+    \caption{Overview Technology in DD (2)}
     \label{techDD2}
 \end{figure}
 
+\end{itemize} 
 
+\section{Performance-related dashboards \\ to boost optimization}
+
+Performance dashboards portray data-driven optimization decisions. By systematically tracking metrics such as page loading times, \ac{CWV} and resource loading patterns, these dashboards reveal the actual user experience across different pages, routes and user actions. 
+
+The real value emerges when correlating performance degradation with its root cause. Datadog RUM allows understanding if slowdowns originated from backend API responses, frontend rendering inefficiencies, or CDN and media delivery bottlenecks (\Cref{BEvsFE}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/befecdn.png}
+    \caption{Resource Performance Analysis by Domain}
+    \label{BEvsFE}
+\end{figure}
+
+This granular visibility enables targeted interventions where needed for optimizing database queries for slow endpoints, especially for supervising their trend in an environment where everything has to be migrated to new servers, reconfiguring CDN caching strategies and so on. Other relevant examples of such implementations are:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/cwv-general.png}
+    \caption{Core Web Vitals Performance Analysis}
+    \label{cwvperf}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/cwv-evolution.png}
+    \caption{Core Web Vitals Evolution Performance Analysis}
+    \label{cwvevol}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/pageviews-tack.png}
+    \caption{Page Views Tracking}
+    \label{pageviews}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/pageload.png}
+    \caption{Page Loading Time Tracking}
+    \label{pageload}
+\end{figure}
+
+Each optimization translates into measurable business outcomes, such as reduced infrastructure costs through more efficient resource utilization, lower latency improving conversion rates since users are more satisfied with the interactions, and it is reflected in engagement metrics. In the dashboards' notes we can also underline some fixed thresholds that are universally recognized to be the quality standards, to always bear them in mind and have a direct confrontation. 
+
+The migration from Google Analytics to Datadog represents more than a single platform switch. By consolidating product analytics, error tracking and performance monitoring within a unified RUM-based infrastructure, Technogym achieved the ``single pane of glass'' vision that drives modern observability practices. 
+
+\chapter{Conclusions}
+This thesis explored the practical implementation of an observability framework within Technogym's Mywellness CRM ecosystem, which anyway could be enlarged to other enterprise's digital parts. It demonstrated how modern telemetry architectures can transform reactive troubleshooting into proactive system intelligence. The aim was to solve a concrete business need: reducing the mean time to detection and resolution of frontend incidents - and not only by implementing a connection with the backend - that, before the infrastructure, risked staying invisible until customers reported them. 
+
+The proposed solution establishes a comprehensive monitoring foundation built on privacy compliance, Datadog RUM as primary unified observability platform, and a migration strategy for dashboards. Furthermore, the architectural choices reflect a strategic balance between immediate needs and long-term flexibility because, thanks to the generic Telemetry abstraction layer, teams are not obliged to stick to Datadog forever, but could easily switch to another vendor that could be more convenient. This is the reason why the research and work done concerning ClickStack and its HyperDX will not go into oblivion, considering it is a platform with potential. However, transitioning from proof of concept to production reveals challenges that extend beyond technical implementation. Cost management emerges as a critical dimension for sustainable observability. Datadog's pricing model, based on indexed logs, custom metrics, and RUM session volumes, requires careful budget planning for the upcoming year. The next months will focus on quantifying actual consumption patterns to understand how to cleverly and efficiently activate the necessary Datadog's services and fall within the business expenses. 
+
+The commitment to continuous evolution distinguishes this project from previous initiatives that, despite initial investment, were eventually abandoned. Indeed, Datadog was already adopted in the firm, but has not been explored and exploited at its maximum, which is something this project tried to recover. With this intention, not only frontend observability would benefit from a strict roadmap, but also the backend. Plus, other digital products such as the Technogym App could consider migrating to Datadog, since real-time data would be beneficial for bug fix and optimization in that case, too. The aim is to deploy a CRM version with the telemetry infrastructure completely integrated within the end of the current year, therefore there is still time through tests to try out functionalities and enhance them. It will be a never-ending process, since the system should adapt as codebases and technologies evolve and new features could introduce new failure scenarios. 
+
+Ultimately, this case study demonstrates that observability, when implemented thoughtfully with the due attention to privacy, transforms from a technical capability into a strategic asset. The journey from reactive bug fixing to proactive monitoring is not complete because observability is just a spectrum, but the foundation established through this work positions Technogym to navigate the operational complexities of modern distributed systems with confidence, clarity and control. 
 
 
 

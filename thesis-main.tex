@@ -11,6 +11,8 @@
 \usepackage{enumitem}
 \usepackage{cleveref}
 \usepackage{url}
+\usepackage{longtable}
+\usepackage{array}
 
 % Custom command for image source attribution
 \newcommand{\source}[1]{%
@@ -145,22 +147,27 @@ The Mw-CRM is a \ac{PWA} that enables fitness professionals to manage client rel
 
 The CRM platform is designed to be used by professionals who support their clients during their training journeys. It should not be confused with the well-known Technogym App, which is instead the mainstream app for very final users who train in the gyms around the world, yet the CRM is the bridge such facilities and their operators have to reach and guide their clients during their workouts and fitness journeys, even by exploiting the Technogym App itself (for instance, messages and updates can be sent directly there). With seamless integration of third-party software, smart equipment, and wearables, Mywellness (\Cref{crm}, \Cref{crmplanner}) puts operators in full control of their digital strategy and members engagement. It is statistically measured to increase attraction of 40\% and retention of 30\% thanks to variety, customization and automation. More than 30 thousand facilities and 40 million users are registered on the platform, with more than 500 thousand workouts tracked. The application is extremely complex due to its level of detail in covering a huge number of cases and functionalities. The workflow it follows consists of an ensemble of subsequent steps, starting from collecting health and fitness information to build the user's health history, then offering direct booking of courses/trainers and payment possibilities, defining the assessment to discover the user's goals and consequently building the best personalized training program, consistently tracking progress, offering communication channels through which coaches can stay in touch to motivate clients, creating challenges to encourage friendly competition and keep users engaged, and finally rewarding results and loyalty. The Mw-CRM requires frontend programming expertise, but something fascinating about the observability project itself was that it could be interpreted as a ``backend solution for the frontend'', involving a combination of both, even without directly intervening on BE components as APIs or databases. 
 
+The ``People'' section is one of the core elements of the CRM interface, where professionals can supervise all health and training data about their clients, assign activities based on their objectives and monitor progress, satisfaction and retention.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\linewidth]{figures/crm app.png}
+    \includegraphics[width=1\linewidth]{figures/crm app.png}
     \caption{CRM Web App: People Section}
+    \source{Mywellness CRM Demonstration Material – © Technogym S.p.A. All rights reserved}
     \label{crm}
 \end{figure}
+
+The planner in the next image, another central functionality, shows how activities get organized during the week and the month, underlining course time schedule, trainers in charge, spots available, reminders. The calendar, from design perspective, is one of the most challenging interfaces to develop. It has therefore been the subject of a long debate aimed at finding the most convenient graphical representation attempting to meet all users' requests that sometimes are hard to. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{figures/crm planner.png}
     \caption{CRM Web App: Class Scheduling Section}
+    \source{Mywellness CRM Demonstration Material – © Technogym S.p.A. All rights reserved}
     \label{crmplanner}
 \end{figure}
 
-All the services, platforms and processes mentioned in broad terms in these sections underline the transition trend from traditional manufacturing to a digital-first approach that already began years ago. The frontend team continuously works to redesign the interface when it can be elevated, listens to and satisfies customers' requests and suggestions that would make their sessions in the gym better and, of course, it must solve bugs and errors. It is fundamental to put the accent on these tasks to concretize the ``The Present is Already the Past'' mindset, possibly linked to the need for observability: to stay ahead of the market, the infrastructure must be self-aware and constantly evolving. One of the best ways to do so is to introduce tools and tune AI systems to automate and speed up problem resolution, while acquiring insights about what has changed with respect to previous versions, or years, or functionalities. The right data to nourish this whole workflow can be collected by exploiting observability principles, that we are going to officially disclose in the next chapter as focal point of the paper. 
+All the services, platforms and processes mentioned in broad terms in these sections underline the transition trend from traditional manufacturing to a digital-first approach that already began years ago. The frontend team continuously works to redesign the interface when it can be elevated, listens to and satisfies customers' requests and suggestions that would make their sessions in the gym better and, of course, it must solve bugs and errors. It is fundamental to put the accent on these tasks to concretize the ``The Present is Already the Past'' mindset, possibly linked to the need for observability: to stay ahead of the market, the infrastructure must be self-aware and constantly evolving. This philosophy aligns with Lord Kelvin's principle that ``if you can't measure it, you can't improve it'', a statement that captures Technogym's commitment to data-driven continuous improvement and that is framed as the motto of the project. Without quantifiable metrics exposing system behavior, performance bottlenecks, and user friction points, optimization becomes guesswork rather than engineering. One of the best ways to do so is to introduce tools and tune AI systems to automate and speed up problem resolution, while acquiring insights about what has changed with respect to previous versions, or years, or functionalities. The right data to nourish this whole workflow can be collected by exploiting observability principles, that we are going to officially disclose in the next chapter as focal point of the paper. 
 
 In relation to what we illustrated until now, the request Technogym advanced was to create a complete and reusable library for \textbf{React} and \textbf{TypeScript} applications that enables application observability management through a single integrated platform. The library must collect and transmit telemetry data using the OpenTelemetry protocol to monitor errors, performance, user interactions, and usage statistics. The reason for implementing a library is that, ideally, observability could be considered exclusively a CRM goal at first, to then be expanded to other digital products just by importing it. 
 
@@ -189,7 +196,7 @@ Each step will be further analyzed and understood as the reading proceeds in the
 
 Historically, system health was managed through \textit{monitoring}, a reactive process centered around ``known unknowns''. Monitoring tools are designed to answer specific questions, like discovering if the server is up, or the CPU usage percentage. It is centered around events that people could predict in advance. Modern software architectures require more than just monitoring; they require \textit{observability} \cite{observability}, the ability to understand a system's internal state solely from its external outputs (logs, metrics, and traces). Technogym needed this, as it transitioned into a distributed system of microservices and cloud-integrated fitness equipment, and failure modes became unpredictable and could not be anticipated by simple static alerts (\textit{unknown unknowns}). 
 
-In an observable system, we do not just wait for a threshold to be crossed; we collect enough granular data to understand why something is happening for issues we have never experienced before. For the Mywellness CRM app, this means the difference between knowing the app is slow and knowing that a specific API call is lagging for users on a specific firmware version in a specific region. Capturing various severity level types for logs (e.g., error, info, warn, ...); associating types of data with personalized message bodies to understand in natural language what crashed; building dashboards and reports; these all embody strategies to speed up the correction of bugs and malfunctions. 
+In an observable system, we do not just wait for a threshold to be crossed; we collect enough granular data to understand why something is happening for issues we have never experienced before. For the Mywellness CRM app, this means the difference between knowing the app is slow and knowing that a specific API call is lagging for users on a certain version and/or in a specific region. Capturing various severity level types for logs (e.g., error, info, warn, ...); associating types of data with personalized message bodies to understand in natural language what crashed; building dashboards and reports; these all embody strategies to speed up the correction of bugs and malfunctions. 
 
 To achieve this level of insight, the industry relies on three fundamental types of telemetry data that we wanted indeed to intercept during the project \cite{observability}:
 \begin{itemize}
@@ -333,6 +340,46 @@ The cost model in Datadog is per host and follows ingestion and retention volume
 
 Datadog could be used following a Datadog-first approach to reduce external work, accelerating time-to-value, getting all the possible features, and correlations between frontend and backend. However, it requires more implementation effort to choose the RUM product (it could be Datadog itself using the SDKs or other specialized platforms like LogRocket or PostHog, which would be safer to have heatmaps and scrollmaps, too), manual correlation among tools through identifiers, alerting logic for the AI to intervene, and the storage in case we do not want to strongly depend on Datadog. OTel is still recommended for vendor-neutrality. 
 
+\begin{longtable}{|>{\centering\arraybackslash}p{3.5cm}|>{\centering\arraybackslash}p{3.5cm}|>{\centering\arraybackslash}p{3.5cm}|>{\centering\arraybackslash}p{3.5cm}|}
+\caption{Summary table of the key features} \label{platfeats} \\
+\hline
+\textbf{Requirements} & \textbf{Datadog} & \textbf{New Relic} & \textbf{Sentry} \\
+\hline
+\endfirsthead
+
+\multicolumn{4}{c}%
+{\tablename\ \thetable{} -- continued from previous page} \\
+\hline
+\textbf{Requirements} & \textbf{Datadog} & \textbf{New Relic} & \textbf{Sentry} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{4}{r}{Continued on next page} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+\textbf{OTel Portability} & strong support & strong support & OTLP ingestion supports logs and traces but not metrics \\
+\hline
+\textbf{Observability Coverage} & full stack & full stack & developer-centric errors and performance traces \\
+\hline
+\textbf{RUM and UX} & full RUM via SDK, session replay, heatmaps / scrollmaps and built-in dashboards & RUM via DEM (SDK), session replay, no strong heatmaps & RUM with SDK, session replay, no heatmaps / scrollmaps \\
+\hline
+\textbf{vendor lock-in} & yes & yes & yes \\
+\hline
+\textbf{self-host} & no (SaaS) & no (SaaS) & can be self-hosted, but operationally heavy and usually SaaS \\
+\hline
+\textbf{AI} & built-in Watchdog for passive analysis for free, paid Bits-AI for active investigation & New Relic AI and SRE Agent for assistive incident analysis & Seer AI only debugging agent \\
+\hline
+\textbf{GDPR and legal concerns} & DPA + EU datacenter (Germany), RUM/replay require consent governance and privacy configs & DPA + replay privacy controls + EU datacenter (Germany) & DPA + EU datacenter (Germany) + strong replay masking guidance \\
+\hline
+\textbf{Cost Model} & per host + ingest/retention + optional Bits AI usage + add-ons e.g., for retention (careful management because of possible hidden costs) & ingest-based + user model (more predictable) & event-based + replay volume and optional Seer availability by plan \\
+\hline
+\textbf{Retention} & general default 30 days for sessions, data types can be inserted in a public matrix to specify different retention conditions & managed in UI, 30 days default, live archives for long-term & plan-driven retention in SaaS (30 days free, 90 paid, customizable enterprise) \\
+\end{longtable}
+
 \subsection{Best-of-breed}
 
 Other than what said above involving Datadog, a common solution is the Grafana stack: \textit{Grafana} is the UI layer with dashboards, exploration, alerts, but it does not record telemetry, so it needs a backend beneath. It must be coupled with specialized components in interception of signals, like \textit{Tempo} for traces/spans, \textit{Loki} for logs, \textit{Prometheus} or \textit{Mimir} for metrics. The \ac{OTLP} in this context is feasible if adopting the collector to receive telemetry from the app, but the backend storage is detached. Interoperability is excellent, and this structure brings cost and control advantages, but pipelines and tools multiply. The only significant advantage with Grafana is making portable elements like dashboards and maps. The best-of-breed has never been fully considered because we did not want to complicate the system this much. Technogym already relies on SaaS, so the team was not worried about keeping this methodology. A percentage of vendor lock-in is welcomed if it keeps organization simpler. It was convenient because Technogym was already a Datadog's client \cite{Grafana}. 
@@ -359,6 +406,46 @@ Technologically speaking, the two pipelines are significantly similar; operation
 Even though the cost-model is incredibly tempting with ClickStack and ClickHouse (infra-based with promise of storage for less than \$0.03/GB/month and without fee per host), it brings some downsides with respect to Datadog. To begin with, the AI is agentic, but only in the managed version and with the grant of a \textit{private preview} kind of account, hence owners decide who to leave the functionality to, and it is still work in progress, meaning we could experience changes in usage. The UI is not as developed as in Datadog, it offers many fair possibilities, but does not have heatmaps, and it is based mainly on static thresholds, so to access dynamic alerts we should go for two integrated tools into HyperDX, that are \textit{Event Deltas} to analyze traces, and \textit{Event Patterns} to cluster similar log/traces. Plus, there is no explicit reference to \ac{CWV} capture. 
 
 All these motives led us to confirming Datadog as the best solution, affirming again itself as probable leader on the market. 
+
+\begin{longtable}{|>{\centering\arraybackslash}p{3.5cm}|>{\centering\arraybackslash}p{3.5cm}|>{\centering\arraybackslash}p{3.5cm}|>{\centering\arraybackslash}p{3.5cm}|}
+\caption{Summary table of the key features} \label{platfeats2} \\
+\hline
+\textbf{Requirements} & \textbf{Datadog} & \textbf{ClickStack (OSS)} & \textbf{Managed ClickStack} \\
+\hline
+\endfirsthead
+
+\multicolumn{4}{c}%
+{\tablename\ \thetable{} -- continued from previous page} \\
+\hline
+\textbf{Requirements} & \textbf{Datadog} & \textbf{ClickStack (OSS)} & \textbf{Managed ClickStack} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{4}{r}{Continued on next page} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+\textbf{OTel Portability} & strong support & OTel-native stack & strong for logs/metrics/traces via OTLP, less portability for anything that is not OTel \\
+\hline
+\textbf{Observability Coverage} & full stack & full stack for OTLP logs/metrics/traces & Full-stack observability and sessions, less “full platform” than Datadog but in evolution \\
+\hline
+\textbf{RUM and UX} & full RUM via SDK, session replay, heatmaps / scrollmaps and built-in dashboards & replay via HyperDX/ClickStack browser SDK, no heatmaps & UI ClickStack with HyperDX, integrated event deltas and event patterns, no heatmaps \\
+\hline
+\textbf{vendor lock-in} & yes & no lock-in for OTLP (but operational lock-in to ClickHouse) & medium-low based on configuration \\
+\hline
+\textbf{self-host} & no (SaaS) & designed for self-host for more control and portability & towards SaaS \\
+\hline
+\textbf{AI} & built-in Watchdog for passive analysis for free, paid Bits-AI for active investigation & Assumes external AI layer & AI Notebooks but preview only \\
+\hline
+\textbf{GDPR and legal concerns} & DPA + EU datacenter (Germany), RUM/replay require consent governance and privacy configs & self-host, Technogym controls residency, governance burden, replay privacy to manage & GDPR + DPA, it runs on ClickHouse that has EU datacenters \\
+\hline
+\textbf{Cost Model} & per host + ingest/retention + optional Bits AI usage + add-ons e.g., for retention (careful management because of possible hidden costs) & infrastructure cost + ops cost & infra-based promising storage for less than \$0.03/GB/month and no fee per user/host. Long retention at lower costs. Counts ``active'' hours.\\
+\hline
+\textbf{Retention} & general default 30 days for sessions, data types can be inserted in a public matrix to specify different retention conditions & our own retention policy implemented via TTL/partitioning & TTL table-level. Up to 15 months to respect GDPR \\
+\end{longtable}
 
 \chapter{Telemetry library implementation: from proof of concept to privacy-compliant production integration}
 

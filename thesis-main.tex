@@ -39,44 +39,44 @@
 \academicyear{2025-2026}
 
 % Definition of acronyms
-\acrodef{CRM}{Customer Relationship Management}
-\acrodef{OTel}{OpenTelemetry}
-\acrodef{POC}{Proof of Concept}
-\acrodef{PWA}{Progressive Web App}
-\acrodef{KPI}{Key-Success Factors}
-\acrodef{TBS}{Technogym Business System}
-\acrodef{OTLP}{OpenTelemetry Protocol}
-\acrodef{RUM}{Real User Monitoring}
-\acrodef{UX}{User Experience}
-\acrodef{APM}{Application Performance Monitoring}
-\acrodef{OLTP}{Online Transaction Processing}
-\acrodef{BI}{Business Intelligence}
-\acrodef{OLAP}{Online Analytical Processing}
-\acrodef{ACID}{Atomicity, Consistency, Isolation, Durability}
-\acrodef{ETL}{Extract Transform, Load}
-\acrodef{PaaS}{Platform-as-a-Service}
-\acrodef{IaaS}{Infrastructure-as-a-Service}
-\acrodef{FaaS}{Function-as-a-Service}
-\acrodef{SaaS}{Software-as-a-Service}
-\acrodef{XaaS}{Anything-as-a-Service}
-\acrodef{VM}{Virtual Machine}
-\acrodef{OS}{Operating System}
-\acrodef{GDPR}{General Data Protection Regulation}
-\acrodef{CWV}{Core Web Vitals}
-\acrodef{SLI}{Service Level Indicator}
-\acrodef{SLO}{Service Level Objective}
-\acrodef{RBAC}{Role-Based Access Control}
-\acrodef{SRE}{Site Reliability Engineering}
-\acrodef{MTTR}{Mean Time to Repair}
-\acrodef{DOM}{Document Object Model}
-\acrodef{CWV}{Core Web Vital}
-\acrodef{API}{Application Programming Interfaces}
-\acrodef{BE}{backend}
-\acrodef{FE}{frontend}
-\acrodef{CORS}{Cross-Origin Resource Sharing}
-\acrodef{EoS}{End of Support}
-\acrodef{GDPR}{General Data Protection Regulation}
-\acrodef{UTM}{Urchin Tracking Module}
+\acrodef{CRM}{\textit{Customer Relationship Management}}
+\acrodef{OTel}{\textit{OpenTelemetry}}
+\acrodef{POC}{\textit{Proof of Concept}}
+\acrodef{PWA}{\textit{Progressive Web App}}
+\acrodef{KPI}{\textit{Key-Success Factors}}
+\acrodef{TBS}{\textit{Technogym Business System}}
+\acrodef{OTLP}{\textit{OpenTelemetry Protocol}}
+\acrodef{RUM}{\textit{Real User Monitoring}}
+\acrodef{UX}{\textit{User Experience}}
+\acrodef{APM}{\textit{Application Performance Monitoring}}
+\acrodef{OLTP}{\textit{Online Transaction Processing}}
+\acrodef{BI}{\textit{Business Intelligence}}
+\acrodef{OLAP}{\textit{Online Analytical Processing}}
+\acrodef{ACID}{\textit{Atomicity, Consistency, Isolation, Durability}}
+\acrodef{ETL}{\textit{Extract Transform, Load}}
+\acrodef{PaaS}{\textit{Platform-as-a-Service}}
+\acrodef{IaaS}{\textit{Infrastructure-as-a-Service}}
+\acrodef{FaaS}{\textit{Function-as-a-Service}}
+\acrodef{SaaS}{\textit{Software-as-a-Service}}
+\acrodef{XaaS}{\textit{Anything-as-a-Service}}
+\acrodef{VM}{\textit{Virtual Machine}}
+\acrodef{OS}{\textit{Operating System}}
+\acrodef{GDPR}{\textit{General Data Protection Regulation}}
+\acrodef{CWV}{\textit{Core Web Vitals}}
+\acrodef{SLI}{\textit{Service Level Indicator}}
+\acrodef{SLO}{\textit{Service Level Objective}}
+\acrodef{RBAC}{\textit{Role-Based Access Control}}
+\acrodef{SRE}{\textit{Site Reliability Engineering}}
+\acrodef{MTTR}{\textit{Mean Time to Repair}}
+\acrodef{DOM}{\textit{Document Object Model}}
+\acrodef{CWV}{\textit{Core Web Vital}}
+\acrodef{API}{\textit{Application Programming Interfaces}}
+\acrodef{BE}{\textit{backend}}
+\acrodef{FE}{\textit{frontend}}
+\acrodef{CORS}{\textit{Cross-Origin Resource Sharing}}
+\acrodef{EoS}{\textit{End of Support}}
+\acrodef{GDPR}{\textit{General Data Protection Regulation}}
+\acrodef{UTM}{\textit{Urchin Tracking Module}}
 
 \mainlinespacing{1.241} % line spacing in mainmatter, comment to default (1)
 \setlength{\parskip}{1em}
@@ -449,12 +449,12 @@ All these motives led us to confirming Datadog as the best solution, affirming a
 
 \chapter{Telemetry library implementation: from proof of concept to privacy-compliant production integration}
 
-In this chapter, we are going to dive into the practical implementation of the project. 
+In this chapter, we are about to dive into the practical implementation of the project. We are going to describe first what was explored in ClickStack's HyperDX, and then devote the remainder of the exploration to Datadog, which deserves a more detailed examination as the final solution selected and the platform with which we gained greater familiarity.
 
 \section{Preliminary Test of ClickStack and Datadog}
 
-The operational plan was generating the general telemetry setup to determine the structure and information we wanted any telemetry service to have, enabling the specific configuration for passing and managing telemetry through ClickStack and Datadog, and for completion improvising a demo page as interactive playground to test and verify telemetry collection from the simulated React application. Thanks to few simple buttons, it allowed to manually trigger various telemetry events and see them appear in real-time in the ClickStack UI.
-The sections are:
+The operational plan was generating the general telemetry setup to determine the structure and information we wanted any telemetry service to have, enabling the specific configuration for passing and managing telemetry through ClickStack and Datadog, and for completion improvising a demo page as interactive playground to test and verify telemetry collection from the simulated React application. Thanks to few simple buttons, it allowed to manually trigger various events and see them appear in real-time in the ClickStack UI.
+The sections tested in a primitive, rough draft are:
 \begin{itemize}[nosep]
     \item User context to set user identity for tracking user-specific telemetry (user id, email), but for privacy policy it should be masked or hashed, especially when checking session replays; otherwise, the risk is to go against the principles of the GDPR. In ClickStack's settings it is already possible to establish masking rules for sensitive data; 
     \item Global attributes to add app-wide attributes that appear in all telemetry events (region, app version, browser) to reduce code duplication because it appears everywhere once set, enables filtering and grouping in the UI, and it is useful to correlate events across features;
@@ -467,8 +467,8 @@ As already hinted, we tested ClickStack to discover HyperDX's functionalities. W
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{figures/demo app.png}
-    \caption{Demo App interface for reference}
+    \includegraphics[width=0.6\linewidth]{figures/demo app.png}
+    \caption{Demo App data-type interface}
     \label{demo}
 \end{figure}
 
@@ -483,14 +483,14 @@ As we can see in this image (\Cref{hyperdx}), thanks to the demo application, we
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{figures/dash HyperDX.png}
-    \caption{Dashboards in HyperDX to Track Errors}
+    \caption{Ex. Dashboards in HyperDX to track errors}
     \label{dashboard}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{figures/SQL HyperDX.png}
-    \caption{SQL for Errors by Message}
+    \caption{Ex. SQL for errors by message}
     \label{sql}
 \end{figure}
 
@@ -522,7 +522,7 @@ Release & Preparation for a new release & release/\textless name\textgreater \\ 
 Also, commits need to follow a semantic standard to facilitate traceability on Jira. The structure is \texttt{<type>(<scope>): <description>}, where types are drawn from the conventional commits list (feat, fix, docs, style, refactor...), the scope has been decided internally to indicate the part of the application that has been modified (home, planner, training...), in the footer we find the references field for the Jira issues.  
 
 The application follows a modular philosophy, where components are interchangeable to reduce the dependency from specific libraries and to facilitate updates. The code is organized into reusable packages hosted in a private registry. The two main packages are ``Infrastructure'' with the basic logic, and ``Web App UI'' to manage UI components. The access to those requires authentication via private token locally configured in the NPM registry. 
-The architecture is based on generic interfaces. For instance, the ``Tracking Service'' (initially referred to Google Analytics) is extended to the new Telemetry Service. The aim is not making the interface dependent on third-party libraries such as OTel, but these should be confined exclusively in the specific provider implementation (in our cases, ClickStack or Datadog). To achieve this, we defined a generic \textit{TelemetryService} interface. Instead of directly importing from OpenTelemetry API, we created custom generic types, such as a dictionary for attributes, where the key is a string and the value can be a string, number, or boolean, so the interface itself has zero dependency. This strict separation guarantees that if the team decides to stop using OpenTelemetry in the future, the core application interfaces will not need to be rewritten. The actual OTel logic is isolated within two specific implementation files, one regarding ClickStack for initial tests while waiting for Datadog's platform activation and exploratory sessions, and the other for using the latter. The necessary OTel packages are installed in the package.json as standard dependencies rather than development dependencies, ensuring that they are included in the final compile application build.  
+The architecture is based on generic interfaces. For instance, the ``Tracking Service'' (initially referred to Google Analytics) is extended to the new Telemetry Service. The aim is not making the interface dependent on third-party libraries such as OTel, but these should be confined exclusively in the specific provider implementation (in our cases, ClickStack or Datadog). To achieve this, we defined a generic \textit{TelemetryService} interface. Instead of directly importing from OpenTelemetry API, we created custom generic types, such as a dictionary for attributes, where the key is a string and the value can be a string, number, or boolean, so the interface itself has zero dependency. This strict separation guarantees that if the team decides to stop using OpenTelemetry in the future, the core application interfaces will not need to be rewritten. The actual OTel logic is isolated within two specific implementation files, one regarding ClickStack for initial tests while waiting for Datadog's platform activation and exploratory sessions, and the other for using the latter. 
 
 \subsection{Page views tracking, sanitization and \\ session replay towards GDPR compliance}
 
@@ -557,7 +557,7 @@ The tracking logic was centralized: instead of embedding telemetry calls inside 
 \end{lstlisting}
 
 
-Sanitization links to the concept of data cleanliness, too. Sending row data to monitoring systems is not only risky in privacy terms, but could additionally cause a technical issue known as ``cardinality explosion''. If dashboards receive tons of univocal entries, their statistical aggregation becomes unfeasible, making data unavailable for operational monitoring. The usage of a GUID (Globally Unique Identifier) composed of 32 characters by default separated by dashes in URL paths prevents metrics' grouping. It means that every access to a specific resource would be seen as a different page because the user has changed. Sanitization is the only way which allows operators to visualize traffic as aggregated per sections. For instance, /contacts/UUID-123 turns into more generic /contacts/ID. In the code we can find a sanitization function in the telemetry utilities which exploits regex to identify not only GUIDs, but also numerical and more compact ``object IDs'' typically returned by databases. These identifiers get replaced with a generic ``ID'' which guarantees cleanliness across sent data.
+Sanitization links to the concept of data cleanliness, too. Sending raw data to monitoring systems is not only risky in privacy terms, but could additionally cause a technical issue known as ``cardinality explosion''. If dashboards receive tons of univocal entries, their statistical aggregation becomes unfeasible, making data unavailable for operational monitoring. The usage of a GUID (Globally Unique Identifier) composed of 32 characters by default separated by dashes in URL paths prevents metrics' grouping. It means that every access to a specific resource would be seen as a different page because the user has changed. Sanitization is the only way to allow operators to visualize traffic as aggregated per sections. For instance, /contacts/UUID-123 turns into more generic /contacts/ID. In the code we can find a sanitization function in the telemetry utilities which exploits regex to identify not only GUIDs, but also numerical and more compact ``object IDs'' typically returned by databases. These identifiers get replaced with a generic ``ID'' which guarantees cleanliness across sent data.
 
 This procedure is a must to comply with the \ac{GDPR} and other privacy regulations that end up being very impactful especially in the European context. 
 The GDPR governs the collection of personal data within the EU territory. Its objective is defining what sensitive data is, how it can be collected, how to deal with biometric data which is another subset of the wider sensitive information group, and how to protect the privacy of individuals. 
@@ -640,14 +640,14 @@ datadogRum.init({
 \end{lstlisting}
 
 To show the chain, we need RUM configured with \textit{allowedTracingUrls} to know which calls to correlate, and W3C trace context propagation \textit{traceparent} to link the BE trace to its child. \ac{CORS} should already be configured to allow such headers, because the backend has to accept them due to security rules. Indeed, \ac{CORS} \cite{CORS} is a mechanism for integrating applications by defining a way for client web applications that are loaded in one domain to interact with resources in a different domain. This is useful because complex applications often reference third-party APIs and resources in their client-side code. 
-This is needed because any kind of discomfort that the client might experience while using the CRM Mywellness application is perceived as an interface/application error, even when it is not a responsibility of frontend programmers, but the common user has no technical expertise to understand it, hence their feedbacks will sound generic, too. Without this proper traceability methodology, a lot of time would be wasted looking for the source of the problem almost randomly checking code files. 
+This is needed because any kind of discomfort that the client might experience while using the Mywellness CRM application is perceived as an interface/application error, even when it is not a responsibility of frontend programmers, but the common user has no technical expertise to understand it, hence their feedbacks will sound generic, too. Without this proper traceability methodology, a lot of time would be wasted looking for the source of the problem almost randomly checking code files. 
 
 Another important means to analyze performance and resource speed, quality and general effectiveness are \acp{CWV}. \acp{CWV} is a set of metrics that measure real-world user experience for loading performance, interactivity, and visual stability of the page \cite{CWV}. The categories we are interested in refer mainly to the user experience impact: 
 \begin{itemize}
     \item \textbf{LCP (Largest Contentful Paint.)} It tracks how fast the main content loads, which can correlate to retention rate, because if the users abandon slow sites retention is directly affected negatively. 
     \item \textbf{FID/INP (First Input Delay/Interaction to Next Paint.)} It is about responsiveness of the elements. At the beginning there was only FID, which measured only the time of the first user input to start the interaction, this is why nowadays is often sided or replaced by INP, which is about the total response time that comprehends all interactions, that can be more useful in application contexts. 
     \item \textbf{CLS (Cumulative Layout Shift).} It concerns visual stability. If there are unexpected layout shifts, it can lead to user errors or general poor \ac{UX}, which discourages people to use the app. 
-    \item \item \textbf{FCP (First Contenful Paint).} It measures how fast the page shows the first visible content. It is not a core web vital, but it is still an important web performance metric, and Google still reports it to help diagnose loading performance. 
+    \item \textbf{FCP (First Contenful Paint).} It measures how fast the page shows the first visible content. It is not a core web vital, but it is still an important web performance metric, and Google still reports it to help diagnose loading performance. 
 \end{itemize}
 
 To qualify as "good" performance, Google establishes the following thresholds: LCP should occur within 2.5 seconds, INP should be below 200 milliseconds, and CLS should remain under 0.1. These targets must be met for at least 75\% of page visits. For Technogym, establishing these benchmarks as \ac{SLI} allows the team to define clear \ac{SLO} and trigger alerts when performance degrades, enabling proactive intervention before users experience significant impact. Integrating CWV monitoring into the observability infrastructure provides real-time visibility into user experience across different devices, network conditions, and geographic regions. Through OpenTelemetry's browser instrumentation, these metrics can be correlated with backend traces, allowing the team to identify whether a poor LCP stems from slow API responses, excessive JavaScript execution, or network latency. This end-to-end visibility transforms CWV from isolated frontend metrics into actionable insights that guide both frontend and backend optimization efforts.
@@ -658,11 +658,11 @@ In the previous chapter, we introduced the main expedients to depict the baselin
 
 A dutiful clarification to make is that the majority of the code exposed in the fourth chapter was needed specifically to support ClickStack's data collection and HyperDX implementation. This is indeed the main factor which led to selecting Datadog as first choice: ClickStack demonstrated to be for sure a great frontier, but is visibly a work in progress and still needs adjustments to make life effectively easier, while Datadog can flatter years of existence that allowed it to become an undefeatable standard today concerning monitoring and analysis. Practically speaking, this means that the afore-mentioned platform already embeds the logic to configure sensible data masking with the possibility to choose among various possibilities without needing a heavy and supplementary sanitization logic in the application code, plus it tracks automatically page views because it is capable of catching every URL path change if the functionality is enabled, so that part of code becomes skippable, too. Another advantage is that, thanks to initialization commands such as \textit{``trackUserInteractions''}, \textit{``trackLongTasks''} and \textit{``trackResources''}, Datadog can automatically track every click, page navigation, frustration signal, error, without requiring additional instrumentation. This reduces the amount of manual coding required for telemetry collection and ensures that critical performance metrics are captured consistently across the application. Another simplification was the automatic registration of many global attributes that, in the case of ClickStack, needed to be manually set up, like the browser name or version, the operating system or device type used by the customer, the application version, geographical information, and so on.
 
-\section{Error monitoring dashboards and alerting configuration}
+\section{Error monitoring dashboards \\ and alerting configuration}
 
 Throughout the process, it has been decided that the priority for the enterprise was to intercept errors with severity labeled as ``critical'' and ``high'', because it is the biggest pain point for the company in terms of customer care and application quality. 
 
-As already mentioned in some old sections, the aim was to take care of handled errors (API errors and business logic, browser-side infrastructural errors, device and hardware errors) and unhandled errors that the code does not predict and does not capture through try-catch (React Rendering, uncaught promise rejections, JavaScript errors). These unhandled are automatically recognized by the browser and the Datadog SDK intercepts them without human intervention, so that developers do not lose error information. Handled errors are called this way because they foresee the faults and they are handled somehow (e.g., by showing an error message to the user, or with a retry). The distinction between handled and unhandled is fundamental to understand the implications of each, because the former represents a UI degradation but keeping the app functioning, they might go unnoticed, they require manual tracking and are managed in the code through the ``recordException()'' method adding a try-catch block to avoid crashes and explicitly defining the severity level chosen among low, medium, high and critical and eventually adding attributes to better understand the context during debugging; while the latter often make the app crash, are visible (there is a white screen or the functionality does not respond), are auto-captured and to recover the page must be reloaded.
+As already mentioned in some old sections, the aim was to take care of handled errors (API errors and business logic, browser-side infrastructural errors, device and hardware errors) and unhandled errors that the code does not predict and does not capture through try-catch (React Rendering, uncaught promise rejections, JavaScript errors). These unhandled are automatically recognized by the browser and the Datadog SDK intercepts them without human intervention, so that developers do not lose error information. Handled errors are called this way because they foresee the faults, and they are handled somehow (e.g., by showing an error message to the user, or with a retry). The distinction between handled and unhandled is fundamental to understand the implications of each, because the former represents a UI degradation but keeps the app functioning, they might go unnoticed, they require manual tracking and are managed in the code through the ``recordException()'' method adding a try-catch block to avoid crashes and explicitly defining the severity level chosen among low, medium, high and critical and eventually adding attributes to better understand the context during debugging; while the latter often make the app crash, are visible (there is a white screen or the functionality does not respond), are auto-captured and to recover the page must be reloaded.
 
 \begin{lstlisting}[language=Kotlin, caption={recordException() method for handled errors}, label=lst:recordException]
     recordException(error: Error, severity?: ErrorSeverity, attributes?: Attributes): void {
@@ -680,7 +680,7 @@ As already mentioned in some old sections, the aim was to take care of handled e
   }
 \end{lstlisting}
 
-Moreover, React introduces a third, peculiar category which are React Rendering errors: when a component fails to render, it can cause the entire React tree to unmount, which means that the interface disappears and the user sees a blank page, making the application unusable. This is problematic in a web-app where the crash of a separate section should not be able to affect and impede the access to core functionalities. To control these situations, the solution is introducing an Error Boundary, comprehending special components that catch errors in their ``subtree'' and display a fallback UI instead of crashing the whole app. The specific implementation of our ErrorBoundary does not only show a fallback, but enriches the context of the error:
+Moreover, React introduces a third, peculiar category which are React Rendering errors: when a component fails to render, it can cause the entire React tree to unmount, which means that the interface disappears, and the user sees a blank page, making the application unusable. This is problematic in a web-app where the crash of a separate section should not be able to affect and impede the access to core functionalities. To control these situations, the solution is introducing an Error Boundary, comprehending special components that catch errors in their ``subtree'' and display a fallback UI instead of crashing the whole app. The specific implementation of our ErrorBoundary does not only show a fallback, but enriches the context of the error:
 
 \begin{lstlisting}[language=Kotlin, caption={componentDidCatch() implementation for ErrorBoundary}, label=lst:Errboundary]
 omponentDidCatch(error: Error, errorInfo: ErrorInfo): void {
@@ -752,14 +752,14 @@ Surely, thresholds will vary depending on the severity of the error. For instanc
 Another type of monitor adopts Datadog's anomaly detection algorithm, which automatically learns the normal behavior of a metric and triggers an alert when it detects a significant deviation from that baseline. If the error rate is typically 0.5\% it sends a notification reaching a higher value like 1\%, and this mechanism is useful to catch errors that do not fit into a specific threshold, and to identify problems before they dramatically escalate, and that users start complaining. 
 
 
-\section{Analytical Dashboard migration from Google Analytics to Datadog}
+\section{Analytical Dashboard migration from \\ Google Analytics to Datadog}
 
 The final objective for concluding the observability project, after all this research and tests over platforms and data collection, is migrating all the data managed in Google Analytics to Datadog, which means rebuilding the whole dashboard suite in order to integrate everything in a single platform. Lots of example images will be provided in this section, but they will be taken primarily from the test environment and mocked local interactions in order to avoid the disclosure of any private information. 
 
 Google Analytics serves as the industry standard for product and marketing analytics. Its internal logic is built upon an event-driven data model, where every user interaction is recorded as an independent event accompanied by custom parameters. The platform’s widespread adoption stems from its ability to democratize data for non-technical stakeholders, since it does not require complex SQL or custom query languages which is a characteristic we can attribute to Datadog, too. 
 By transitioning to Datadog, the perspective gets shifted from marketing analytics to technical observability. GA simply answers the question of what users are doing, while Datadog RUM is designed to understand the underlying reasons behind user behavior, their technical experience and why the system might have failed. The only great limitation of Datadog is it has a shorter retention period compared to GA, making monthly comparisons tougher, and being a paid platform it requires high cost scaling based on volume and custom metrics. 
 
-With that being said, the discussion can now spill over the dashboards that have been built to replace the old approach. The migration was not a straightforward copy-paste process, even though the two platforms share a similar paradigms and concepts. Both rely on tracking discrete events with associated parameters under the name of dimensions in GA and attributes in Datadog, but data ingestion differs. 
+With that being said, the discussion can now spill over the dashboards that have been built to replace the old approach. The migration was not a straightforward copy-paste process, even though the two platforms share similar paradigms and concepts. Both rely on tracking discrete events with associated parameters under the name of dimensions in GA and attributes in Datadog, but data ingestion differs. 
 The first step was to consult the documentation to understand how Datadog works with metrics and events. GA operates on an auto-aggregating model, which means that its backend can automatically increment the counters of the events created and pre-aggregate data into reports. Datadog RUM, in contrast, follows an event-streaming model capturing individual events (or actions) that get stored as discrete records, and aggregation is performed at query time. For this reason, in order to maintain the code structure as intact as possible, the smartest expedient was maintaining the event taxonomy originally designed for Google Analytics (action types and their parameter types), avoiding touching other hundreds of files in the application and risking inconsistencies. The addition to push for this consistency was adding an abstraction layer with the TelemetryService we had already implemented for error monitoring and extending it with the ``incrementCounter'' method that adapts GA's style to RUM's action model:
 
 \begin{lstlisting}[language=Kotlin, caption={incrementCounter adapter method for RUM custom actions}, label=lst:incrCountAdapt]
@@ -803,14 +803,14 @@ Beyond a generic overview, the main points of interest are:
     \begin{figure}[h]
         \centering
         \includegraphics[width=1\linewidth]{figures/GAusers.png}
-        \caption{Overview of Users Information in GA}
+        \caption{Overview of users information in GA}
         \label{usersGA}
     \end{figure}
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\linewidth]{figures/panoramica-utenti.png}
-        \caption{Overview of Users Information in DD}
+        \caption{Overview of users information in DD}
         \label{usersDD}
     \end{figure}
 
@@ -821,14 +821,14 @@ Beyond a generic overview, the main points of interest are:
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\linewidth]{figures/GApanutenti.png}
-        \caption{Overview of User Acquisition in GA}
+        \caption{Overview of user acquisition in GA}
         \label{useracqGA}
     \end{figure}
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=1\linewidth]{figures/panAcquDD.png}
-        \caption{Overview of User Acquisition in DD}
+        \caption{Overview of user acquisition in DD}
         \label{useracqDD}
     \end{figure}
 
@@ -850,21 +850,21 @@ Beyond a generic overview, the main points of interest are:
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{figures/GAcoinv.png}
-    \caption{Overview of User Engagement in GA}
+    \caption{Overview of user engagement in GA}
     \label{engagGA}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{figures/Panoramica-coinvolgimento.png}
-    \caption{Overview User Engagement in DD}
+    \caption{Overview of user engagement in DD}
     \label{engagDD}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{figures/Altro-coinvolgimento.png}
-    \caption{Overview User Engagement in DD (2)}
+    \caption{Overview of user engagement in DD (2)}
     \label{engagDD2}
 \end{figure}
     \item \textbf{Prescribe 2.0.} It concerns a specific CRM functionality devoted to prescription/creation of custom training programs for clients of the facility. They can be generated via different modalities - from scratch, assisted by AI, from library -, it analyzes how trainers use filters and automatic research for exercises and how much they have to scroll before selecting the right exercise and so on. It supplies insights over the effectiveness of product innovations and suggests feature development precedence based on real users' behavior.
@@ -895,21 +895,21 @@ Beyond a generic overview, the main points of interest are:
     \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{figures/GAtech.png}
-    \caption{Overview Technology in GA}
+    \caption{Overview technology in GA}
     \label{techGA}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{figures/panoramica-tec1.png}
-    \caption{Overview Technology in DD}
+    \caption{Overview technology in DD}
     \label{techDD}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=1\linewidth]{figures/Analisi-versione-ex.png}
-    \caption{Overview Technology in DD (2)}
+    \caption{Overview technology in DD (2)}
     \label{techDD2}
 \end{figure}
 
@@ -936,6 +936,8 @@ This granular visibility enables targeted interventions where needed for optimiz
     \caption{Core Web Vitals Performance Analysis}
     \label{cwvperf}
 \end{figure}
+
+\Cref{cwvperf} It is acceptable for some measurements to exceed the recommended threshold in this context, because they are associated to a test environment in which APIs may perform slower to ensure optimal performance to the production environment. The metric worsens also based on how many tabs are opened and how many processes are running on the computer, particularly for LCP, but performance should be optimized also in such cases, and it makes sense to place the greater emphasis on guaranteeing fluidity in the most important environments. 
 
 \begin{figure}[H]
     \centering
@@ -984,18 +986,18 @@ Ultimately, this case study demonstrates that observability, when implemented th
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
 
-\begin{acknowledgements} % this is optional
+\begin{acknowledgements} 
 This thesis represents the end of one of the most beautiful, despite hard at times, journeys of my life, thanks to the new, fascinating things I have studied and the wonderful people I have met. 
 
-Foremost, I am grateful to my supervisor, Professor Matteo Francia, not because it is a formality, but because he has truly been a great mentor, capable of explaining complex concepts while also having fun with his students, because he is both a great professor and person, he has eased our study path with his humor and, specifically to me, he has been a psychological support, too, helping me every time I had doubts about my next steps. A big thanks also to my co-supervisor, Davide Domini, who has been mainly a friend since the first year, he helped me to solve all the endless bugs in my terminal and always knew how to cheer for me.
+Foremost, I am grateful to my supervisor, Professor Matteo Francia, not because it is a formality, but because he has truly been a great mentor, capable of explaining complex concepts while also having fun with his students, he has eased our study path with his humor and, specifically to me, he has been a psychological support, too, helping me every time I had doubts about my next steps. A big thanks also to my co-supervisor, Davide Domini, who has been mainly a friend since the first year, he helped me to solve all the endless bugs in my terminal and always knew how to cheer for me.
 
-An immense thank you to my Internship tutor Andrea and my PD Pietro, who have taken me under their wing trusting my enthusiasm and my will to learn something new that piqued my interest. I feel lucky for finding such valid mentors who had the patience to make me grow professionally and saw a spark in me, which is not a given nowadays. As well should I thank another great colleague, Eric, who was initially scared every time I walked through his door, but then probably started having fun, he explained interesting topics in the clearest way and made a great duo with me. 
+An immense thank you to my Internship tutor Andrea and my PD Pietro, who have taken me under their wing trusting my enthusiasm and my will to learn something new that piqued my interest. I feel lucky for finding such valid mentors who had the patience to make me grow professionally and saw a spark in me, which is not a given nowadays. As well should I thank another great colleague, Eric, who was initially scared every time I walked through his door, but then probably started having fun, he explained interesting topics in the clearest way and made a great duo with me. I am grateful to my coworkers, too, for always helping me out without judgments and for making everything feel lighter and funnier both at and outside work. 
 
 The greatest thanks go again and always to my family. I know that, to you, I am the perfect daughter who can do whatever she wants, but it is not true, and I have never felt this way. But I also know that if I am brave, ambitious and stubborn enough today to think I can face two years of studying informatics to realize my childhood dream and survive six months of programming for an internship, it is because you raised me making me feel the love and safety I needed to be able to take risks, knowing I could have never disappointed you because you would have always been proud of me even committing the worst failure of my life, and because after all your sacrifices you deserved me to try hard, and I hope to give you my success as a gift every day.
 
-The best feeling was finding colleagues that I have always called friends. To all my DTM fellows, you were able to make me discover new traits of my personality, new activities to enjoy, new objectives to pursue, you were always ready to support me even when I was unsure about everything and just overthinking my next ten years of life. As I already told you, I could endure other thousands of university courses with you. Thank you for the esteem you show me, it is completely reciprocated, and I know you will be extremely successful.
+The best feeling was finding colleagues that I have always called friends. To all my DTM fellows, you were able to make me discover new traits of my personality, new objectives to pursue, you were always ready to support me even when I was unsure about everything and just overthinking my next ten years of life. I could endure other thousands of university courses with you. Thank you for the esteem you show me, it is completely reciprocated, and I know you will be extremely successful.
 
-The last lines are dedicated to the most important people in my life. I will be brief because pages would still not be enough to explain how I feel about you, but you are already aware of everything. Thanks to my high school friends for keeping up so good with the distance that separates us, the close friends I met during my Bachelor's and are still here to make my life better. I love keeping on sharing important turning points of our lives with you, and you are still my safe place. 
+The last lines are dedicated to the most important people in my life. I will be brief because pages would still not be enough to explain how I feel about you, but you are already aware of everything. Thanks to my high school friends for keeping up so good with the distance that separates us, to the close friends I met during my Bachelor's and are still here to make my life better. I love keeping on sharing important turning points of our lives with you, and you are still my safe place. 
 
 \end{acknowledgements}
 

@@ -139,7 +139,7 @@ There are four main words to identify Technogym's drivers:
     \item \textbf{Ecosystem}, probably the real essence that encloses it all. Technogym was the first to introduce a \textit{digital key} to access its machines with a user account where all personal data and training progresses are collected, to then switch to the modern web applications released either for professional operators in clubs, hotels and hospitals who need to follow their clients, and for common people that want to gain access to a training program in an easy and efficient way to improve their lifestyle and habits while feeling assisted; it was the first to make clever usage of the cloud when it was first developed to really become seamless.
 \end{enumerate}
 
-\section{A React-based implementation framework for observability: the project for the \\ Mywellness CRM web application}
+\section{React observability framework for the \\ Mywellness CRM web application}
 
 Technogym operates as a hybrid of a hardware manufacturer and a software house, thus are we interested in grasping the context around the Mywellness CRM, the application the project was tailored on, to understand its functioning and the weak points the development team wanted to intervene on in order to boost customer experience and accelerate the debugging process. 
 
@@ -157,7 +157,7 @@ The ``People'' section is one of the core elements of the CRM interface, where p
     \label{crm}
 \end{figure}
 
-The planner in the next image, another central functionality, shows how activities get organized during the week and the month, underlining course time schedule, trainers in charge, spots available, reminders. The calendar, from design perspective, is one of the most challenging interfaces to develop. It has therefore been the subject of a long debate aimed at finding the most convenient graphical representation attempting to meet all users' requests that sometimes are hard to. 
+The planner in \Cref{crmplanner}, another central functionality, shows how activities get organized during the week and the month, underlining course time schedule, trainers in charge, spots available, reminders. The calendar, from design perspective, is one of the most challenging interfaces to develop. It has therefore been the subject of a long debate aimed at finding the most convenient graphical representation attempting to meet all users' requests that sometimes are hard to. 
 
 \begin{figure}[H]
     \centering
@@ -367,9 +367,9 @@ Datadog could be used following a Datadog-first approach to reduce external work
 \hline
 \textbf{RUM and UX} & full RUM via SDK, session replay, heatmaps / scrollmaps and built-in dashboards & RUM via DEM (SDK), session replay, no strong heatmaps & RUM with SDK, session replay, no heatmaps / scrollmaps \\
 \hline
-\textbf{vendor lock-in} & yes & yes & yes \\
+\textbf{Vendor lock-in} & yes & yes & yes \\
 \hline
-\textbf{self-host} & no (SaaS) & no (SaaS) & can be self-hosted, but operationally heavy and usually SaaS \\
+\textbf{Self-host} & no (SaaS) & no (SaaS) & can be self-hosted, but operationally heavy and usually SaaS \\
 \hline
 \textbf{AI} & built-in Watchdog for passive analysis for free, paid Bits-AI for active investigation & New Relic AI and SRE Agent for assistive incident analysis & Seer AI only debugging agent \\
 \hline
@@ -389,14 +389,14 @@ Other than what said above involving Datadog, a common solution is the Grafana s
 ClickHouse itself is a high-performance, column-oriented SQL database management system (DBMS) designed for online analytical processing (OLAP). It is available as both open-source and cloud-based offerings, optimized for running analytical queries over massive datasets in real-time. ClickStack, on the other hand, is the ClickHouse observability stack, an open-source platform built in collaboration with HyperDX \cite{ClickStack, ClickHouse}. It is composed of three blocks: OTel collector (ClickStack distro), ClickHouse storage and its query system (with possibility to use something else), and ClickStack UI offered by HyperDX. ClickStack as a product can be used in two different configurations: as self-host so that we can manage it all, and a managed ClickStack embracing the SaaS approach, because we should manage the collector or any instrument we decide to use to send OTLP, ClickHouse and HyperDX are hosted and operated in ClickHouse cloud, and it is thought to scale and diminish the burden.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{figures/osclick.png}
+    \includegraphics[width=0.75\linewidth]{figures/osclickvert.jpeg}
     \caption{Open-source ClickStack Architecture}
     \label{Open-source-click}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{figures/Managedclick.png}
+    \includegraphics[width=0.75\linewidth]{figures/ManClickvert.jpeg}
     \caption{Managed ClickStack Architecture}
     \label{managed-click}
 \end{figure}
@@ -434,9 +434,9 @@ All these motives led us to confirming Datadog as the best solution, affirming a
 \hline
 \textbf{RUM and UX} & full RUM via SDK, session replay, heatmaps / scrollmaps and built-in dashboards & replay via HyperDX/ClickStack browser SDK, no heatmaps & UI ClickStack with HyperDX, integrated event deltas and event patterns, no heatmaps \\
 \hline
-\textbf{vendor lock-in} & yes & no lock-in for OTLP (but operational lock-in to ClickHouse) & medium-low based on configuration \\
+\textbf{Vendor lock-in} & yes & no lock-in for OTLP (but operational lock-in to ClickHouse) & medium-low based on configuration \\
 \hline
-\textbf{self-host} & no (SaaS) & designed for self-host for more control and portability & towards SaaS \\
+\textbf{Self-host} & no (SaaS) & designed for self-host for more control and portability & towards SaaS \\
 \hline
 \textbf{AI} & built-in Watchdog for passive analysis for free, paid Bits-AI for active investigation & Assumes external AI layer & AI Notebooks but preview only \\
 \hline
@@ -530,7 +530,7 @@ Once the telemetry abstraction layer has been introduced, the next step consiste
 
 The tracking logic was centralized: instead of embedding telemetry calls inside individual pages which would cause \textit{scattering} (literally spreading things over a wide area, hence calls towards tracking systems would be lost in the whole business logic, making each modification onerous and error-prone), the implementation leveraged the telemetry service abstraction and centralized page view registration within the routing layer. This approach reduced code duplication and guaranteed consistent event generation across the entire application. The \textit{trackPageView} method uses the parameter ``path'' instead of the complete URL. This must be brought to attention because while the URL (composed of \textit{window.location.href}) might include protocols and hosts, the \textit{path} identifies the logical internal path (e.g. /people/contacts). This choice was made for privacy protection to avoid the unintentional capture of PII (Personal Identifiable Information) or sensible query parameters. What we did is called \textit{sanitization}.
 
-\begin{lstlisting}[language=Kotlin, caption={sanitization function}, label=lst:sanitization]
+\begin{lstlisting}[language=Kotlin, caption={Sanitization function}, label=lst:sanitization]
     export function sanitizePath(path: string): string {
   return path
     .split('/')
@@ -778,7 +778,7 @@ The first step was to consult the documentation to understand how Datadog works 
 
 Despite the name ``incrementCounter'', this does not create a Datadog custom metric, nor does it ``increment a counter'' in Datadog's backend. The name is just a semantic convenience borrowed from GA's model. The method ``addAction()'' sends a custom action event to RUM, Datadog stores it with the respective attributes to then aggregate these events in dashboards through queries. 
 
-\begin{lstlisting}[language=Kotlin, caption={Event tracking with conventional value "1" for aggregation}, label=lst:incrCountValue]
+\begin{lstlisting}[language=Kotlin, caption={Event tracking with conventional value ``1'' for aggregation}, label=lst:incrCountValue]
     public trackExportItemList(itemListType: TrackingItemListType) {
     this.telemetry.incrementCounter({
       name: TrackingActionType.ExportItemList,
@@ -802,16 +802,23 @@ Beyond a generic overview, the main points of interest are:
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=1\linewidth]{figures/GAusers.png}
+        \includegraphics[width=0.9\linewidth]{figures/GAusers.png}
         \caption{Overview of users information in GA}
         \label{usersGA}
     \end{figure}
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=1\linewidth]{figures/panoramica-utenti.png}
+        \includegraphics[width=1\linewidth]{figures/plususer.png}
         \caption{Overview of users information in DD}
         \label{usersDD}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{figures/panoramica-utenti.png}
+        \caption{Overview of users information in DD 2}
+        \label{usersDD2}
     \end{figure}
 
     What differs the most in this set of dashboards between GA and DD is the arrangement decided for acquisition and user analysis. In GA, the acquisition and user attributes reports are quite intertwined with one another, as a matter of fact they present information duplication. This is the reason why we came up with the idea of remodelling the order of the information, creating more specifically a whole group dedicated to users' characteristics and another addressing proper acquisition. 
@@ -867,11 +874,19 @@ Beyond a generic overview, the main points of interest are:
     \caption{Overview of user engagement in DD (2)}
     \label{engagDD2}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=1\linewidth]{figures/pluscoinv.png}
+    \caption{Overview of user engagement in DD (3)}
+    \label{engagDD3}
+\end{figure}
+
     \item \textbf{Prescribe 2.0.} It concerns a specific CRM functionality devoted to prescription/creation of custom training programs for clients of the facility. They can be generated via different modalities - from scratch, assisted by AI, from library -, it analyzes how trainers use filters and automatic research for exercises and how much they have to scroll before selecting the right exercise and so on. It supplies insights over the effectiveness of product innovations and suggests feature development precedence based on real users' behavior.
     
     \begin{figure}[H]
         \centering
-        \includegraphics[width=1\linewidth]{figures/GAprescribe.png}
+        \includegraphics[width=0.95\linewidth]{figures/GAprescribe.png}
         \caption{Overview Prescribe 2.0 in GA}
         \label{prescrGA}
     \end{figure}
@@ -888,6 +903,13 @@ Beyond a generic overview, the main points of interest are:
         \includegraphics[width=1\linewidth]{figures/DDprescr2.png}
         \caption{Overview Prescribe 2.0 in DD (2)}
         \label{prescrDD2}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=1\linewidth]{figures/plusprescribe.png}
+        \caption{Overview Prescribe 2.0 in DD (3)}
+        \label{prescrDD3}
     \end{figure}
 
     \item \textbf{Technology.} Grants technical compatibility improving the tech ecosystem and prioritizing support for the most widespread configurations. It checks for browsers, resolutions, devices used as examples. It guides decisions over when to deprecate some obsolete versions, and it optimizes the responsive experience for the most common solutions.
@@ -973,15 +995,7 @@ The commitment to continuous evolution distinguishes this project from previous 
 
 Ultimately, this case study demonstrates that observability, when implemented thoughtfully with the due attention to privacy, transforms from a technical capability into a strategic asset. The journey from reactive bug fixing to proactive monitoring is not complete because observability is just a spectrum, but the foundation established through this work positions Technogym to navigate the operational complexities of modern distributed systems with confidence, clarity and control. 
 
-
-
-
-
-%----------------------------------------------------------------------------------------
-% BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
-
-\backmatter
+\backmatter 
 
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
